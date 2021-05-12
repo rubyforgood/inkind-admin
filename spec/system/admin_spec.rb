@@ -1,6 +1,6 @@
-describe 'admin experience' do
+describe 'admin experience', js: true do
   it 'creates student' do
-    sign_in users(:admin)
+    sign_in create(:user)
 
     get '/students/new'
 
