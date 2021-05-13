@@ -1,4 +1,4 @@
-describe 'admin experience', js: true do
+describe 'admin experience', type: :system, js: true do
   it 'creates student' do
     sign_in create(:user)
 
