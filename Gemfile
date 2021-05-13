@@ -19,6 +19,9 @@ gem 'puma', '~> 5.0'
 # authentication
 gem 'devise'
 
+# generated data
+gem 'faker', '~> 2.17'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

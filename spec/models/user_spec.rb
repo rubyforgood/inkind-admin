@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has roles' do
+    admin = create(:user, :admin)
+    expect(admin).to_not be_new_record
+    expect(admin).to be_admin
+
+    # expect(admin.role).to eq('admin')
+
+    volunteer = create(:user, :volunteer)
+    expect(volunteer).to_not be_new_record
+    expect(volunteer).to be_volunteer
+  end
 end
