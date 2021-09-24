@@ -20,25 +20,25 @@ module Queries
 
       before { user.students << student }
 
-      it 'returns all students belonging to user' do
-        post '/graphql',
-             params: {
-               query: query,
-             },
-             headers: authentication_header(user)
+      context 'when signed in' do
+        before { sign_in(user) }
 
-        expect(response).to be_successful
+        it 'returns all students belonging to user' do
+          post '/graphql', params: { query: query }
 
-        json = JSON.parse(response.body)
-        data = json['data']['students']
+          expect(response).to be_successful
 
-        expect(data.size).to eq(1)
-        expect(data[0]).to_not be_nil
-        expect(data[0]['id']).to eq(student.id.to_s)
+          json = JSON.parse(response.body)
+          data = json['data']['students']
 
-        ids = data.pluck('id')
-        expect(ids).to include(student.id.to_s)
-        expect(ids).to_not include(other_student.id.to_s)
+          expect(data.size).to eq(1)
+          expect(data[0]).to_not be_nil
+          expect(data[0]['id']).to eq(student.id.to_s)
+
+          ids = data.pluck('id')
+          expect(ids).to include(student.id.to_s)
+          expect(ids).to_not include(other_student.id.to_s)
+        end
       end
 
       it 'returns nothing when not signed in' do

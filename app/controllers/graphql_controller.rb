@@ -39,6 +39,8 @@ class GraphqlController < ApplicationController
   end
 
   def bearer_token
+    return session[:token] if session[:token]
+
     pattern = /^Bearer /
     header = request.headers['Authorization']
     header.gsub(pattern, '') if header && header.match(pattern)
