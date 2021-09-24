@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :survey do
-    name { "Student engagement" }
+    name { Faker::Name.name }
   end
 end
