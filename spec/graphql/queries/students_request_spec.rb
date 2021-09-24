@@ -14,29 +14,42 @@ module Queries
     end
 
     describe '.resolve' do
-      let!(:student) { create(:student) }
+      let(:user) { create(:user) }
+      let(:student) { create(:student) }
+      let!(:other_student) { create(:student) }
 
-      it 'returns all studens' do
-        post '/graphql', params: { query: query }
+      before { user.students << student }
+
+      it 'returns all students belonging to user' do
+        post '/graphql',
+             params: {
+               query: query,
+             },
+             headers: authentication_header(user)
 
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
         data = json['data']['students']
 
+        expect(data.size).to eq(1)
         expect(data[0]).to_not be_nil
         expect(data[0]['id']).to eq(student.id.to_s)
+
+        ids = data.pluck('id')
+        expect(ids).to include(student.id.to_s)
+        expect(ids).to_not include(other_student.id.to_s)
       end
 
-      # it 'returns nothing when not signed in' do
-      #   post '/graphql', params: { query: query }
-      #   expect(response).to be_successful
+      it 'returns nothing when not signed in' do
+        post '/graphql', params: { query: query }
+        expect(response).to be_successful
 
-      #   json = JSON.parse(response.body)
-      #   data = json['data']['currentUser']
+        json = JSON.parse(response.body)
+        data = json['data']['students']
 
-      #   expect(data).to be_nil
-      # end
+        expect(data).to be_nil
+      end
     end
   end
 end

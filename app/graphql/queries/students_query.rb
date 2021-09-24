@@ -15,12 +15,11 @@ module Queries
     end
 
     def student(id:)
-      Student.find(id)
+      context[:current_user]&.students.find_by(id: id)
     end
 
     def students
-      # FIXME: get authenticated_volunteer from context
-      Student.all
+      context[:current_user]&.students
     end
   end
 end

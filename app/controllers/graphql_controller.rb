@@ -10,9 +10,15 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
     }
-    result = CepSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result =
+      CepSchema.execute(
+        query,
+        variables: variables,
+        context: context,
+        operation_name: operation_name,
+      )
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
@@ -21,15 +27,28 @@ class GraphqlController < ApplicationController
 
   private
 
+  def current_user
+    # look up a User
+    return unless bearer_token
+
+    user_id = User.id_from_token(bearer_token)
+
+    User.find user_id
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
+
+  def bearer_token
+    pattern = /^Bearer /
+    header = request.headers['Authorization']
+    header.gsub(pattern, '') if header && header.match(pattern)
+  end
+
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param)
     case variables_param
     when String
-      if variables_param.present?
-        JSON.parse(variables_param) || {}
-      else
-        {}
-      end
+      variables_param.present? ? JSON.parse(variables_param) || {} : {}
     when Hash
       variables_param
     when ActionController::Parameters
@@ -45,6 +64,10 @@ class GraphqlController < ApplicationController
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    render json: {
+             errors: [{ message: e.message, backtrace: e.backtrace }],
+             data: {},
+           },
+           status: 500
   end
 end
