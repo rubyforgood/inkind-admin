@@ -1,5 +1,5 @@
 describe 'admin experience', type: :system, js: true do
-  it 'creates student' do
+  xit 'creates student' do
     sign_in create(:user)
 
     get '/students/new'
