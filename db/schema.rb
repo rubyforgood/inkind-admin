@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_182003) do
+ActiveRecord::Schema.define(version: 2021_09_24_183204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2021_09_24_182003) do
     t.index ["user_id"], name: "index_students_users_on_user_id"
   end
 
+  create_table "survey_questions", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.string "type"
+    t.text "prompt"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
@@ -61,5 +70,6 @@ ActiveRecord::Schema.define(version: 2021_09_24_182003) do
 
   add_foreign_key "students_users", "students"
   add_foreign_key "students_users", "users"
+  add_foreign_key "survey_questions", "surveys"
   add_foreign_key "surveys", "users"
 end
