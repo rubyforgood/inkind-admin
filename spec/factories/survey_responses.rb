@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :survey_response do
     survey
     student
-    user { create(:user, :volunteer) }
+    association :volunteer, factory: :user
   end
 end
