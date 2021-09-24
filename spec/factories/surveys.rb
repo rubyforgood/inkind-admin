@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :survey do
-    user
+    name { "Student engagement" }
   end
 end

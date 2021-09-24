@@ -47,11 +47,9 @@ ActiveRecord::Schema.define(version: 2021_09_24_183204) do
   end
 
   create_table "surveys", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,5 +69,4 @@ ActiveRecord::Schema.define(version: 2021_09_24_183204) do
   add_foreign_key "students_users", "students"
   add_foreign_key "students_users", "users"
   add_foreign_key "survey_questions", "surveys"
-  add_foreign_key "surveys", "users"
 end
