@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_191840) do
+ActiveRecord::Schema.define(version: 2021_09_25_152907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 2021_09_24_191840) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_students_users_on_student_id"
     t.index ["user_id"], name: "index_students_users_on_user_id"
+  end
+
+  create_table "survey_question_option_responses", force: :cascade do |t|
+    t.bigint "survey_question_option_id", null: false
+    t.bigint "survey_question_response_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_question_option_id"], name: "index_question_option_responses_on_question_option"
+    t.index ["survey_question_response_id"], name: "index_question_option_responses_on_question_response"
+  end
+
+  create_table "survey_question_options", force: :cascade do |t|
+    t.bigint "survey_question_id", null: false
+    t.string "label"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_question_id"], name: "index_survey_question_options_on_survey_question_id"
   end
 
   create_table "survey_question_responses", force: :cascade do |t|

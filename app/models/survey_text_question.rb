@@ -1,0 +1,2 @@
+class SurveyTextQuestion < SurveyQuestion
+end
