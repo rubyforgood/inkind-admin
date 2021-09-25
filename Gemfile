@@ -8,6 +8,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'graphql', '~> 1.12'
 gem 'graphiql-rails', '1.8.0'
+gem 'sass-rails', '~> 6.0'
 
 # authentication
 gem 'devise'
