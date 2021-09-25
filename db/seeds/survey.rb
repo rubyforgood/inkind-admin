@@ -38,4 +38,4 @@ question4 = SurveyQuestion.create!(
   prompt: "Describe your student's progress."
 )
 
-puts "created survey, #{survey.name}, with questions"
+puts "Created survey: #{survey.name} with questions"
