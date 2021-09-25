@@ -10,6 +10,14 @@
       <%= render 'partials/navbar' %>
     </header>
 
+    <%# Flash message for alerts and notices %>
+    <% if flash[:alert] %>
+      <div role="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div role="alert"><%= flash[:notice] %></div>
+    <% end %>
+
     <%= yield %>
 
     <footer>
