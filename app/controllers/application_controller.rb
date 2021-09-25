@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ActionController::Cookies
-
   def after_sign_in_path_for(resource)
     if current_user.admin?
       :admin_dashboard
