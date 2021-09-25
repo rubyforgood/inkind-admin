@@ -34,5 +34,3 @@
 
 - Email to the volunteer with a link to the survey for the volunteer and student
 - Automate release of surveys
-- Time logging:
-  - 
