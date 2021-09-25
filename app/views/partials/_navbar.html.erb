@@ -1,0 +1,20 @@
+<nav>
+  <span>
+    <a href="<%= root_path %>">
+      <span>CEP</span>
+    </a>
+  </span>
+  <span>
+    <% if !current_user %>
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+    <% if !current_user %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </span>
+  <span>
+    <% if !!current_user %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% end %>
+  </span>
+</nav>
