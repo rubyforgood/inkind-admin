@@ -1,10 +1,12 @@
+User.admin.destroy_all
+
 admin =
   User.create!(
-    name: Faker::Name.name,
+    name: 'Addy Admin',
     email: 'admin@cep.dev',
     role: :admin,
     password: 'password',
     password_confirmation: 'password',
   )
 
-puts "created admin: #{admin.email}:password"
+puts "Created admin: #{admin.email}:password"

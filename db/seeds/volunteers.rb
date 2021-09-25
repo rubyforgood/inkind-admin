@@ -1,11 +1,13 @@
+User.volunteer.destroy_all
+
 user =
   User.create!(
-    name: Faker::Name.name,
+    name: 'Victor Volunteer',
     email: 'volunteer@cep.dev',
     password: 'password',
     password_confirmation: 'password',
   )
-puts "created volunteer: #{user.email}:password"
+puts "Created volunteer: #{user.email}:password"
 
 3.times do |n|
   user =
@@ -15,5 +17,5 @@ puts "created volunteer: #{user.email}:password"
       password: 'password',
       password_confirmation: 'password',
     )
-  puts "created volunteer: #{user.email}:password"
+  puts "Created volunteer: #{user.email}:password"
 end
