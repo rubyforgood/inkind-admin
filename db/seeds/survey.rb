@@ -37,3 +37,5 @@ question4 = SurveyQuestion.create!(
   type: "SurveyTextQuestion",
   prompt: "Describe your student's progress."
 )
+
+puts "created survey, #{survey.name}, with questions"
