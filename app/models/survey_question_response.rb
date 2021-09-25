@@ -1,4 +1,4 @@
 class SurveyQuestionResponse < ApplicationRecord
-  belongs_to :survey_response
-  belongs_to :survey_question
+  belongs_to :response, class_name: "SurveyResponse", foreign_key: :survey_response_id
+  belongs_to :question, class_name: "SurveyQuestion", foreign_key: :survey_question_id
 end
