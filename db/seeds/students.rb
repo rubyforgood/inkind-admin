@@ -1,3 +1,5 @@
+Student.destroy_all
+
 User
   .where(role: :volunteer)
   .each do |user|
@@ -10,8 +12,8 @@ User
             Faker::Date.between(from: 18.years.ago, to: 5.years.ago),
           phone_number: Faker::PhoneNumber.phone_number,
           nickname: Faker::Name.gender_neutral_first_name,
-          users: [user],
+          users: [user]
         )
-      puts "created student #{student.name}"
+      puts "Created student: #{student.name}"
     end
   end
