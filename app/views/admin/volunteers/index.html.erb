@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Volunteers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_volunteers.each do |admin_volunteer| %>
+      <tr>
+        <td><%= link_to 'Show', admin_volunteer %></td>
+        <td><%= link_to 'Edit', edit_admin_volunteer_path(admin_volunteer) %></td>
+        <td><%= link_to 'Destroy', admin_volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin Volunteer', new_admin_volunteer_path %>
