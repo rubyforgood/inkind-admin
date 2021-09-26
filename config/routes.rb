@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "users"
 
-  namespace :admin do
-    get "dashboard", to: "dashboard#home"
+    namespace :admin do
+      get "dashboard", to: "dashboard#home"
+      resources :surveys
+      resources :students
+      resources :volunteers
+    end
   end
 end
