@@ -12,12 +12,12 @@ module AuthenticationToken
     def id_from_token(token)
       crypt = _encryptor
       actual_token = crypt.decrypt_and_verify token
-      actual_token.gsub('user-id:', '').to_i
+      actual_token.gsub("user-id:", "").to_i
     end
 
     def _encryptor
       ActiveSupport::MessageEncryptor.new(
-        Rails.application.credentials.secret_key_base.byteslice(0..31),
+        Rails.application.credentials.secret_key_base.byteslice(0..31)
       )
     end
   end

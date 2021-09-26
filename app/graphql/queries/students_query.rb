@@ -4,18 +4,18 @@ module Queries
 
     included do
       field :student, Types::StudentType, null: false do
-        description 'A single student'
+        description "A single student"
         argument :id, GraphQL::Types::ID, required: true
       end
 
       field :students,
             [Types::StudentType],
             null: true,
-            description: 'All students associated with signed in volunteer'
+            description: "All students associated with signed in volunteer"
     end
 
     def student(id:)
-      context[:current_user]&.students.find_by(id: id)
+      context[:current_user]&.students&.find_by(id: id)
     end
 
     def students

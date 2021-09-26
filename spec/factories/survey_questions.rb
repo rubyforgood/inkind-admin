@@ -10,8 +10,5 @@ FactoryBot.define do
     trait :multi_select do
       options
     end
-
-    trait :text do
-    end
   end
 end

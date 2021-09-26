@@ -17,11 +17,12 @@ class GraphqlController < ApplicationController
         query,
         variables: variables,
         context: context,
-        operation_name: operation_name,
+        operation_name: operation_name
       )
     render json: result
-  rescue StandardError => e
+  rescue => e
     raise e unless Rails.env.development?
+
     handle_error_in_development(e)
   end
 
@@ -42,8 +43,8 @@ class GraphqlController < ApplicationController
     return session[:token] if session[:token]
 
     pattern = /^Bearer /
-    header = request.headers['Authorization']
-    header.gsub(pattern, '') if header && header.match(pattern)
+    header = request.headers["Authorization"]
+    header.gsub(pattern, "") if header&.match(pattern)
   end
 
   # Handle variables in form data, JSON body, or a blank value
@@ -62,14 +63,13 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def handle_error_in_development(error)
+    logger.error error.message
+    logger.error error.backtrace.join("\n")
 
     render json: {
-             errors: [{ message: e.message, backtrace: e.backtrace }],
-             data: {},
-           },
-           status: 500
+      errors: [{ message: error.message, backtrace: error.backtrace }],
+      data: {},
+    }, status: :internal_server_error
   end
 end
