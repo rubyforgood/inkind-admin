@@ -8,7 +8,7 @@ module AuthenticationHelpers
 
   # header based authentication
   def authentication_header(user)
-    { 'Authorization' => "Bearer #{user.token}" }
+    { "Authorization" => "Bearer #{user.token}" }
   end
 end
 

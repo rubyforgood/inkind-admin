@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   it "has valid factory" do
     expect(create(:user)).to be_valid
   end
 
-  it 'has roles' do
+  it "has roles" do
     admin = create(:user, :admin)
     expect(admin).to_not be_new_record
     expect(admin).to be_admin

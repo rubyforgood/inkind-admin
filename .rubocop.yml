@@ -7,11 +7,18 @@ AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
 
-Lint/ScriptPermission:
+Metrics:
   Enabled: false
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/Output:
+  Exclude:
+    - "db/seeds/**"
 
 RSpec:
   Enabled: false
@@ -41,7 +48,6 @@ Style/RescueStandardError:
   EnforcedStyle: implicit
 
 Style/StringLiterals:
-  Enabled: false
   EnforcedStyle: double_quotes
 
 Style/TrailingCommaInArrayLiteral:

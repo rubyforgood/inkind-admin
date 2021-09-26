@@ -14,7 +14,7 @@ Student.first(3).each do |student|
   SurveySingleSelectQuestion.where(survey: survey).each do |question|
     question_response = SurveyQuestionResponse.create!(
       response: survey_response,
-      question: question,
+      question: question
     )
     SurveyQuestionOptionResponse.create!(
       option: question.options.sample,
@@ -24,7 +24,7 @@ Student.first(3).each do |student|
   SurveyMultiSelectQuestion.where(survey: survey).each do |question|
     question_response = SurveyQuestionResponse.create!(
       response: survey_response,
-      question: question,
+      question: question
     )
     SurveyQuestionOptionResponse.create!(
       option: question.options.first,
@@ -51,7 +51,7 @@ Student.last(2).each do |student|
   SurveySingleSelectQuestion.where(survey: survey).each do |question|
     question_response = SurveyQuestionResponse.create!(
       response: survey_response,
-      question: question,
+      question: question
     )
     SurveyQuestionOptionResponse.create!(
       option: question.options.sample,
@@ -61,7 +61,7 @@ Student.last(2).each do |student|
   SurveyMultiSelectQuestion.where(survey: survey).each do |question|
     question_response = SurveyQuestionResponse.create!(
       response: survey_response,
-      question: question,
+      question: question
     )
     SurveyQuestionOptionResponse.create!(
       option: question.options.third,

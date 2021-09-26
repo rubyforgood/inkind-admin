@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Queries
-  RSpec.describe 'query current_user', type: :request do
+  RSpec.describe "query current_user", type: :request do
     def query
       <<~GQL
         query {
@@ -15,7 +15,7 @@ module Queries
       GQL
     end
 
-    describe '.resolve' do
+    describe ".resolve" do
       let(:user) { create(:user) }
       let(:valid_response) do
         JSON.parse(
@@ -25,33 +25,33 @@ module Queries
               email: user.email,
               name: user.name,
               role: user.role.to_s,
-            },
-          ),
+            }
+          )
         )
       end
 
-      context 'when signed in' do
+      context "when signed in" do
         before { sign_in(user) }
 
-        it 'returns current user' do
-          post '/graphql', params: { query: query }
+        it "returns current user" do
+          post "/graphql", params: { query: query }
 
           expect(response).to be_successful
 
           json = JSON.parse(response.body)
-          data = json['data']['currentUser']
+          data = json["data"]["currentUser"]
 
           expect(data).to include(valid_response)
         end
       end
 
-      it 'returns nothing when not signed in' do
-        post '/graphql', params: { query: query }
+      it "returns nothing when not signed in" do
+        post "/graphql", params: { query: query }
 
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        data = json['data']['currentUser']
+        data = json["data"]["currentUser"]
 
         expect(data).to be_nil
       end
