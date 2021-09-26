@@ -2,10 +2,10 @@ User.volunteer.destroy_all
 
 user =
   User.create!(
-    name: 'Victor Volunteer',
-    email: 'volunteer@cep.dev',
-    password: 'password',
-    password_confirmation: 'password',
+    name: "Victor Volunteer",
+    email: "volunteer@cep.dev",
+    password: "password",
+    password_confirmation: "password"
   )
 puts "Created volunteer: #{user.email}:password"
 
@@ -14,8 +14,8 @@ puts "Created volunteer: #{user.email}:password"
     User.create!(
       name: Faker::Name.name,
       email: "volunteer-#{n}@cep.dev",
-      password: 'password',
-      password_confirmation: 'password',
+      password: "password",
+      password_confirmation: "password"
     )
   puts "Created volunteer: #{user.email}:password"
 end

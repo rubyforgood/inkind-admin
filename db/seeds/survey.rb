@@ -32,7 +32,7 @@ SurveyQuestionOption.create!(question: question3, label: "Student responded to q
 SurveyQuestionOption.create!(question: question3, label: "Student had completed homework")
 SurveyQuestionOption.create!(question: question3, label: "Student was not engaged")
 
-question4 = SurveyQuestion.create!(
+SurveyQuestion.create!(
   survey: survey,
   type: "SurveyTextQuestion",
   prompt: "Describe your student's progress."
