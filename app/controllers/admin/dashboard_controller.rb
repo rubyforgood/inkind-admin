@@ -15,11 +15,6 @@ class Admin::DashboardController < ApplicationController
       end
     end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_dashboard
-      @admin_dashboard = Admin::Dashboard.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def admin_dashboard_params
       params.fetch(:admin_dashboard, {})
