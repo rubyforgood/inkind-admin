@@ -51,7 +51,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 
 # Communication and Collaboration
 
-Most conversations happen in the #cep-team channel of the Ruby For Good Slack. Get access here: https://rubyforgood.herokuapp.com/
+Most conversations happen in the #team-inkind channel of the Ruby For Good Slack. Get access here: https://rubyforgood.herokuapp.com/
 
 You can also open an issue or comment on an issue on github and a maintainer will reply to you.
 
