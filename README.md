@@ -26,7 +26,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 
 #### Downloading the Project
 
-1. Fork this repository and clone down a copy. See [our contributing guide](doc/CONTRIBUTING.md) for detailed instructions.
+1. Fork this repository and clone down a copy. See [our contributing guide](CONTRIBUTING.md) for detailed instructions.
 
 #### Installing Packages
 
