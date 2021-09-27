@@ -40,6 +40,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 #### Server
 
 1. Run `bin/rails s`
+1. To be able to run the frontend (`cep-ui`) in tandem, localhost for this repository runs on port 3001. So launch `cep-backend` from your browser at `http://localhost:3001/`
 
 #### Tests
 
@@ -47,7 +48,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 
 ### Setup Instructions for full-stack application
 
-1. WIP
+1. Visit https://github.com/rubyforgood/cep-ui for instructions on how to run the Rails & React application together.
 
 # Communication and Collaboration
 
