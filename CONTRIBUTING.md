@@ -28,6 +28,6 @@ At this point you're waiting on us–we'll try to respond to your PR quickly. We
 
 Some things that will increase the chance that your pull request is accepted:
 
-* Use Rails idioms and helpers
+* Use Rails idioms
 * Include tests that fail without your code, and pass with it
 * Update the documentation, the surrounding one, examples elsewhere, guides, whatever is affected by your contribution
