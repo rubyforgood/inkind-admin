@@ -26,13 +26,16 @@ ActiveRecord::Schema.define(version: 2021_09_25_152907) do
 
   create_table "students", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email"
-    t.date "date_of_birth"
-    t.string "location"
-    t.string "phone_number"
-    t.string "preferred_contact_method"
-    t.datetime "archived_at"
     t.string "nickname"
+    t.string "email"
+    t.string "phone_number"
+    t.integer "status", default: 0, null: false
+    t.string "guardian_name"
+    t.string "guardian_phone_number"
+    t.string "emergency_contact_name"
+    t.string "emergency_contact_phone_number"
+    t.date "date_of_birth"
+    t.datetime "deactivated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,12 +104,15 @@ ActiveRecord::Schema.define(version: 2021_09_25_152907) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "phone_number"
     t.integer "role", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "deactivated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
