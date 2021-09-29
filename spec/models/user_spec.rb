@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     expect(create(:user)).to be_valid
   end
 
-  it "has roles" do
+  it "has roles", :aggregate_failures do
     admin = create(:user, :admin)
     expect(admin).to_not be_new_record
     expect(admin).to be_admin

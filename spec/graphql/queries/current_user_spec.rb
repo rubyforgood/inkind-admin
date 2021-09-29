@@ -33,7 +33,7 @@ module Queries
       context "when signed in" do
         before { sign_in(user) }
 
-        it "returns current user" do
+        it "returns current user", :aggregate_failures do
           post "/graphql", params: { query: query }
 
           expect(response).to be_successful
@@ -45,7 +45,7 @@ module Queries
         end
       end
 
-      it "returns nothing when not signed in" do
+      it "returns nothing when not signed in", :aggregate_failures do
         post "/graphql", params: { query: query }
 
         expect(response).to be_successful

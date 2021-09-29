@@ -8,11 +8,20 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime
 
+type MeetingDuration {
+  id: ID!
+  minutes: Int!
+  startedAt: String!
+}
+
 type Mutation {
   signInUser(credentials: AuthProviderCredentialsInput): SignInUserPayload
 }
 
 type Query {
+  """
+  Currently logged in user
+  """
   currentUser: User
 
   """
@@ -24,6 +33,11 @@ type Query {
   All students associated with signed in volunteer
   """
   students: [Student!]
+
+  """
+  All survey_responses associated with signed in volunteer
+  """
+  surveyResponses: [SurveyResponse!]
 }
 
 """
@@ -42,6 +56,13 @@ type Student {
   name: String!
   nickname: String
   updatedAt: ISO8601DateTime!
+}
+
+type SurveyResponse {
+  id: ID!
+  meetingDuration: MeetingDuration
+  student: Student!
+  volunteer: User!
 }
 
 type User {
