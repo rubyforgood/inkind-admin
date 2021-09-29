@@ -204,7 +204,7 @@
           "fields": [
             {
               "name": "currentUser",
-              "description": null,
+              "description": "Currently logged in user",
               "args": [
 
               ],

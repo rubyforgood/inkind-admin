@@ -19,6 +19,9 @@ type Mutation {
 }
 
 type Query {
+  """
+  Currently logged in user
+  """
   currentUser: User
 
   """
