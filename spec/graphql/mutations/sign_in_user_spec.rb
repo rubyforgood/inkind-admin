@@ -19,7 +19,7 @@ module Mutations
         GQL
       end
 
-      it "creates a session" do
+      it "creates a session", :aggregate_failures do
         create(
           :user,
           email: "email@example.com",

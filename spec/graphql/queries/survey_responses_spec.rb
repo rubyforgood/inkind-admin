@@ -44,7 +44,7 @@ module Queries
       end
 
       context "when signed in" do
-        it "returns all survey_responses belonging to user" do
+        it "returns all survey_responses belonging to user", :aggregate_failures do
           sign_in(volunteer)
 
           post "/graphql", params: { query: query }
@@ -67,7 +67,7 @@ module Queries
         end
       end
 
-      it "returns nothing when not signed in" do
+      it "returns nothing when not signed in", :aggregate_failures do
         post "/graphql", params: { query: query }
         expect(response).to be_successful
 
