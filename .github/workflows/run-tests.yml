@@ -1,0 +1,11 @@
+name: run-tests
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rake
