@@ -28,10 +28,7 @@ group :test do
   gem "capybara"
   gem "factory_bot_rails", "~> 6.2"
   gem "rspec-rails", "~> 5.0.0"
-  gem "rubocop"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
-  gem "rubocop-rspec"
+  gem "standardrb"
   gem "selenium-webdriver"
 end
 

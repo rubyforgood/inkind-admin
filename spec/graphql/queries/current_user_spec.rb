@@ -24,7 +24,7 @@ module Queries
               id: user.id.to_s,
               email: user.email,
               name: user.name,
-              role: user.role.to_s,
+              role: user.role.to_s
             }
           )
         )
@@ -34,7 +34,7 @@ module Queries
         before { sign_in(user) }
 
         it "returns current user", :aggregate_failures do
-          post "/graphql", params: { query: query }
+          post "/graphql", params: {query: query}
 
           expect(response).to be_successful
 
@@ -46,7 +46,7 @@ module Queries
       end
 
       it "returns nothing when not signed in", :aggregate_failures do
-        post "/graphql", params: { query: query }
+        post "/graphql", params: {query: query}
 
         expect(response).to be_successful
 

@@ -24,7 +24,7 @@ module Queries
         before { sign_in(user) }
 
         it "returns all students belonging to user", :aggregate_failures do
-          post "/graphql", params: { query: query }
+          post "/graphql", params: {query: query}
 
           expect(response).to be_successful
 
@@ -42,7 +42,7 @@ module Queries
       end
 
       it "returns nothing when not signed in", :aggregate_failures do
-        post "/graphql", params: { query: query }
+        post "/graphql", params: {query: query}
         expect(response).to be_successful
 
         json = JSON.parse(response.body)

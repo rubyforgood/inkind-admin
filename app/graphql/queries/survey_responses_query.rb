@@ -4,9 +4,9 @@ module Queries
 
     included do
       field :survey_responses,
-            [Types::SurveyResponseType],
-            null: true,
-            description: "All survey_responses associated with signed in volunteer"
+        [Types::SurveyResponseType],
+        null: true,
+        description: "All survey_responses associated with signed in volunteer"
     end
 
     def survey_responses

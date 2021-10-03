@@ -28,15 +28,15 @@ module Mutations
         )
 
         post "/graphql",
-             params: {
-               query: query,
-               variables: {
-                 credentials: {
-                   email: "email@example.com",
-                   password: "[redacted]",
-                 },
-               },
-             }
+          params: {
+            query: query,
+            variables: {
+              credentials: {
+                email: "email@example.com",
+                password: "[redacted]"
+              }
+            }
+          }
         json = JSON.parse(response.body)
         data = json["data"]["signInUser"]
 

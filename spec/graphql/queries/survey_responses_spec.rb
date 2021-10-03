@@ -47,7 +47,7 @@ module Queries
         it "returns all survey_responses belonging to user", :aggregate_failures do
           sign_in(volunteer)
 
-          post "/graphql", params: { query: query }
+          post "/graphql", params: {query: query}
 
           expect(response).to be_successful
 
@@ -68,7 +68,7 @@ module Queries
       end
 
       it "returns nothing when not signed in", :aggregate_failures do
-        post "/graphql", params: { query: query }
+        post "/graphql", params: {query: query}
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
