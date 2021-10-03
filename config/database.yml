@@ -1,13 +1,14 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  password: password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   port: <%= ENV.fetch("POSTGRES_PORT", "5432") %>
-  password: password
 
 development:
   <<: *default
   database: cep_development
+  host: <%= ENV.fetch("DATABASE_HOST") { } %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -42,6 +43,7 @@ development:
 test:
   <<: *default
   database: cep_test
+  host: <%= ENV.fetch("DATABASE_HOST") { } %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
