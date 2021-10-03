@@ -18,7 +18,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: password
         ports:
-          - 5432
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -44,6 +44,7 @@ jobs:
           DATABASE_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
+          CEP_DATABASE_PASSWORD: password
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_PORT: 5432
         run: |
