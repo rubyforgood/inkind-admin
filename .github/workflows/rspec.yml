@@ -56,6 +56,6 @@ jobs:
           DATABASE_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
-          RAILS_MASTER_KEY: test
+          RAILS_MASTER_KEY: testtesttesttest
         run: |
           bundle exec rspec
