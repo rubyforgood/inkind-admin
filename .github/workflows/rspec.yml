@@ -48,8 +48,8 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_PORT: 5432
         run: |
-          bundle exec rake db:create
-          bundle exec rake db:schema:load
+          bundle exec rake db:create --trace
+          bundle exec rake db:schema:load --trace
 
       - name: Run rspec
         env:
