@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = { current_user: current_user, session: session }
+    context = {current_user: current_user, session: session}
     result =
       CepSchema.execute(
         query,
@@ -68,8 +68,8 @@ class GraphqlController < ApplicationController
     logger.error error.backtrace.join("\n")
 
     render json: {
-      errors: [{ message: error.message, backtrace: error.backtrace }],
-      data: {},
+      errors: [{message: error.message, backtrace: error.backtrace}],
+      data: {}
     }, status: :internal_server_error
   end
 end

@@ -4,7 +4,8 @@ module Admin
     before_action :verify_admin?
 
     # GET /admin/dashboard
-    def home; end
+    def home
+    end
 
     private
 

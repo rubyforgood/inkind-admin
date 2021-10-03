@@ -7,7 +7,8 @@ module AuthenticationToken
   end
 
   class_methods do
-    def by_token(token); end
+    def by_token(token)
+    end
 
     def id_from_token(token)
       crypt = _encryptor
