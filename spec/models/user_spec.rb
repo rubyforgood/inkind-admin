@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
   end
 
   context "enum" do
-    it{ is_expected.to define_enum_for(:status).with_values(:active, :inactive) }
-    it{ is_expected.to define_enum_for(:role).with_values(:volunteer, :admin) }
+    it{ is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
+    it{ is_expected.to define_enum_for(:role).with_values(volunteer: 0, admin: 1) }
   end
 
   context "roles" do
