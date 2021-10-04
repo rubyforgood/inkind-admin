@@ -2,18 +2,31 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   it "has valid factory" do
-    expect(create(:user)).to be_valid
+    expect(build(:user)).to be_valid
   end
 
-  it "has roles", :aggregate_failures do
-    admin = create(:user, :admin)
-    expect(admin).to_not be_new_record
-    expect(admin).to be_admin
+  context "associations" do
+    it{ is_expected.to have_many(:survey_responses) }
+    it{ is_expected.to have_many(:students_users) }
+    it{ is_expected.to have_many(:students).through(:students_users) }
+  end
 
-    # expect(admin.role).to eq('admin')
+  context "enum" do
+    it{ is_expected.to define_enum_for(:status).with_values(:active, :inactive) }
+    it{ is_expected.to define_enum_for(:role).with_values(:volunteer, :admin) }
+  end
 
-    volunteer = create(:user, :volunteer)
-    expect(volunteer).to_not be_new_record
-    expect(volunteer).to be_volunteer
+  context "roles" do
+    it "admin", :aggregate_failures do
+      admin = create(:user, :admin)
+      expect(admin).to_not be_new_record
+      expect(admin).to be_admin
+    end
+
+    it "volunteer", :aggregate_failures do
+      volunteer = create(:user, :volunteer)
+      expect(volunteer).to_not be_new_record
+      expect(volunteer).to be_volunteer
+    end
   end
 end
