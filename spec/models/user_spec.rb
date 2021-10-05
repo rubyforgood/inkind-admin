@@ -6,14 +6,14 @@ RSpec.describe User, type: :model do
   end
 
   context "associations" do
-    it{ is_expected.to have_many(:survey_responses) }
-    it{ is_expected.to have_many(:students_users) }
-    it{ is_expected.to have_many(:students).through(:students_users) }
+    it { is_expected.to have_many(:survey_responses) }
+    it { is_expected.to have_many(:students_users) }
+    it { is_expected.to have_many(:students).through(:students_users) }
   end
 
   context "enum" do
-    it{ is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
-    it{ is_expected.to define_enum_for(:role).with_values(volunteer: 0, admin: 1) }
+    it { is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
+    it { is_expected.to define_enum_for(:role).with_values(volunteer: 0, admin: 1) }
   end
 
   context "roles" do
