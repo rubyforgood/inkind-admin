@@ -6,12 +6,11 @@ User
     3.times do
       student =
         Student.create(
-          name: Faker::Name.name,
+          first_name: Faker::Name.gender_neutral_first_name,
+          last_name: Faker::Name.last_name,
           email: Faker::Internet.email,
-          date_of_birth:
-            Faker::Date.between(from: 18.years.ago, to: 5.years.ago),
+          date_of_birth: Faker::Date.between(from: 18.years.ago, to: 5.years.ago),
           phone_number: Faker::PhoneNumber.phone_number,
-          nickname: Faker::Name.gender_neutral_first_name,
           users: [user]
         )
       puts "Created student: #{student.name}"

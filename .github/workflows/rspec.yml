@@ -44,7 +44,7 @@ jobs:
           DATABASE_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-          CEP_DATABASE_PASSWORD: password
+          INKIND_DATABASE_PASSWORD: password
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_PORT: 5432
         run: |
@@ -56,6 +56,6 @@ jobs:
           DATABASE_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          RAILS_ENV: test
         run: |
           bundle exec rspec

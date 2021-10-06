@@ -35,8 +35,8 @@ module Queries
       let(:volunteer) { create(:user, :volunteer) }
 
       before do
-        adam = create(:student, name: "Adam")
-        gia = create(:student, name: "Gia")
+        adam = create(:student, first_name: "Adam", last_name: "Ruby")
+        gia = create(:student, first_name: "Gia", last_name: "ForGood")
         travel_to(yesterday) do
           create_response(volunteer, adam, 42, Time.zone.now - 6.hours)
           create_response(volunteer, gia, 46, Time.zone.now - 4.hours)
@@ -57,8 +57,8 @@ module Queries
           expect(data.size).to eq(2)
           expect(data[0]["volunteer"]["name"]).to eq(volunteer.name)
           expect(data[0]["volunteer"]["id"]).to eq(volunteer.id.to_s)
-          expect(data[0]["student"]["name"]).to eq("Adam")
-          expect(data[1]["student"]["name"]).to eq("Gia")
+          expect(data[0]["student"]["name"]).to eq("Adam Ruby")
+          expect(data[1]["student"]["name"]).to eq("Gia ForGood")
 
           expect(data[0]["meetingDuration"]["minutes"]).to eq(42)
           expect(data[0]["meetingDuration"]["startedAt"]).to eq((yesterday - 6.hours).to_s)

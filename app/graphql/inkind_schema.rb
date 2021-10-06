@@ -1,4 +1,4 @@
-class CepSchema < GraphQL::Schema
+class InkindSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

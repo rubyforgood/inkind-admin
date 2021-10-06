@@ -13,7 +13,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {current_user: current_user, session: session}
     result =
-      CepSchema.execute(
+      InkindSchema.execute(
         query,
         variables: variables,
         context: context,
