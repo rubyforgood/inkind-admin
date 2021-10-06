@@ -1,14 +1,28 @@
-# Welcome!
+# InKind - Supporting Community Education Partnerships
 
-This repository is the backend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP). CEP supports the education of Bay area children facing homelessness and housing insecurity since 2010.
+This repository is the backend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP).
 
-The counterpart to this codebase is [`inkind-volunteer`](https://github.com/rubyforgood/inkind-volunteer), which houses a Typescript/React mobile first codebase used by volunteers to track their mentoring sessions with students.
+Community Education Partnerships' mission is to increase the learning opportunities and enhance the academic achievement of students experiencing homelessness and housing insecurity. Community Education Partnerships offers its students: individualized tutoring and mentoring, backpacks, school supplies, books, learning resources, enrollment assistance, and opportunities to participate in extracurricular enrichment activities.
+
+This app tracks volunteer and student data, and feedback from the mentoring sessions that are a core part of CEP's programming. These sessions provide vital stability to young people who lack access to learning opportunities and face a multitude of challenges that affect their educational outcomes. CEP volunteers form lasting relationships with students, and communicate their needs of food insecurity and other necessities to CEP, ensuring that staff members are able to facilitate the appropriate support for students, and by extension, their families. This app will enable CEP to collect and analyze critical data, facilitate quicker response times to requests for support, and enable them to apply for grant funding, ensuring that their work remains sustainable.
+
+The counterpart to this codebase is [`inkind-volunteer`](https://github.com/rubyforgood/inkind-volunteer), which houses a Typescript/React mobile first codebase used by the volunteers to record data from their mentoring sessions with students.
+
+# Welcome Contributors!
+
+Thanks for checking us out!
+  - Check the `CONTRIBUTING.md` file for a guide on how to get started
+  - This is a 100% volunteer-supported project, please be patient with your correspondence. Most (all?) of us have day jobs and so responses to questions / pending PRs may not be immediate. Please be patient, we'll get to you! :)
+
+Please feel encouraged to join us on Slack! You can sign up at https://rubyforgood.herokuapp.com
+
+We're in #team-inkind
 
 # Development Setup
 
 ## Installation
 
-### Setup Instructions for backend (this repo)
+### Setup Instructions
 
 #### Ruby
 
@@ -40,7 +54,7 @@ The counterpart to this codebase is [`inkind-volunteer`](https://github.com/ruby
 #### Server
 
 1. Run `bin/rails s`
-1. To be able to run the frontend (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
+1. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
 #### Tests
 
@@ -49,11 +63,3 @@ The counterpart to this codebase is [`inkind-volunteer`](https://github.com/ruby
 ### Setup Instructions for full-stack application
 
 1. Visit https://github.com/rubyforgood/inkind-volunteer for instructions on how to run the Rails & React application together.
-
-# Communication and Collaboration
-
-Most conversations happen in the #team-inkind channel of the Ruby For Good Slack. Get access here: https://rubyforgood.herokuapp.com/
-
-You can also open an issue or comment on an issue on github and a maintainer will reply to you.
-
-Info to join all public meetings are posted in the rubyforgood Slack!
