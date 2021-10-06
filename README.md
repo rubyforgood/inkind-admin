@@ -2,7 +2,7 @@
 
 This repository is the backend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP). CEP supports the education of Bay area children facing homelessness and housing insecurity since 2010.
 
-The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/cep-ui), which houses a Typescript/React mobile first codebase used by volunteers to track their mentoring sessions with students.
+The counterpart to this codebase is [`inkind-volunteer`](https://github.com/rubyforgood/inkind-volunteer), which houses a Typescript/React mobile first codebase used by volunteers to track their mentoring sessions with students.
 
 # Development Setup
 
@@ -30,7 +30,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 
 #### Installing Packages
 
-1. `cd cep-backend/`
+1. `cd inkind-admin/`
 1. Run `bundle install` to install ruby dependencies.
 
 #### Database Setup
@@ -40,7 +40,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 #### Server
 
 1. Run `bin/rails s`
-1. To be able to run the frontend (`cep-ui`) in tandem, localhost for this repository runs on port 3001. So launch `cep-backend` from your browser at `http://localhost:3001/`
+1. To be able to run the frontend (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
 #### Tests
 
@@ -48,7 +48,7 @@ The counterpart to this codebase is [`cep-ui`](https://github.com/rubyforgood/ce
 
 ### Setup Instructions for full-stack application
 
-1. Visit https://github.com/rubyforgood/cep-ui for instructions on how to run the Rails & React application together.
+1. Visit https://github.com/rubyforgood/inkind-volunteer for instructions on how to run the Rails & React application together.
 
 # Communication and Collaboration
 

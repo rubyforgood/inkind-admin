@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CepSchema do
+RSpec.describe InkindSchema do
   def normalize_json(string)
     JSON.pretty_generate JSON.parse(string)
   end
