@@ -1,8 +1,8 @@
 class CreateStudents < ActiveRecord::Migration[6.1]
   def change
     create_table :students do |t|
-      t.string :name, null: false
-      t.string :nickname, null: true
+      t.string :first_name, null: false
+      t.string :last_name, null: false
       t.string :email
       t.string :phone_number, null: true
       t.integer :status, default: 0, null: false
