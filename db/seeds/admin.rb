@@ -2,7 +2,8 @@ User.admin.destroy_all
 
 admin =
   User.create!(
-    name: "Addy Admin",
+    first_name: "Addy",
+    last_name: "Admin",
     email: "admin@cep.dev",
     role: :admin,
     password: "password",
