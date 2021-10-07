@@ -8,58 +8,61 @@ This app tracks volunteer and student data, and feedback from the mentoring sess
 
 The counterpart to this codebase is [`inkind-volunteer`](https://github.com/rubyforgood/inkind-volunteer), which houses a Typescript/React mobile first codebase used by the volunteers to record data from their mentoring sessions with students.
 
-# Welcome Contributors!
+## Welcome Contributors!
 
 Thanks for checking us out!
-  - Check the `CONTRIBUTING.md` file for a guide on how to get started
-  - This is a 100% volunteer-supported project, please be patient with your correspondence. Most (all?) of us have day jobs and so responses to questions / pending PRs may not be immediate. Please be patient, we'll get to you! :)
 
-Please feel encouraged to join us on Slack! You can sign up at https://rubyforgood.herokuapp.com
+- Check the `CONTRIBUTING.md` file for a guide on how to get started.
+- This is a 100% volunteer-supported project, please be patient with your correspondence. Most (all?) of us have day jobs and so responses to questions / pending PRs may not be immediate. Please be patient, we'll get to you! :)
+
+Please feel encouraged to join us on Slack! You can sign up at [https://rubyforgood.herokuapp.com](https://rubyforgood.herokuapp.com).
 
 We're in #team-inkind
 
-# Development Setup
+## Development Setup
 
-## Installation
+### Installation
 
-### Setup Instructions
+#### Setup Instructions
 
-#### Ruby
+##### Ruby
 
 1. Install a ruby version manager: [asdf](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies), [rvm](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
-1. Once you cd into the project directory, let your version manager install the ruby version. Right now that's Ruby 3.0.1
-1. `gem install bundler`
+2. Once you cd into the project directory, let your version manager install the ruby version. Right now that's Ruby 3.0.1
+3. `gem install bundler`
 
-#### PostgreSQL ("postgres")
+##### PostgreSQL ("postgres")
 
-1. Make sure that postgres is installed.
-  - If you're on MacOS, we recommend using homebrew, `brew install postgresql`
-  - If you're on Ubuntu/WSL, use `sudo apt-get install libpq-dev` so the gem can install. [Use the Postgres repo for Ubuntu or WSL to get the server and client tools](https://www.postgresql.org/download/linux/ubuntu/).
-  - If you're on Fedora/Cent Os use `sudo dnf install libpq-devel`. [If you prefer choose package of libpq-devel via rpm](https://pkgs.org/download/libpq-devel)
-  - If you're on Windows, use the official [installer](https://www.postgresql.org/download/windows/) and accept all defaults.  Alternatively, a [Chocolatey](https://chocolatey.org/packages/postgresql) package is available with `choco install postgresql`.
+Make sure that postgres is installed.
 
-#### Downloading the Project
+- If you're on MacOS, we recommend using homebrew, `brew install postgresql`.
+- If you're on Ubuntu/WSL, use `sudo apt-get install libpq-dev` so the gem can install. [Use the Postgres repo for Ubuntu or WSL to get the server and client tools](https://www.postgresql.org/download/linux/ubuntu/).
+- If you're on Fedora/Cent Os use `sudo dnf install libpq-devel`. [If you prefer choose package of libpq-devel via rpm](https://pkgs.org/download/libpq-devel).
+- If you're on Windows, use the official [installer](https://www.postgresql.org/download/windows/) and accept all defaults.  Alternatively, a [Chocolatey](https://chocolatey.org/packages/postgresql) package is available with `choco install postgresql`.
 
-1. Fork this repository and clone down a copy. See [our contributing guide](CONTRIBUTING.md) for detailed instructions.
+##### Downloading the Project
 
-#### Installing Packages
+Fork this repository and clone down a copy. See [our contributing guide](CONTRIBUTING.md) for detailed instructions.
+
+##### Installing Packages
 
 1. `cd inkind-admin/`
-1. Run `bundle install` to install ruby dependencies.
+2. Run `bundle install` to install ruby dependencies.
 
-#### Database Setup
+##### Database Setup
 
-1. Use `bin/rails db:setup` to create schema and seed some data. This requires running postgres locally, with a role created for whatever user you're running rails as.
+Use `bin/rails db:setup` to create schema and seed some data. This requires running postgres locally, with a role created for whatever user you're running rails as.
 
-#### Server
+##### Server
 
 1. Run `bin/rails s`
-1. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
+2. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
-#### Tests
+##### Tests
 
-1. Run `bin/rspec`
+1. Run `bin/rubocop -a`
+2. Run `bin/rspec`
 
-### Setup Instructions for full-stack application
+#### Setup Instructions for the Full-stack Application
 
-1. Visit https://github.com/rubyforgood/inkind-volunteer for instructions on how to run the Rails & React application together.
+Visit [https://github.com/rubyforgood/inkind-volunteer](https://github.com/rubyforgood/inkind-volunteer) for instructions on how to run the Rails & React application together.
