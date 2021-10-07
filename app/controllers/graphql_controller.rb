@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GraphqlController < ApplicationController
   # FIXME: in prod, make sure to observe proper CSRF behaviors
   skip_before_action :verify_authenticity_token
@@ -11,7 +13,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {current_user: current_user, session: session}
+    context = { current_user: current_user, session: session }
     result =
       InkindSchema.execute(
         query,
@@ -20,7 +22,7 @@ class GraphqlController < ApplicationController
         operation_name: operation_name
       )
     render json: result
-  rescue => e
+  rescue StandardError => e
     raise e unless Rails.env.development?
 
     handle_error_in_development(e)
@@ -43,8 +45,8 @@ class GraphqlController < ApplicationController
     return session[:token] if session[:token]
 
     pattern = /^Bearer /
-    header = request.headers["Authorization"]
-    header.gsub(pattern, "") if header&.match(pattern)
+    header = request.headers['Authorization']
+    header.gsub(pattern, '') if header&.match(pattern)
   end
 
   # Handle variables in form data, JSON body, or a blank value
@@ -68,7 +70,7 @@ class GraphqlController < ApplicationController
     logger.error error.backtrace.join("\n")
 
     render json: {
-      errors: [{message: error.message, backtrace: error.backtrace}],
+      errors: [{ message: error.message, backtrace: error.backtrace }],
       data: {}
     }, status: :internal_server_error
   end

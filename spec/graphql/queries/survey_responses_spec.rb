@@ -1,7 +1,9 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 module Queries
-  RSpec.describe "query survey_responses", type: :request do
+  RSpec.describe 'query survey_responses', type: :request do
     def query
       <<~GQL
         query {
@@ -31,48 +33,48 @@ module Queries
       )
     end
 
-    describe ".resolve" do
+    describe '.resolve' do
       let(:volunteer) { create(:user, :volunteer) }
 
       before do
-        adam = create(:student, first_name: "Adam", last_name: "Ruby")
-        gia = create(:student, first_name: "Gia", last_name: "ForGood")
+        adam = create(:student, first_name: 'Adam', last_name: 'Ruby')
+        gia = create(:student, first_name: 'Gia', last_name: 'ForGood')
         travel_to(yesterday) do
           create_response(volunteer, adam, 42, Time.zone.now - 6.hours)
           create_response(volunteer, gia, 46, Time.zone.now - 4.hours)
         end
       end
 
-      context "when signed in" do
-        it "returns all survey_responses belonging to user", :aggregate_failures do
+      context 'when signed in' do
+        it 'returns all survey_responses belonging to user', :aggregate_failures do
           sign_in(volunteer)
 
-          post "/graphql", params: {query: query}
+          post '/graphql', params: { query: query }
 
           expect(response).to be_successful
 
           json = JSON.parse(response.body)
-          data = json["data"]["surveyResponses"]
+          data = json['data']['surveyResponses']
 
           expect(data.size).to eq(2)
-          expect(data[0]["volunteer"]["name"]).to eq(volunteer.name)
-          expect(data[0]["volunteer"]["id"]).to eq(volunteer.id.to_s)
-          expect(data[0]["student"]["name"]).to eq("Adam Ruby")
-          expect(data[1]["student"]["name"]).to eq("Gia ForGood")
+          expect(data[0]['volunteer']['name']).to eq(volunteer.name)
+          expect(data[0]['volunteer']['id']).to eq(volunteer.id.to_s)
+          expect(data[0]['student']['name']).to eq('Adam Ruby')
+          expect(data[1]['student']['name']).to eq('Gia ForGood')
 
-          expect(data[0]["meetingDuration"]["minutes"]).to eq(42)
-          expect(data[0]["meetingDuration"]["startedAt"]).to eq((yesterday - 6.hours).to_s)
-          expect(data[1]["meetingDuration"]["minutes"]).to eq(46)
-          expect(data[1]["meetingDuration"]["startedAt"]).to eq((yesterday - 4.hours).to_s)
+          expect(data[0]['meetingDuration']['minutes']).to eq(42)
+          expect(data[0]['meetingDuration']['startedAt']).to eq((yesterday - 6.hours).to_s)
+          expect(data[1]['meetingDuration']['minutes']).to eq(46)
+          expect(data[1]['meetingDuration']['startedAt']).to eq((yesterday - 4.hours).to_s)
         end
       end
 
-      it "returns nothing when not signed in", :aggregate_failures do
-        post "/graphql", params: {query: query}
+      it 'returns nothing when not signed in', :aggregate_failures do
+        post '/graphql', params: { query: query }
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
-        data = json["data"]["survey_responses"]
+        data = json['data']['survey_responses']
 
         expect(data).to be_nil
       end

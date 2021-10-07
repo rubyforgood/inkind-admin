@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :student do
     first_name { Faker::Name.gender_neutral_first_name }

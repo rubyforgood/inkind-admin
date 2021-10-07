@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthenticationToken
   extend ActiveSupport::Concern
 
@@ -7,13 +9,12 @@ module AuthenticationToken
   end
 
   class_methods do
-    def by_token(token)
-    end
+    def by_token(token); end
 
     def id_from_token(token)
       crypt = _encryptor
       actual_token = crypt.decrypt_and_verify token
-      actual_token.gsub("user-id:", "").to_i
+      actual_token.gsub('user-id:', '').to_i
     end
 
     def _encryptor

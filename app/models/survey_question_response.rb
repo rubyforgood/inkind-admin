@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class SurveyQuestionResponse < ApplicationRecord
-  belongs_to :response, class_name: "SurveyResponse",
+  belongs_to :response, class_name: 'SurveyResponse',
                         foreign_key: :survey_response_id
-  belongs_to :question, class_name: "SurveyQuestion",
+  belongs_to :question, class_name: 'SurveyQuestion',
                         foreign_key: :survey_question_id
 end

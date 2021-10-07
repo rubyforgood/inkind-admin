@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 JS_DRIVER = :selenium_chrome_headless
 
 Capybara.default_driver = :rack_test

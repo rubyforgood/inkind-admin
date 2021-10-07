@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module Queries
   module SurveyResponsesQuery
     extend ActiveSupport::Concern
 
     included do
       field :survey_responses,
-        [Types::SurveyResponseType],
-        null: true,
-        description: "All survey_responses associated with signed in volunteer"
+            [Types::SurveyResponseType],
+            null: true,
+            description: 'All survey_responses associated with signed in volunteer'
     end
 
     def survey_responses

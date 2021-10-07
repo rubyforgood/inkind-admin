@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SurveyQuestionOption < ApplicationRecord
-  belongs_to :question, class_name: "SurveyQuestion",
+  belongs_to :question, class_name: 'SurveyQuestion',
                         foreign_key: :survey_question_id
 
   validates :label, presence: true

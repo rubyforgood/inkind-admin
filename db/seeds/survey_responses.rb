@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SurveyResponse.destroy_all
 
 survey = Survey.first

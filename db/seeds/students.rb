@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Student.destroy_all
 
 User

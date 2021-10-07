@@ -1,16 +1,18 @@
-describe "admin experience", type: :system, js: true do
-  xit "creates student" do
+# frozen_string_literal: true
+
+describe 'admin experience', type: :system, js: true do
+  xit 'creates student' do
     sign_in create(:user)
 
-    get "/students/new"
+    get '/students/new'
 
-    fill_in "Name", with: "Some Name"
+    fill_in 'Name', with: 'Some Name'
 
-    click_on "Save"
+    click_on 'Save'
 
-    expect(page).to have_content "Successfully created student!"
+    expect(page).to have_content 'Successfully created student!'
   end
 
-  it "creates volunteer"
-  it "associates student with volunteer"
+  it 'creates volunteer'
+  it 'associates student with volunteer'
 end

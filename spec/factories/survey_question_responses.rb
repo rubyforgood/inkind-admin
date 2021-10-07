@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :survey_question_response do
     association :question, factory: :survey_question

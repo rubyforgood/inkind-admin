@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 module Admin
   class DashboardController < ApplicationController
     before_action :authenticate_user!
     before_action :verify_admin?
 
     # GET /admin/dashboard
-    def home
-    end
+    def home; end
 
     private
 
@@ -13,7 +14,7 @@ module Admin
     def verify_admin?
       return if current_user.admin?
 
-      flash[:alert] = "Sorry, only admins allowed to view the dashboard."
+      flash[:alert] = 'Sorry, only admins allowed to view the dashboard.'
       redirect_to :root
     end
 

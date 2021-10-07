@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Queries
   module CurrentUserQuery
     extend ActiveSupport::Concern
 
     included do
-      field :current_user, Types::UserType, null: true, description: "Currently logged in user"
+      field :current_user, Types::UserType, null: true, description: 'Currently logged in user'
     end
 
     def current_user

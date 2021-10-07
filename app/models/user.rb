@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include AuthenticationToken
 
@@ -9,8 +11,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  enum status: {active: 0, inactive: 1}
-  enum role: {volunteer: 0, admin: 1}
+  enum status: { active: 0, inactive: 1 }
+  enum role: { volunteer: 0, admin: 1 }
 
   def name
     "#{first_name} #{last_name}"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Inputs
   class AuthProviderCredentialsInput < Types::BaseInputObject
     argument :email, String, required: true
