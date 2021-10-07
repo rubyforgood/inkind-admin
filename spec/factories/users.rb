@@ -6,12 +6,12 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { "password" }
 
-    trait :admin do
+    factory :admin do
       sequence(:email) { |n| "admin-#{n}@example.edu" }
       role { User.roles[:admin] }
     end
 
-    trait :volunteer do
+    factory :volunteer do
       sequence(:email) { |n| "volunteer-#{n}@example.edu" }
       role { User.roles[:volunteer] }
     end
