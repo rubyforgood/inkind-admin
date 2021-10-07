@@ -1,3 +1,5 @@
+SurveyResponse.destroy_all
+
 survey = Survey.first
 
 volunteer1, volunteer2 = User.where(role: :volunteer).first(2)
