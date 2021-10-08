@@ -56,10 +56,19 @@ We're in #team-inkind
 1. Run `bin/rails s`
 1. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
-#### Tests
+### Tests
+
+#### Chrome
+
+System tests use Chrome Browser and Chromedriver.
+
+1. To install Chrome, see [Chrome Install](https://support.google.com/chrome/answer/95346?hl=en&ref_topic=7439538).
+1. For Chromedriver (on Mac), we recommend using homebrew, `brew install --cask chromedriver`. Then `cd` into the directory it installed in (`which chromedriver`) and mark it as safe to use with `xattr -d com.apple.quarantine chromedriver`.
+
+#### Running tests
 
 1. Run `bin/rspec`
 
-### Setup Instructions for full-stack application
+## Setup Instructions for full-stack application
 
 1. Visit https://github.com/rubyforgood/inkind-volunteer for instructions on how to run the Rails & React application together.
