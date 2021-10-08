@@ -51,6 +51,9 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:schema:load
 
+      - name: Install Chromedriver
+        uses: nanasess/setup-chromedriver@master
+
       - name: Run rspec
         env:
           DATABASE_HOST: localhost
