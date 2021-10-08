@@ -29,7 +29,7 @@ group :test do
   gem "factory_bot_rails", "~> 6.2"
   gem "rspec-rails", "~> 5.0.0"
   gem "standardrb"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", "4.0.0.rc2" # temporarily locking to a beta version until 4.x comes out - to fix docker tests https://github.com/SeleniumHQ/selenium/issues/9001
   gem "shoulda-matchers"
 end
 
