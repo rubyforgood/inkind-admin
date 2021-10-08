@@ -6,7 +6,7 @@ We ♥ contributors! By participating in this project, you agree to abide by the
 
 [code of conduct]: https://github.com/rubyforgood/code-of-conduct
 
-Here are the basic steps to submit a pull request. Make sure that you're working on an [open issue]–if the relevant issue doesn't exist, open it!
+Here are the basic steps to submit a pull request. Make sure that you're working on an [open issue]. If the relevant issue doesn't exist, open it!
 
 [open issue]: https://github.com/rubyforgood/inkind-admin/issues
 
@@ -20,14 +20,15 @@ Here are the basic steps to submit a pull request. Make sure that you're working
 
 5. Make the test pass.
 
-6. Push to your fork and submit a pull request. Include the issue number (ex. `Resolves #1`) in the PR description.
+6. Push to your fork and submit a pull request. Read through the PR template, address the checklist, description, type of change, and add screenshots.
 
-7. For any changes, please create a feature branch and open a PR for it when you feel it's ready to merge. Even if there's no real disagreement about a PR, at least one other person on the team needs to look over a PR before merging. The purpose of this review requirement is to ensure shared knowledge of the app and its changes and to take advantage of the benefits of working together changes without any single person being a bottleneck to making progress.
+7. For any changes, please create a feature branch and open a PR for it. Even if there's no real disagreement about a PR, at least one other person on the team needs to look over a PR before merging. The purpose of this review requirement is to ensure shared knowledge of the app and its changes and to take advantage of the benefits of working together changes without any single person being a bottleneck to making progress.
 
-At this point you're waiting on us–we'll try to respond to your PR quickly. We may suggest some changes or improvements or alternatives.
+At this point you're waiting on us. We'll try to respond to your PR quickly and suggest changes or alternatives if appropriate.
 
 Some things that will increase the chance that your pull request is accepted:
 
-* Use Rails idioms
+* Be complete and descriptive in your PR summary
+* Use conventions found within the codebase
 * Include tests that fail without your code, and pass with it
 * Update the documentation, the surrounding one, examples elsewhere, guides, whatever is affected by your contribution
