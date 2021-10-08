@@ -27,7 +27,7 @@ We're in #team-inkind
 #### Ruby
 
 1. Install a ruby version manager: [asdf](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies), [rvm](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
-1. Once you cd into the project directory, let your version manager install the ruby version. Right now that's Ruby 3.0.1
+1. Once you cd into the project directory, let your version manager install the ruby version. Right now that's Ruby 3.0.2
 1. `gem install bundler`
 
 #### PostgreSQL ("postgres")
