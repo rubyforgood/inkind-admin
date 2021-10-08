@@ -18,11 +18,9 @@ Please feel encouraged to join us on Slack! You can sign up at https://rubyforgo
 
 We're in #team-inkind
 
-# Development Setup
+# Setup
 
 ## Installation
-
-### Setup Instructions
 
 #### Ruby
 
@@ -56,7 +54,7 @@ We're in #team-inkind
 1. Run `bin/rails s`
 1. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
-### Tests
+## Tests
 
 #### Chrome
 
@@ -68,6 +66,13 @@ System tests use Chrome Browser and Chromedriver.
 #### Running tests
 
 1. Run `bin/rspec`
+
+## Logging in
+
+Seeding data creates one "admin" user for you to log in as locally.
+
+Email: admin@cep.dev
+Password: password
 
 ## Setup Instructions for full-stack application
 
