@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "sessions#new", type: :system do
   context "when volunteer with valid params" do
-    xit "signs in successfully" do
+    it "signs in successfully" do
       volunteer = create(:volunteer)
 
       visit new_user_session_path
@@ -17,7 +17,7 @@ RSpec.describe "sessions#new", type: :system do
   end
 
   context "when admin with valid params" do
-    xit "signs in successfully" do
+    it "signs in successfully" do
       admin = create(:admin)
 
       visit new_user_session_path
