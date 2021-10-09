@@ -29,12 +29,12 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    # look up a User
-    return unless bearer_token
-
-    user_id = User.id_from_token(bearer_token)
-
-    User.find user_id
+    if bearer_token
+      user_id = User.id_from_token(bearer_token)
+      User.find(user_id)
+    else
+      super
+    end
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end
