@@ -1,6 +1,6 @@
 module Admin
   class ApplicationController < ::ApplicationController
-    before_action :verify_admin?
+    before_action :authenticate_user!, :verify_admin?
 
     private
 
