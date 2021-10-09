@@ -1,7 +1,7 @@
 module Types
   module Base
     class InputObject < GraphQL::Schema::InputObject
-      argument_class Types::Base::Argument
+      argument_class Argument
     end
   end
 end

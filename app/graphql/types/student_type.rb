@@ -1,5 +1,5 @@
 module Types
-  class StudentType < Types::Base::Object
+  class StudentType < Base::Object
     field :id, ID, null: false
     field :name, String, null: false
     field :email, String, null: true
