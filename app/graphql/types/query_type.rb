@@ -1,5 +1,5 @@
 module Types
-  class QueryType < Types::BaseObject
+  class QueryType < Base::Object
     include Queries::CurrentUserQuery
     include Queries::StudentsQuery
     include Queries::SurveyResponsesQuery
