@@ -11,6 +11,7 @@ Resolves #000 <!--fill issue number-->
 - New and existing unit tests pass locally with my changes ("bin/rspec")
 - I have run [`standardrb`](https://github.com/testdouble/standard) and verified there are no lint offenses in my code (use `standardrb --fix` to autocorrect offenses)
 - I have included "WIP" in the PR Title if this is in progress
+- If I have made modifications to Graphql, I have run `rails graphql:schema:dump` to update the schema and IDL with my changes.
 
 -->
 

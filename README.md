@@ -71,8 +71,19 @@ System tests use Chrome Browser and Chromedriver.
 
 Seeding data creates one "admin" user for you to log in as locally.
 
+To log in as an admin:
+
 Email: admin@cep.dev
 Password: password
+
+To log in as a volunteer:
+
+Email: volunteer@cep.dev
+Password: password
+
+## Working with GraphQL
+
+- When making changes to Graphql, make sure to run `rails graphql:schema:dump` to update the schema and IDL with the changes.
 
 ## Setup Instructions for full-stack application
 
