@@ -81,6 +81,10 @@ To log in as a volunteer:
 Email: volunteer@cep.dev
 Password: password
 
+## Working with GraphQL
+
+- When making changes to Graphql, make sure to run `rails graphql:schema:dump` to update the schema and IDL with the changes.
+
 ## Setup Instructions for full-stack application
 
 1. Visit https://github.com/rubyforgood/inkind-volunteer for instructions on how to run the Rails & React application together.

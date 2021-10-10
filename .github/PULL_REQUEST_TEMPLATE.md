@@ -35,7 +35,3 @@ Resolves #000 <!--fill issue number-->
 ### Screenshots
 
 <!-- Drop screenshots of any visual changes here. This will greatly speed up the review process. -->
-
-### Graphql
-
-- Make sure to run `rails graphql:schema:dump` to update the schema and IDL with the changes
