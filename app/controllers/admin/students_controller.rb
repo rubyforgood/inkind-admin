@@ -8,7 +8,8 @@ module Admin
     end
 
     # GET /students/1
-    def show; end
+    def show
+    end
 
     # GET /students/new
     def new
@@ -16,14 +17,15 @@ module Admin
     end
 
     # GET /students/1/edit
-    def edit; end
+    def edit
+    end
 
     # POST /students
     def create
       @student = Student.new(student_params)
 
       if @student.save
-        redirect_to admin_student_path(@student), notice: 'Student was successfully created.'
+        redirect_to admin_student_path(@student), notice: "Student was successfully created."
       else
         render :new
       end
@@ -32,7 +34,7 @@ module Admin
     # PATCH/PUT /students/1
     def update
       if @student.update(student_params)
-        redirect_to admin_student_path(@student), notice: 'Student was successfully updated.'
+        redirect_to admin_student_path(@student), notice: "Student was successfully updated."
       else
         render :edit
       end
@@ -41,7 +43,7 @@ module Admin
     # DELETE /students/1
     def destroy
       @student.destroy
-      redirect_to admin_students_url, notice: 'Student was successfully destroyed.'
+      redirect_to admin_students_url, notice: "Student was successfully destroyed."
     end
 
     private
@@ -54,7 +56,7 @@ module Admin
     # Only allow a list of trusted parameters through.
     def student_params
       params.require(:student).permit(:first_name, :last_name, :email, :date_of_birth, :phone_number, :status,
-                                      :guardian_name, :guardian_phone_number, :emergency_contact_name, :emergency_contact_phone_number, :deactivated_at)
+        :guardian_name, :guardian_phone_number, :emergency_contact_name, :emergency_contact_phone_number, :deactivated_at)
     end
   end
 end
