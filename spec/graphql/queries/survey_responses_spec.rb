@@ -61,9 +61,9 @@ module Queries
           expect(data[1]["student"]["name"]).to eq("Gia ForGood")
 
           expect(data[0]["meetingDuration"]["minutes"]).to eq(42)
-          expect(data[0]["meetingDuration"]["startedAt"]).to eq((yesterday - 6.hours).to_s)
+          expect(parse_date(data[0]["meetingDuration"]["startedAt"])).to eq (yesterday - 6.hours).strftime("%F").to_s
           expect(data[1]["meetingDuration"]["minutes"]).to eq(46)
-          expect(data[1]["meetingDuration"]["startedAt"]).to eq((yesterday - 4.hours).to_s)
+          expect(parse_date(data[1]["meetingDuration"]["startedAt"])).to eq (yesterday - 4.hours).strftime("%F").to_s
         end
       end
 
@@ -80,6 +80,10 @@ module Queries
 
     def yesterday
       @yesterday ||= Time.zone.now.yesterday
+    end
+
+    def parse_date(date)
+      Date.parse(date).strftime("%F").to_s
     end
   end
 end
