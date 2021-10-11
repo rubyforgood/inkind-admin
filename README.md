@@ -54,6 +54,11 @@ We're in #team-inkind
 1. Run `bin/rails s`
 1. To be able to run the volunteer application (`inkind-volunteer`) in tandem, localhost for this repository runs on port 3001. So launch `inkind-admin` from your browser at `http://localhost:3001/`
 
+#### Front-end
+
+1. Run `yarn install`
+1. In another tab, run `bin/webpack-dev-server`
+
 ## Tests
 
 #### Chrome
