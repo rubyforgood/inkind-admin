@@ -2,6 +2,9 @@
   "name": "inkind-admin",
   "private": true,
   "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --config config/webpack/production.js"
+  },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@rails/webpacker": "5.4.3",
