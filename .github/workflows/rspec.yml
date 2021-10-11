@@ -51,6 +51,10 @@ jobs:
           bin/rake db:create
           bin/rake db:schema:load
 
+      - name: Build client deps
+        run: |
+          bin/webpack
+
       - name: Run rspec
         env:
           DATABASE_HOST: localhost
