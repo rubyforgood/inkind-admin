@@ -29,6 +29,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2.3.4
 
+      - name: Yarn install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - name: Yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -50,10 +60,6 @@ jobs:
         run: |
           bin/rake db:create
           bin/rake db:schema:load
-
-      - name: Build client deps
-        run: |
-          bin/webpack
 
       - name: Run rspec
         env:
