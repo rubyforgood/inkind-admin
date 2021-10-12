@@ -1,0 +1,37 @@
+<div>
+  <div>
+    <h1> blah </h1>
+    <%= link_to "new", new_admin_volunteer_path %>
+  </div>
+</div>
+
+<div>
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th> Email </th>
+        <th> Edit </th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @volunteers.each do |volunteer| %>
+        <tr>
+          <th>
+            <%= volunteer.email %>
+            <% unless volunteer.active? %>
+              <span>
+                <%= "Deactivate" %>
+              </span>
+            <% end %>
+          </th>
+          <td>
+            <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
