@@ -1,0 +1,26 @@
+<h3>Edit Organization Profile</h3>
+
+<%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
+  <label>Organization Name</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Email</label><br>
+  <%= f.text_area :email %><br>
+
+  <label>Street Address</label><br>
+  <%= f.text_field :address1 %><br>
+
+  <label>Apt, Suite, Building (Optional)</label><br>
+  <%= f.text_field :address2 %><br>
+  
+  <label>Zip Code</label><br>
+  <%= f.text_field :zip_code %><br>
+
+  <label>City</label><br>
+  <%= f.text_field :city %><br>
+
+  <label>State</label><br>
+  <%= f.text_field :state %><br>
+
+  <%= f.submit %>
+<% end %>
