@@ -13,16 +13,17 @@ gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails"
 gem "sass-rails", "~> 6.0"
-gem "webpacker", "~> 5.4"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "pry-byebug"
+  gem "webpacker", "~> 5.4"
 end
 
 group :development do
   gem "listen", "~> 3.3"
   gem "spring"
+  gem "foreman"
 end
 
 group :test do
