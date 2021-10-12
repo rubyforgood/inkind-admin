@@ -4,7 +4,7 @@ SupportTicket.create!(
   requestor: User.find_by(role: :volunteer),
   description: "Student needs a new backpack.",
   survey_response: SurveyResponse.first,
-  status: :active,
+  status: :active
 )
 
 SupportTicket.create!(
