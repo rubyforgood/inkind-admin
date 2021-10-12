@@ -1,61 +1,35 @@
 
-<section class="py-1">
-  <div>
-    <div class="flex flex-col min-w-0 w-full mb-6">
-      <div class="mb-0 px-4 py-3 border-0">
-        <div class="flex flex-wrap items-center">
-          <h3 class="font-semibold text-base text-blueGray-700">
-            <%= link_to 'Add Volunteer', new_admin_volunteer_path %>
-          </h3>
-        </div>
-      </div>
+<%= link_to 'Add Volunteer', new_admin_volunteer_path, class: "btn btn-secondary m-4"  %>
 
-      <div class="block w-full overflow-x-auto">
-        <table class="items-center w-full border-collapse">
-          <thead>
-            <tr>
-              <th class="px-6 border border-solid uppercase border-l-0 border-t-0 border-r-0 text-left p-5">
-                Name
-              </th>
-              <th class="px-6 border border-solid uppercase border-l-0 border-t-0 border-r-0 text-left p-5">
-                Email
-              </th>
-              <th class="px-6 border border-solid uppercase border-l-0 border-t-0 border-r-0 text-left p-5">
-                Phone
-              </th>
-              <th class="px-6 border border-solid uppercase border-l-0 border-t-0 border-r-0 text-left p-5">
-                Status
-              </th>
-              <th class="px-6 border border-solid uppercase border-l-0 border-t-0 border-r-0 text-left p-5">
-                Action
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @volunteers.each do |volunteer| %>
-              <tr class="border border-solid">
-                <td class="px-6 p-4">
-                  <%= volunteer.name %>
-                </td>
-                <td class="px-6 p-4">
-                  <%= volunteer.email %>
-                </td>
-                <td class="px-6 p-4">
-                  <%= volunteer.phone_number %>
-                </td>
-                <td class="px-6 p-4">
-                  <%= volunteer.status %>
-                </td>
-                <td class="px-6 p-4">
-                  <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
+<table class="table m-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @volunteers.each do |volunteer| %>
+      <tr scope="row">
+        <td>
+          <%= volunteer.name %>
+        </td>
+        <td>
+          <%= volunteer.email %>
+        </td>
+        <td>
+          <%= volunteer.phone_number %>
+        </td>
+        <td>
+          <%= volunteer.status %>
+        </td>
+        <td>
+          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
