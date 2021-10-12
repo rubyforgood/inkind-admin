@@ -1,0 +1,32 @@
+<h1> New Volunteer</h1>
+
+<div>
+  <div>
+    <%= form_with(model: @volunteer, url: admin_volunteers_url) do |form| %>
+
+      <div>
+        <%= form.label :first_name, "First Name" %>
+        <%= form.text_field :first_name %>
+      </div>
+
+      <div>
+        <%= form.label :last_name, "Last Name" %>
+        <%= form.text_field :last_name %>
+      </div>
+
+      <div>
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+      </div>
+
+      <div>
+        <%= form.label :phone_number %>
+        <%= form.text_field :phone_number %>
+      </div>
+
+      <div>
+        <%= form.submit "Submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

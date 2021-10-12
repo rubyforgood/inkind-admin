@@ -1,18 +1,35 @@
 module Admin
   class VolunteersController < ApplicationController
-    # GET /admin/dashboard
+
     def index
       @volunteers = User.where(role: :volunteer)
+    end
+
+    def new
+      @volunteer = User.new
     end
 
     def edit
       @volunteer = User.find(params[:id])
     end
 
+    def create
+      user = User.new(volunteer_params)
+      user.skip_password_validation = true
+      user.volunteer!
+      user.active!
+
+      if user.save!
+        redirect_to admin_volunteers_url, notice: "Volunteer was successfully created."
+      else
+        render :new
+      end
+    end
+
     def update
       @volunteer = User.find(params[:id])
       if @volunteer.update(volunteer_params)
-        redirect_to admin_volunteer_path(@volunteer), notice: "Volunteer was successfully updated."
+        redirect_to admin_volunteers_url, notice: "Volunteer was successfully updated."
       else
         render :edit
       end
