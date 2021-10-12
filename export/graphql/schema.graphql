@@ -52,6 +52,10 @@ type Student {
   createdAt: ISO8601DateTime!
   dateOfBirth: ISO8601DateTime
   email: String
+  emergencyContactName: String
+  emergencyContactPhoneNumber: String
+  guardianName: String
+  guardianPhoneNumber: String
   id: ID!
   name: String!
   nickname: String
