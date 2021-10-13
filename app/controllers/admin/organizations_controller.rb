@@ -1,8 +1,5 @@
 module Admin
   class OrganizationsController < ApplicationController
-    def show
-      @organization = Organization.find(params[:id])
-    end
 
     def edit
       @organization = Organization.find(params[:id])
@@ -12,6 +9,7 @@ module Admin
       @organization = Organization.find(params[:id])
       if @organization.update(organization_params)
         flash[:success] = "Saved!"
+        render :edit
       else
         flash.now[:error] = "Missing information"
         render :edit

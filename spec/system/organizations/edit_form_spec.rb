@@ -1,5 +1,4 @@
 require "rails_helper"
-require "capybara/rspec"
 
 describe "the edit organization form", type: :feature do
   it "updates the name of an organization" do
@@ -12,6 +11,8 @@ describe "the edit organization form", type: :feature do
     organization.reload
 
     expect(organization.name).to eq "Steve and Erica's Chess Club"
+
+    expect(page).to have_http_status(200)
   end
 
   private
