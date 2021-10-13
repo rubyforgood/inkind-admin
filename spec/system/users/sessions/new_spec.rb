@@ -1,6 +1,21 @@
 require "rails_helper"
 
 RSpec.describe "sessions#new", type: :system do
+  context "when password is expired" do
+    it "requires a password update" do
+      volunteer = create(:volunteer)
+      volunteer.need_change_password!
+
+      visit new_user_session_path
+
+      fill_in "Email", with: volunteer.email
+      fill_in "Password", with: volunteer.password
+      click_button "Log in"
+
+      expect(page).to have_text "Your password is expired. Please renew your password."
+    end
+  end
+
   context "when volunteer with valid params" do
     it "signs in successfully" do
       volunteer = create(:volunteer)
