@@ -57,6 +57,7 @@ type Student {
   guardianName: String
   guardianPhoneNumber: String
   id: ID!
+  initials: String!
   name: String!
   nickname: String
   updatedAt: ISO8601DateTime!
@@ -72,8 +73,12 @@ type SurveyResponse {
 type User {
   createdAt: ISO8601DateTime!
   email: String
+  firstName: String!
   id: ID!
-  name: String
+  initials: String!
+  lastName: String!
+  name: String!
+  phoneNumber: String
   role: String
   updatedAt: ISO8601DateTime!
 }
