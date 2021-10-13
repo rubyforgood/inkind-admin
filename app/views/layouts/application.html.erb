@@ -6,28 +6,32 @@
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= page_title %></title>
+
+    <%= stylesheet_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
   <body>
-    <header class="mb-5">
-      <%= render 'partials/navbar' %>
-    </header>
+    <div class="d-flex" id="wrapper">
+      <%= render "layouts/application/sidebar" %>
 
-    <%# Flash message for alerts and notices %>
-    <% if flash[:alert] %>
-      <div role="alert"><%= flash[:alert] %></div>
-    <% end %>
-    <% if flash[:notice] %>
-      <div role="alert"><%= flash[:notice] %></div>
-    <% end %>
+      <div id="page-content-wrapper">
+        <%= render "layouts/application/topbar" %>
 
+        <div class="container-fluid p-3">
+          <%= flash_banner(:alert, flash[:alert]) %>
+          <%= flash_banner(:notice, flash[:notice]) %>
 
-    <%= yield %>
+          <h1><%= page_header_title %></h1>
 
-    <footer class="mt-5">
-      <small>&copy; 2021 <strong>Made with ❤️ by Ruby for Good</strong></small>
-    </footer>
+          <%= yield %>
+
+          <footer>
+            <small>&copy; 2021 <strong>Made with ❤️ by Ruby for Good</strong></small>
+          </footer>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

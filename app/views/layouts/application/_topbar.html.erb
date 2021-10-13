@@ -1,0 +1,24 @@
+<nav id="topbar" class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+          <% if user_signed_in? %>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag current_user_avatar_url, class: "avatar" %>
+              <%= current_user.name %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to(t(".user_menu.edit_profile"), edit_user_registration_path, class: "dropdown-item") %>
+              <div class="dropdown-divider"></div>
+              <%= link_to(t(".user_menu.logout"), destroy_user_session_path, class: "dropdown-item") %>
+            </div>
+          <% else %>
+            <%= link_to(t(".user_menu.login"), new_user_session_path, class: "nav-link") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  root to: "static#home"
+  # App Paths
+  root to: "dashboard#index"
 
+  # GraphQL
   post "/graphql", to: "graphql#execute"
-
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql" if Rails.env.development?
 
+  # Devise Setup
   devise_scope :user do
-    get "sign_in", to: "users/sessions#new"
-    get "sign_up", to: "users/registrations#new"
+    get "users/sign_out" => "devise/sessions#destroy"
   end
-
   devise_for :users, path: "users"
 
   namespace :admin do
@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
+    resources :students, except: :destroy
   end
 end
