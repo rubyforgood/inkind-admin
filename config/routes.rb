@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # App Paths
-  root to: "admin/dashboard#home"
+  root to: "dashboard#index"
 
   # GraphQL
   post "/graphql", to: "graphql#execute"
