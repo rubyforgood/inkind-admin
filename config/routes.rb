@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   devise_for :users, path: "users"
 
   namespace :admin do
-    get "dashboard", to: "dashboard#home"
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
