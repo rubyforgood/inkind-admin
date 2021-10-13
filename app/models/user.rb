@@ -18,6 +18,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def initials
+    first_name[0] + last_name[0]
+  end
+
   def password_required?
     return false if skip_password_validation
     super
