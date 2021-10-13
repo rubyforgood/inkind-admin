@@ -14,14 +14,14 @@ module Admin
     end
 
     def create
-      user = User.new(volunteer_params)
-      user.skip_password_validation = true
-      user.volunteer!
-      user.active!
+      @volunteer = User.new(volunteer_params)
+      @volunteer.skip_password_validation = true
 
-      if user.save!
+      if @volunteer.valid?
+        @volunteer.save!
         redirect_to admin_volunteers_url, notice: "Volunteer was successfully created."
       else
+        flash[:alert] = format_errors(@volunteer)
         render :new
       end
     end
@@ -31,6 +31,7 @@ module Admin
       if @volunteer.update(volunteer_params)
         redirect_to admin_volunteers_url, notice: "Volunteer was successfully updated."
       else
+        flash[:alert] = format_errors(@volunteer)
         render :edit
       end
     end
