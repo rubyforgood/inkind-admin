@@ -1,4 +1,9 @@
 <h3>Edit Organization Profile</h3>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 
 <%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
   <label>Organization Name</label><br>
