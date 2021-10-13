@@ -1,17 +1,12 @@
 <nav>
-  <span>
-    <a href="<%= root_path %>">
-      <span>InKind</span>
-    </a>
-  </span>
-  <span>
-    <% if !current_user %>
+  <div>
+    <a href="<%= root_path %>">InKind</a>
+  </div>
+  <div>
+    <% if signed_in? %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
       <%= link_to "Login", new_user_session_path %>
     <% end %>
-  </span>
-  <span>
-    <% if !!current_user %>
-      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% end %>
-  </span>
+  </div>
 </nav>

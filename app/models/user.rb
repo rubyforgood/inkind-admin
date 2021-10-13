@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include AuthenticationToken
 
+  attr_accessor :skip_password_validation
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   has_many :students_users
@@ -18,5 +20,10 @@ class User < ApplicationRecord
 
   def initials
     first_name[0] + last_name[0]
+  end
+
+  def password_required?
+    return false if skip_password_validation
+    super
   end
 end
