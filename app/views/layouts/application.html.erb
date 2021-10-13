@@ -11,22 +11,27 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'partials/navbar' %>
-    </header>
+    <div class="d-flex" id="wrapper">
+      <%= render 'layouts/application/sidebar' %>
 
-    <%# Flash message for alerts and notices %>
-    <% if flash[:alert] %>
-      <div role="alert"><%= flash[:alert] %></div>
-    <% end %>
-    <% if flash[:notice] %>
-      <div role="alert"><%= flash[:notice] %></div>
-    <% end %>
+      <div id="page-content-wrapper">
+        <%= render 'layouts/application/topbar' %>
 
-    <%= yield %>
+        <div class="container-fluid">
+          <% if flash[:alert] %>
+            <div role="alert"><%= flash[:alert] %></div>
+          <% end %>
+          <% if flash[:notice] %>
+            <div role="alert"><%= flash[:notice] %></div>
+          <% end %>
 
-    <footer>
-      <small>&copy; 2021 <strong>Made with ❤️ by Ruby for Good</strong></small>
-    </footer>
+          <%= yield %>
+
+          <footer>
+            <small>&copy; 2021 <strong>Made with ❤️ by Ruby for Good</strong></small>
+          </footer>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

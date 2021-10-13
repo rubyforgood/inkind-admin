@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql" if Rails.env.development?
 
   devise_scope :user do
-    get "sign_in", to: "users/sessions#new"
-    get "sign_up", to: "users/registrations#new"
+    get "users/sign_out" => "devise/sessions#destroy"
   end
 
   devise_for :users, path: "users"
