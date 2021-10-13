@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_132547) do
+ActiveRecord::Schema.define(version: 2021_10_12_200643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,21 @@ ActiveRecord::Schema.define(version: 2021_10_07_132547) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_students_users_on_student_id"
     t.index ["user_id"], name: "index_students_users_on_user_id"
+  end
+
+  create_table "support_tickets", force: :cascade do |t|
+    t.bigint "requestor_id", null: false
+    t.string "description"
+    t.integer "status", default: 0, null: false
+    t.datetime "closed_at"
+    t.bigint "closer_id"
+    t.text "closer_notes"
+    t.bigint "survey_response_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["closer_id"], name: "index_support_tickets_on_closer_id"
+    t.index ["requestor_id"], name: "index_support_tickets_on_requestor_id"
+    t.index ["survey_response_id"], name: "index_support_tickets_on_survey_response_id"
   end
 
   create_table "survey_question_option_responses", force: :cascade do |t|

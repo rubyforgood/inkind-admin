@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(_resource)
     :root
   end
+
+  def format_errors(model)
+    model.errors.map(&:full_message).join(", ")
+  end
 end

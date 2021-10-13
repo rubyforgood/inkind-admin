@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     get "users/sign_out" => "devise/sessions#destroy"
   end
   devise_for :users, path: "users"
+
+  namespace :admin do
+    resources :volunteers, except: :destroy
+  end
 end
