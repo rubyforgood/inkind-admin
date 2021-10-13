@@ -11,7 +11,7 @@ scalar ISO8601DateTime
 type MeetingDuration {
   id: ID!
   minutes: Int!
-  startedAt: String!
+  startedAt: ISO8601DateTime!
 }
 
 type Mutation {
