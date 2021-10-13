@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "dashboard", to: "dashboard#home"
-    resources :organizations
+    resources :organizations, only: [:show, :edit, :update]
+    resources :volunteers, except: :destroy
   end
 end

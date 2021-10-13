@@ -1,0 +1,35 @@
+
+<%= link_to 'Add Volunteer', new_admin_volunteer_path, class: "btn btn-secondary m-4"  %>
+
+<table class="table m-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @volunteers.each do |volunteer| %>
+      <tr scope="row">
+        <td>
+          <%= volunteer.name %>
+        </td>
+        <td>
+          <%= volunteer.email %>
+        </td>
+        <td>
+          <%= volunteer.phone_number %>
+        </td>
+        <td>
+          <%= volunteer.status %>
+        </td>
+        <td>
+          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
