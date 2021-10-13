@@ -11,7 +11,7 @@ scalar ISO8601DateTime
 type MeetingDuration {
   id: ID!
   minutes: Int!
-  startedAt: String!
+  startedAt: ISO8601DateTime!
 }
 
 type Mutation {
@@ -35,9 +35,26 @@ type Query {
   students: [Student!]
 
   """
+  A single survey
+  """
+  survey(id: ID!): Survey!
+
+  """
   All survey_responses associated with signed in volunteer
   """
   surveyResponses: [SurveyResponse!]
+}
+
+type Question {
+  id: ID!
+  options: [QuestionOption!]
+  prompt: String!
+  type: String!
+}
+
+type QuestionOption {
+  id: ID!
+  label: String!
 }
 
 """
@@ -60,6 +77,12 @@ type Student {
   name: String!
   nickname: String
   updatedAt: ISO8601DateTime!
+}
+
+type Survey {
+  id: ID!
+  name: String!
+  questions: [Question!]
 }
 
 type SurveyResponse {
