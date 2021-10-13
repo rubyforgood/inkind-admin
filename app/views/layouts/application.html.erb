@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="mb-5">
       <%= render 'partials/navbar' %>
     </header>
 
@@ -23,9 +23,10 @@
       <div role="alert"><%= flash[:notice] %></div>
     <% end %>
 
+
     <%= yield %>
 
-    <footer>
+    <footer class="mt-5">
       <small>&copy; 2021 <strong>Made with ❤️ by Ruby for Good</strong></small>
     </footer>
   </body>

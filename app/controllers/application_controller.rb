@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       :root
     end
   end
+
+  def format_errors(model)
+    model.errors.map(&:full_message).join(", ")
+  end
 end
