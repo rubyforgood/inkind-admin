@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   def format_errors(model)
     model.errors.map(&:full_message).join(", ")
   end
+
+  def verify_user!(message, &block)
+    return if block.call(current_user)
+
+    flash[:alert] = message
+    redirect_to :root
+  end
 end
