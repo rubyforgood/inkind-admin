@@ -11,6 +11,11 @@ User
           email: Faker::Internet.email,
           date_of_birth: Faker::Date.between(from: 18.years.ago, to: 5.years.ago),
           phone_number: Faker::PhoneNumber.phone_number,
+          guardian_name: Faker::Name.name,
+          guardian_phone_number: Faker::PhoneNumber.phone_number,
+          emergency_contact_name: Faker::Name.name,
+          emergency_contact_phone_number: Faker::PhoneNumber.phone_number,
+          date_of_birth: Faker::Date.between(from: 50.years.ago, to: 18.years.ago),
           users: [user]
         )
       puts "Created student: #{student.name}"
