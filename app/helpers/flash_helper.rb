@@ -3,7 +3,7 @@ module FlashHelper
     notice: "alert-info",
     success: "alert-success",
     error: "alert-danger",
-    alert: "alert-warning",
+    alert: "alert-warning"
   }
   def flash_banner(level, message)
     return unless message
