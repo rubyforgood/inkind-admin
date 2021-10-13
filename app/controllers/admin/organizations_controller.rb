@@ -1,6 +1,5 @@
 module Admin
   class OrganizationsController < ApplicationController
-
     def show
       @organization = Organization.find(params[:id])
     end
@@ -19,17 +18,19 @@ module Admin
       end
     end
 
-private
+    private
+
     def organization_params
       params.require(:organization).permit(
-        :name, 
-        :email, 
-        :phone_number, 
-        :address1, 
-        :address2, 
-        :zip_code, 
-        :city, 
-        :state)
+        :name,
+        :email,
+        :phone_number,
+        :address1,
+        :address2,
+        :zip_code,
+        :city,
+        :state
+      )
     end
   end
 end
