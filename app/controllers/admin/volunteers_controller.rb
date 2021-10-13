@@ -1,6 +1,5 @@
 module Admin
   class VolunteersController < ApplicationController
-
     def index
       @volunteers = User.where(role: :volunteer)
     end

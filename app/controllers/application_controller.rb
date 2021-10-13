@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def format_errors(model)
-    model.errors.map(&:full_message).join(', ')
+    model.errors.map(&:full_message).join(", ")
   end
 end
