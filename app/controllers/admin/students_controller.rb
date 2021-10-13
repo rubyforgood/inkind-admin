@@ -38,8 +38,7 @@ module Admin
       params.require(:student).permit(:first_name, :last_name,
         :email, :phone_number, :guardian_phone_number, :guardian_name,
         :emergency_contact_name, :emergency_contact_phone_number,
-        :date_of_birth
-      )
+        :date_of_birth)
     end
   end
 end
