@@ -1,0 +1,61 @@
+<div class="modal fade" id="csvImportModal" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= title %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <h4>Download example CSV file</h4>
+            <%= yield %>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <i class="fa fa-file-text-o fa-4x" aria-hidden="true"></i>
+            <h4>Upload your CSV file</h4>
+            <%= form_with(url: csv_import_url, local: :true) do |f| %>
+              <p>Click the choose file button and <br>navigate to the saved file and select it.</li>
+
+              <p><%= f.file_field :file, accept: 'text/csv', class: 'form-control-file' %></p>
+
+              <p>Then click the "Import CSV" button <br>to import your storage locations.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <%= link_to csv_template_url, format: :csv, class: "btn btn-secondary" do %>
+              Download example CSV
+            <% end %>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <%= button_tag class: "btn btn-secondary" do %>
+              Import CSV
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> %>
