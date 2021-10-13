@@ -1,15 +1,11 @@
 module Admin
   class ApplicationController < ::ApplicationController
-    before_action :authenticate_user!, :verify_admin?
+    before_action :authenticate_user!, :verify_admin!
 
     private
 
-    # Must be an admin to access admin views
-    def verify_admin?
-      return if current_user.admin?
-
-      flash[:alert] = "Sorry, only admins can view this page."
-      redirect_to :root
+    def verify_admin!
+      verify_user! "Sorry, only admins can view this page.", &:admin?
     end
   end
 end

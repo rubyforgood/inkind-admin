@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :validatable,
+    :password_expirable, :recoverable, :rememberable
 
   has_many :students_users
   has_many :students, through: :students_users
