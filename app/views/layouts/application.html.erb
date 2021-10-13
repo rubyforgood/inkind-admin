@@ -8,24 +8,20 @@
 
     <title><%= page_title %></title>
 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
   <body>
     <div class="d-flex" id="wrapper">
-      <%= render 'layouts/application/sidebar' %>
+      <%= render "layouts/application/sidebar" %>
 
       <div id="page-content-wrapper">
-        <%= render 'layouts/application/topbar' %>
+        <%= render "layouts/application/topbar" %>
 
-        <div class="container-fluid">
-          <% if flash[:alert] %>
-            <div role="alert"><%= flash[:alert] %></div>
-          <% end %>
-          <% if flash[:notice] %>
-            <div role="alert"><%= flash[:notice] %></div>
-          <% end %>
+        <div class="container-fluid p-3">
+          <%= flash_banner(:alert, flash[:alert]) %>
+          <%= flash_banner(:notice, flash[:notice]) %>
 
           <h1><%= page_header_title %></h1>
 
