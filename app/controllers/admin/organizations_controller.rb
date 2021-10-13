@@ -1,8 +1,5 @@
 module Admin
   class OrganizationsController < ApplicationController
-    def index
-      @organizations = Organization.all
-    end
 
     def show
       @organization = Organization.find(params[:id])
@@ -14,17 +11,16 @@ module Admin
 
     def update
       @organization = Organization.find(params[:id])
-      if @organization.update(organizations_params)
+      if @organization.update(organization_params)
         flash[:success] = "Saved!"
-        redirect_to admin_organization_path(@organization)
       else
         flash.now[:error] = "Missing information"
         render :edit
       end
     end
 
-  private
-    def organizations_params
+private
+    def organization_params
       params.require(:organization).permit(
         :name, 
         :email, 
