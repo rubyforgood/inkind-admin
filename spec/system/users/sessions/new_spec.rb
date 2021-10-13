@@ -12,7 +12,7 @@ RSpec.describe "sessions#new", type: :system do
       click_button "Log in"
 
       expect(page).to have_text "Signed in successfully."
-      expect(page).to have_selector("h1", text: "Static Home Page")
+      expect(page).to have_selector("h1", text: "Volunteers Dashboard")
     end
   end
 
