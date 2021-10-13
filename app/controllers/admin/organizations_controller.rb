@@ -1,6 +1,5 @@
 module Admin
   class OrganizationsController < ApplicationController
-
     def edit
       @organization = Organization.find(params[:id])
     end
@@ -8,10 +7,9 @@ module Admin
     def update
       @organization = Organization.find(params[:id])
       if @organization.update(organization_params)
-        flash[:success] = "Saved!"
-        render :edit
+        redirect_to edit_admin_organization_path(@organization), notice: "Organization was successfully updated."
       else
-        flash.now[:error] = "Missing information"
+        flash[:alert] = format_errors(@organization)
         render :edit
       end
     end
