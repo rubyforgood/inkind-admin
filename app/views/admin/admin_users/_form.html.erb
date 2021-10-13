@@ -1,0 +1,34 @@
+
+<%= form_with(model: @admin_user, url: path) do |form| %>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :phone_number, class: "form-control", placeholder: "Phone Number" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.submit "Submit" %>
+    </div>
+  </div>
+
+<% end %>

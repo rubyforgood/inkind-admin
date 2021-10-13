@@ -3,5 +3,6 @@ module Types
     include Queries::CurrentUserQuery
     include Queries::StudentsQuery
     include Queries::SurveyResponsesQuery
+    include Queries::SurveyQuery
   end
 end

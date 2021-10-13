@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   devise_for :users, path: "users"
 
   namespace :admin do
+    resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
   end
 end

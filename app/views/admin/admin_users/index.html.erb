@@ -1,0 +1,35 @@
+
+<%= link_to 'Add Admin', new_admin_admin_user_path, class: "btn btn-secondary m-4"  %>
+
+<table class="table m-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admin_users.each do |admin_user| %>
+      <tr scope="row">
+        <td>
+          <%= admin_user.name %>
+        </td>
+        <td>
+          <%= admin_user.email %>
+        </td>
+        <td>
+          <%= admin_user.phone_number %>
+        </td>
+        <td>
+          <%= admin_user.status %>
+        </td>
+        <td>
+          <%= link_to "edit", edit_admin_admin_user_path(admin_user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
