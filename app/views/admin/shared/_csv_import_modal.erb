@@ -14,9 +14,9 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <h6>Upload your CSV file</h6>
-              <p>Click the choose file button and <br>navigate to the saved file and select it.</li>
+              <p>Click the choose file button and navigate to the saved file and select it.</li>
               <p><%= f.file_field :file, accept: 'text/csv', class: 'form-control-file' %></p>
-              <p>Then click the "Import CSV" button <br>to import your storage locations.</p>
+              <p>Then click the "Import CSV" button to import your storage locations.</p>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <%= link_to csv_template_url, format: :csv, class: "btn btn-secondary" do %>
-                Download example CSV
+                Download sample CSV
               <% end %>
             </div>
             <div class="col-md-6 col-sm-12">
