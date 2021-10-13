@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+    <title><%= page_title %></title>
+
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,6 +26,8 @@
           <% if flash[:notice] %>
             <div role="alert"><%= flash[:notice] %></div>
           <% end %>
+
+          <h1><%= page_header_title %></h1>
 
           <%= yield %>
 
