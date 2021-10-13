@@ -15,7 +15,6 @@ User
           guardian_phone_number: Faker::PhoneNumber.phone_number,
           emergency_contact_name: Faker::Name.name,
           emergency_contact_phone_number: Faker::PhoneNumber.phone_number,
-          date_of_birth: Faker::Date.between(from: 50.years.ago, to: 18.years.ago),
           users: [user]
         )
       puts "Created student: #{student.name}"
