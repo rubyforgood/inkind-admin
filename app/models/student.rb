@@ -1,6 +1,8 @@
 class Student < ApplicationRecord
   has_many :students_users
   has_many :users, through: :students_users
+  belongs_to :deactivator, class_name: "User",
+                           optional: true
 
   validates :first_name, :last_name, presence: true
 
