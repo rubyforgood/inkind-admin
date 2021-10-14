@@ -1,3 +1,4 @@
+require("@rails/ujs").start()
 import 'bootstrap'
 import "stylesheets/application.scss"
 
