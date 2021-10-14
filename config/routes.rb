@@ -17,15 +17,15 @@ Rails.application.routes.draw do
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy do
       member do
-        patch 'activate'
-        patch 'deactivate'
+        patch "activate"
+        patch "deactivate"
       end
     end
 
     resources :volunteers, except: :destroy do
       member do
-        patch 'activate'
-        patch 'deactivate'
+        patch "activate"
+        patch "deactivate"
       end
     end
 

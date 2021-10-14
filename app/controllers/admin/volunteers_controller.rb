@@ -52,7 +52,7 @@ module Admin
       @volunteer.status = :inactive
       @volunteer.save!
 
-      redirect_to admin_volunteers_url, alert: "Volunteer was successfully deactivated." 
+      redirect_to admin_volunteers_url, alert: "Volunteer was successfully deactivated."
     end
 
     def volunteer_params

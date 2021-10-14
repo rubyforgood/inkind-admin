@@ -49,13 +49,13 @@ module Admin
       @admin_user = User.where(role: :admin).find(params[:id])
 
       if current_user == @admin_user
-        redirect_to admin_admin_users_url, alert: "You can not deactivate your own account." 
+        redirect_to admin_admin_users_url, alert: "You can not deactivate your own account."
       else
         @admin_user.deactivated_at = Time.now
         @admin_user.deactivator_id = current_user.id
         @admin_user.status = :inactive
         @admin_user.save!
-  
+
         redirect_to admin_admin_users_url, notice: "Admin was successfully deactivated."
       end
     end
