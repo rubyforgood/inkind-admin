@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resources :students, except: :destroy
 
     match "imports/volunteers", to: "imports#volunteers", via: :post
+    match "imports/students", to: "imports#students", via: :post
   end
 end
