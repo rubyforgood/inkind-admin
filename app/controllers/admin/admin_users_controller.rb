@@ -35,6 +35,24 @@ module Admin
       end
     end
 
+    def activate
+      @admin_user = User.where(role: :admin).find(params[:id])
+      @admin_user.active!
+
+      redirect_to admin_admin_users_url, notice: "Admin was successfully activated."
+    end
+
+    def deactivate
+      @admin_user = User.where(role: :admin).find(params[:id])
+
+      if current_user == @admin_user
+        redirect_to admin_admin_users_url, alert: "You can not deactivate your own account." 
+      else
+        @admin_user.inactive!
+        redirect_to admin_admin_users_url, notice: "Admin was successfully deactivated."
+      end
+    end
+
     def admin_user_params
       params.require(:user)
         .permit(:first_name, :last_name, :email, :phone_number)

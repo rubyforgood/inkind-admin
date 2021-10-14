@@ -27,7 +27,13 @@
           <%= admin_user.status %>
         </td>
         <td>
-          <%= link_to "edit", edit_admin_admin_user_path(admin_user) %>
+          <%= link_to "edit", edit_admin_admin_user_path(admin_user) %> |
+
+          <% if admin_user.active? %>
+            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% else %>
+            <%= link_to "Activate", activate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% end %>
         </td>
       </tr>
     <% end %>

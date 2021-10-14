@@ -30,7 +30,13 @@
           <%= volunteer.status %>
         </td>
         <td>
-          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
+          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> | 
+
+          <% if volunteer.active? %>
+            <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% else %>
+            <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
