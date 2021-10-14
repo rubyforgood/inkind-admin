@@ -115,7 +115,7 @@ module Queries
           sign_in(volunteer)
           adam = Student.find_by(first_name: "Adam", last_name: "Ruby")
 
-          post "/graphql", params: { query: student_query(adam) }
+          post "/graphql", params: {query: student_query(adam)}
 
           expect(response).to be_successful
           json = JSON.parse(response.body)
@@ -128,7 +128,7 @@ module Queries
 
       it "returns nothing when not signed in", :aggregate_failures do
         adam = Student.find_by(first_name: "Adam", last_name: "Ruby")
-        post "/graphql", params: { query: student_query(adam) }
+        post "/graphql", params: {query: student_query(adam)}
         expect(response).to be_successful
 
         json = JSON.parse(response.body)
