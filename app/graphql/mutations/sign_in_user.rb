@@ -15,12 +15,7 @@ module Mutations
 
       raise GraphQL::ExecutionError, "invalid password for user" unless user.valid_password?(credentials[:password])
 
-      # use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token
-      token = user.token
-
-      context[:session][:token] = token
-
-      {user: user, token: token}
+      { user: user, token: user.token }
     end
   end
 end

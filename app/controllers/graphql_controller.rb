@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {current_user: current_user, session: session}
+    context = { current_user: current_user }
     result =
       InkindSchema.execute(
         query,
@@ -37,8 +37,6 @@ class GraphqlController < ApplicationController
   end
 
   def bearer_token
-    return session[:token] if session[:token]
-
     pattern = /^Bearer /
     header = request.headers["Authorization"]
     header.gsub(pattern, "") if header&.match(pattern)
