@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/sign_out" => "devise/sessions#destroy"
   end
+
   devise_for :users, path: "users"
 
   namespace :admin do
@@ -17,5 +18,7 @@ Rails.application.routes.draw do
     resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
     resources :students, except: :destroy
+
+    match "imports/volunteers", to: "imports#volunteers", via: :post
   end
 end
