@@ -30,6 +30,11 @@ type Query {
   student(id: ID!): Student!
 
   """
+  All survey_responses for a specific student associated with signed in volunteer
+  """
+  studentSurveyResponses(id: ID!): [SurveyResponse!]
+
+  """
   All students associated with signed in volunteer
   """
   students: [Student!]
