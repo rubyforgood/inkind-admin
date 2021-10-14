@@ -16,4 +16,20 @@ RSpec.describe Importer::Csv do
       expect(total.uniq).to eq [true, false]
     end
   end
+
+  context "Importing Students" do
+    it "imports data based on the csv structure" do
+      path = Rails.root.join("spec", "fixtures", "students.csv")
+      total = Importer::Csv.import(path, Student)
+
+      expect(total.uniq).to be_truthy
+    end
+
+    it "excludes the row when it's not possible to import" do
+      path = Rails.root.join("spec", "fixtures", "students-with-errors.csv")
+      total = Importer::Csv.import(path, Student)
+
+      expect(total).to eq [true, false, false]
+    end
+  end
 end
