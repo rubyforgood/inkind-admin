@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
-    resources :students, except: :destroy
+    resources :students, except: :destroy do
+      member do
+        get :activate
+        get :deactivate
+      end
+    end
   end
 end
