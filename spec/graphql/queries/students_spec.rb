@@ -39,6 +39,7 @@ module Queries
           ids = data.pluck("id")
           expect(ids).to include(student.id.to_s)
           expect(ids).to_not include(other_student.id.to_s)
+          expect(ids).to_not include(inactive_student.id.to_s)
         end
       end
 
