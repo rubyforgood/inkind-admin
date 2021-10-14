@@ -16,6 +16,7 @@ type MeetingDuration {
 
 type Mutation {
   signInUser(credentials: AuthProviderCredentialsInput): SignInUserPayload
+  updateUser(data: UpdateUserInput!): User!
 }
 
 type Query {
@@ -96,6 +97,13 @@ type SurveyResponse {
   meetingDuration: MeetingDuration
   student: Student!
   volunteer: User!
+}
+
+input UpdateUserInput {
+  email: String
+  firstName: String!
+  lastName: String!
+  phoneNumber: String
 }
 
 type User {
