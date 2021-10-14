@@ -21,7 +21,7 @@ module Mutations
         GQL
       end
 
-      it "creates a session", :aggregate_failures do
+      it "creates a user token", :aggregate_failures do
         post "/graphql",
           params: {
             query: query,
@@ -54,7 +54,7 @@ module Mutations
           }
         json = JSON.parse(response.body)
 
-        expect(json["data"]["signInUser"]).to be_nil
+        expect(json.dig("data", "signInUser")).to be_nil
         expect(json.dig("errors", 0, "message")).to eq("account associated with email is no longer active")
       end
     end

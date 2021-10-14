@@ -12,7 +12,7 @@ RSpec.describe MagicLinkMailer, type: :mailer do
     end
 
     it "contains the link to the app" do
-      expect(mail.body.encoded).to include("12345")
+      expect(mail.body.encoded).to include("http://volunteer.test/?token=12345")
     end
   end
 end
