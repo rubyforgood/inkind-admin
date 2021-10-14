@@ -6,7 +6,8 @@ module Admin
       redirect_to admin_volunteers_path
     end
 
-  private
+    private
+
     def import_for(model, extras)
       Importer::Csv.import(file_params[:file].tempfile, model, extras)
     end

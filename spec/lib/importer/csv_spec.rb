@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Importer::Csv do
-
   context "Importing Volunteers" do
     it "imports data based on the csv structure" do
       path = Rails.root.join("spec", "fixtures", "volunteers.csv")
