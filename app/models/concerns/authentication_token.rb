@@ -8,11 +8,13 @@ module AuthenticationToken
 
   class_methods do
     def by_token(token)
+      user_id = id_from_token(token)
+      find(user_id)
     end
 
     def id_from_token(token)
       crypt = _encryptor
-      actual_token = crypt.decrypt_and_verify token
+      actual_token = crypt.decrypt_and_verify token.to_s
       actual_token.gsub("user-id:", "").to_i
     end
 
