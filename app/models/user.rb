@@ -15,6 +15,10 @@ class User < ApplicationRecord
   enum status: {active: 0, inactive: 1}
   enum role: {volunteer: 0, admin: 1}
 
+  def active_for_authentication?
+    super && active?
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
