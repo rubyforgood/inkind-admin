@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_190556) do
+ActiveRecord::Schema.define(version: 2021_10_14_143904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_10_13_190556) do
     t.datetime "deactivated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "deactivator_id"
+    t.index ["deactivator_id"], name: "index_students_on_deactivator_id"
   end
 
   create_table "students_users", force: :cascade do |t|
