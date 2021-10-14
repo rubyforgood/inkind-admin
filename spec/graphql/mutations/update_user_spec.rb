@@ -36,12 +36,12 @@ module Mutations
                 firstName: "Violet",
                 lastName: "Volunteer",
                 phoneNumber: "111-222-3333",
-                email: "violet@volunteer.com",
+                email: "violet@volunteer.com"
               }
             }
           },
           headers: {
-            "Authorization" => "Bearer #{user.token}",
+            "Authorization" => "Bearer #{user.token}"
           }
 
         json = JSON.parse(response.body)
