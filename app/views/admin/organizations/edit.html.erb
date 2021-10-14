@@ -1,31 +1,48 @@
-<h3>Edit Organization Profile</h3>
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
+<h1>Edit Organization Profile</h1>
 
 <%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
-  <label>Organization Name</label><br>
-  <%= f.text_field :name %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :name, class: "form-control", placeholder: "Organization Name" %><br>
+    </div>  
+  </div>
 
-  <label>Email</label><br>
-  <%= f.text_field :email %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %><br>
+    </div>  
+  </div>
 
-  <label>Street Address</label><br>
-  <%= f.text_field :address1 %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :address1, class: "form-control", placeholder: "Street Address" %><br>
+    </div>  
+  </div>
 
-  <label>Apt, Suite, Building (Optional)</label><br>
-  <%= f.text_field :address2 %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :address2, class: "form-control", placeholder: "Apt, Suite, Building (Optional)" %><br>
+    </div>  
+  </div>
   
-  <label>Zip Code</label><br>
-  <%= f.text_field :zip_code %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "Zip Code" %><br>
+    </div>  
+  </div>
 
-  <label>City</label><br>
-  <%= f.text_field :city %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :city, class: "form-control", placeholder: "City" %><br>
+    </div>  
+  </div>
 
-  <label>State</label><br>
-  <%= f.text_field :state %><br>
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= f.text_field :state, class: "form-control", placeholder: "State" %><br>
+    </div>  
+  </div>
 
   <%= f.submit %>
 <% end %>
+</div>
