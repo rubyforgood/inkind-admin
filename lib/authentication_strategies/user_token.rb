@@ -11,7 +11,7 @@ module AuthenticationStrategies
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       fail! "Invalid token signature"
     end
-    
+
     def bearer_token
       @bearer_token ||= request.headers["Authorization"]
                                &.match(/^Bearer (.*)/)

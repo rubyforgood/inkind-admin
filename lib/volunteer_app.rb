@@ -1,5 +1,5 @@
 module VolunteerApp
-module_function
+  module_function
 
   def magic_link(user)
     uri = URI(Rails.application.config.volunteer_app_url)

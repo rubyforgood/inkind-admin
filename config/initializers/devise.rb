@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "authentication_strategies/user_token.rb"
+require "authentication_strategies/user_token"
 
 Warden::Strategies.add :user_token, AuthenticationStrategies::UserToken
 
