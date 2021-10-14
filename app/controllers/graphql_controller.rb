@@ -29,17 +29,7 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    User.by_token(bearer_token)
-  rescue ActiveSupport::MessageEncryptor::InvalidMessage
-    super
-  rescue ActiveSupport::MessageVerifier::InvalidSignature
-    nil
-  end
-
-  def bearer_token
-    pattern = /^Bearer /
-    header = request.headers["Authorization"]
-    header.gsub(pattern, "") if header&.match(pattern)
+    warden.authenticate(:user_token)
   end
 
   # Handle variables in form data, JSON body, or a blank value
