@@ -2,20 +2,16 @@ module AuthenticationToken
   extend ActiveSupport::Concern
 
   def token
-    crypt = self.class._encryptor
-    crypt.encrypt_and_sign("user-id:#{id}")
+    self.class.create_token(self)
   end
 
   class_methods do
-    def by_token(token)
-      user_id = id_from_token(token)
-      find(user_id)
+    def create_token(user)
+      _encryptor.encrypt_and_sign(user.id, purpose: :authn)
     end
 
-    def id_from_token(token)
-      crypt = _encryptor
-      actual_token = crypt.decrypt_and_verify token.to_s
-      actual_token.gsub("user-id:", "").to_i
+    def by_token(token)
+      find(_encryptor.decrypt_and_verify(token.to_s, purpose: :authn))
     end
 
     def _encryptor
