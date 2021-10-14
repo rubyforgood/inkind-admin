@@ -8,8 +8,13 @@ module Admin
 
     private
 
+<<<<<<< HEAD
     def import_for(model, extras)
       Importer::Csv.import(file_params[:file].tempfile, model, extras)
+=======
+    def import_for(model, additional_properties = {})
+      Importer::Csv.import(file_params[:file].tempfile, model, additional_properties)
+>>>>>>> main
     end
 
     def file_params
