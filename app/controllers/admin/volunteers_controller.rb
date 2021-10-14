@@ -35,6 +35,17 @@ module Admin
       end
     end
 
+    def send_link
+      volunteer = User.find(params[:id])
+
+      MagicLinkMailer.sign_in(volunteer).deliver
+
+      flash[:alert] = "Authentication link sent to #{volunteer.name}"
+      redirect_to action: :index
+    end
+
+    private
+
     def volunteer_params
       params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
     end

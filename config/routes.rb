@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy
-    resources :volunteers, except: :destroy
+    resources :volunteers, except: :destroy do
+      member do
+        post :send_link
+      end
+    end
     resources :students, except: :destroy do
       member do
         get :activate
