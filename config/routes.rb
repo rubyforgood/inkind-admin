@@ -27,6 +27,11 @@ Rails.application.routes.draw do
         get :deactivate
       end
     end
+    resources :tickets, except: :destroy do
+      member do
+        post :resolve
+      end
+    end
 
     match "imports/volunteers", to: "imports#volunteers", via: :post
     match "imports/students", to: "imports#students", via: :post
