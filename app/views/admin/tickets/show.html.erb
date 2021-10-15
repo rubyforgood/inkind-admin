@@ -1,0 +1,22 @@
+<div class="m-5 container">
+  <h5 class="mb-5 mr-5">
+    <%= @ticket.requestor.name %>
+  </h5>
+
+  <% if @ticket.survey_response.present? %>
+    Student: <%= @ticket.survey_response.student.name %>
+  <% end %>
+  <div>Date Created: <%= @ticket.created_at %></div>
+  <div>Description: <%= @ticket.description %></div>
+  <div>Status: <%= @ticket.status.capitalize %></div>
+
+  <% if @ticket.closer.blank? %>
+  <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
+    <%= f.button "Cancel", type: :reset, class: "btn btn-secondary" %>
+    <%= f.submit "Resolve", class: "btn btn-primary" %>
+  <% end %>
+  <% else %>
+    <div>Closed by: <%= @ticket.closer.name %></div>
+    <div>Closed on: <%= @ticket.closed_at %></div>
+  <% end %>
+</div>
