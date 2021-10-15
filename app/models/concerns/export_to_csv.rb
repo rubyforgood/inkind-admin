@@ -10,7 +10,7 @@ module ExportToCsv
           csv << if obj.respond_to?(:to_csv)
             obj.to_csv
           else
-            columns.map { |column| column.split(".").inject(obj, :send) }
+            columns.map { |column| column.split(".").inject(obj, :try) }
           end
         end
       end
