@@ -72,7 +72,7 @@ RSpec.describe User, type: :model do
   context "#completed_surveys" do
     it "returns completed survey responses of the user" do
       completed1 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
-      create(:survey_response, volunteer: user, meeting_duration: nil)
+      create(:survey_response, volunteer: user)
       complted2 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
 
       expect(user.completed_surveys).to match_array [completed1, complted2]
