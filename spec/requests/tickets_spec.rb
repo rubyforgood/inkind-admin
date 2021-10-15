@@ -15,6 +15,27 @@ RSpec.describe "/admin/tickets", type: :request do
     attributes_for(:support_ticket, requestor_id: nil, description: "")
   end
 
+  describe "GET /index" do
+    context "with format csv" do
+      it "generates the csv file" do
+        travel_to(Date.new(2021, 10, 14)) do
+          create(:support_ticket, requestor: create(:volunteer, first_name: "Adam", last_name: "Lee"), survey_response: create(:survey_response, student: create(:student, first_name: "Jack", last_name: "Scott")), description: "Harum sed quas tempora.", status: :active)
+          create(:support_ticket, requestor: create(:volunteer, first_name: "Olga", last_name: "Gray"), survey_response: nil, description: "Nihil amet id odit.", status: :closed)
+
+          get admin_tickets_url, params: {format: :csv}
+
+          expect(response.header["Content-Type"]).to include "text/csv"
+          expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"support-tickets-2021-10-14.csv\""
+          expect(response.body).to eq <<~CSV
+            "Requestor","Student","Created At","Description","Status"
+            "Adam Lee","Jack Scott","2021-10-14 00:00:00 UTC","Harum sed quas tempora.","active"
+            "Olga Gray","","2021-10-14 00:00:00 UTC","Nihil amet id odit.","closed"
+          CSV
+        end
+      end
+    end
+  end
+
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Support Ticket" do

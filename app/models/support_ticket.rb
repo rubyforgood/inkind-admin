@@ -1,4 +1,6 @@
 class SupportTicket < ApplicationRecord
+  include ExportToCsv
+
   belongs_to :requestor, class_name: "User",
                          foreign_key: :requestor_id,
                          inverse_of: :support_tickets
