@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Student, type: :model do
   let(:current_user) { create(:user, role: :admin) }
-  
+
   it "has valid factory" do
     expect(create(:student)).to be_valid
   end
