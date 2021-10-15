@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       member do
         patch "activate"
         patch "deactivate"
+        post :send_link
       end
     end
 

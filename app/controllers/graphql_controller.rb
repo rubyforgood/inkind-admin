@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {current_user: current_user, session: session}
+    context = {current_user: current_user}
     result =
       InkindSchema.execute(
         query,
@@ -29,22 +29,7 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    if bearer_token
-      user_id = User.id_from_token(bearer_token)
-      User.find(user_id)
-    else
-      super
-    end
-  rescue ActiveSupport::MessageVerifier::InvalidSignature
-    nil
-  end
-
-  def bearer_token
-    return session[:token] if session[:token]
-
-    pattern = /^Bearer /
-    header = request.headers["Authorization"]
-    header.gsub(pattern, "") if header&.match(pattern)
+    warden.authenticate(:user_token)
   end
 
   # Handle variables in form data, JSON body, or a blank value
