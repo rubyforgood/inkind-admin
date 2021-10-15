@@ -1,6 +1,7 @@
 class SupportTicket < ApplicationRecord
   belongs_to :requestor, class_name: "User",
-                         foreign_key: :requestor_id
+                         foreign_key: :requestor_id,
+                         inverse_of: :support_tickets
   belongs_to :closer, class_name: "User",
                       foreign_key: :closer_id,
                       optional: true
