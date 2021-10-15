@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def last_seen
-    survey_responses.order(:created_at).last&.created_at
+    survey_responses.maximum(:created_at)
   end
 
   def completed_surveys
