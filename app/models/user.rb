@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include AuthenticationToken
+  include ExportToCsv
 
   attr_accessor :skip_password_validation
 
