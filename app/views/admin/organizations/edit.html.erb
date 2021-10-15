@@ -1,45 +1,46 @@
 <h1>Edit Organization Profile</h1>
+<br>
 
 <%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :name, class: "form-control", placeholder: "Organization Name" %><br>
+      <%= f.text_field :name, class: "form-control", placeholder: "Organization Name" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :email, class: "form-control", placeholder: "Email" %><br>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :address1, class: "form-control", placeholder: "Street Address" %><br>
+      <%= f.text_field :address1, class: "form-control", placeholder: "Street Address" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :address2, class: "form-control", placeholder: "Apt, Suite, Building (Optional)" %><br>
+      <%= f.text_field :address2, class: "form-control", placeholder: "Apt, Suite, Building (Optional)" %>
     </div>  
   </div>
   
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :zip_code, class: "form-control", placeholder: "Zip Code" %><br>
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "Zip Code" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :city, class: "form-control", placeholder: "City" %><br>
+      <%= f.text_field :city, class: "form-control", placeholder: "City" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= f.text_field :state, class: "form-control", placeholder: "State" %><br>
+      <%= f.text_field :state, class: "form-control", placeholder: "State" %>
     </div>  
   </div>
 

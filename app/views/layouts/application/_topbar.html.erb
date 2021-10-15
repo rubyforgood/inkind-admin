@@ -12,6 +12,8 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to(t(".user_menu.edit_profile"), edit_user_registration_path, class: "dropdown-item") %>
               <div class="dropdown-divider"></div>
+              <%= link_to(t(".admin_menu.edit_organization"), edit_admin_organization_path(1), class: "dropdown-item") %>
+              <div class="dropdown-divider"></div>
               <%= link_to(t(".user_menu.logout"), destroy_user_session_path, class: "dropdown-item") %>
             </div>
           <% else %>
