@@ -9,7 +9,7 @@ module Mutations
 
     field :question_response, Types::SurveyQuestionResponseType, null: false
 
-    def resolve(survey_response_id:, question_id:, option_ids: [], reply:)
+    def resolve(survey_response_id:, question_id:, reply:, option_ids: [])
       ActiveRecord::Base.transaction do
         question_response = SurveyQuestionResponse.create!(
           survey_response_id: survey_response_id,
