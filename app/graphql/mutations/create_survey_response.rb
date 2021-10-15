@@ -10,7 +10,7 @@ module Mutations
 
     def resolve(survey_id:, user_id:, student_id:)
       response = SurveyResponse.create!(survey_id: survey_id, user_id: user_id, student_id: student_id)
-      { response: response }
+      {response: response}
     end
   end
 end
