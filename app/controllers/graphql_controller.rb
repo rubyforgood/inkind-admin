@@ -29,7 +29,7 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    warden.authenticate(:user_token, scope: :graphql)
+    warden.authenticate(:user_token, scope: :graphql) || warden.authenticate
   end
 
   # Handle variables in form data, JSON body, or a blank value
