@@ -37,20 +37,14 @@ module Admin
 
     def activate
       @volunteer = User.find(params[:id])
-      @volunteer.deactivated_at = nil
-      @volunteer.deactivator_id = nil
-      @volunteer.status = :active
-      @volunteer.save!
+      @volunteer.activate!
 
       redirect_to admin_volunteers_url, alert: "Volunteer was successfully activated."
     end
 
     def deactivate
       @volunteer = User.find(params[:id])
-      @volunteer.deactivated_at = Time.now
-      @volunteer.deactivator_id = current_user.id
-      @volunteer.status = :inactive
-      @volunteer.save!
+      @volunteer.deactivate!(deactivator_id: current_user.id)
 
       redirect_to admin_volunteers_url, alert: "Volunteer was successfully deactivated."
     end

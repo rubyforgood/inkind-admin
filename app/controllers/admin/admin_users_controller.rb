@@ -37,10 +37,7 @@ module Admin
 
     def activate
       @admin_user = User.where(role: :admin).find(params[:id])
-      @admin_user.deactivated_at = nil
-      @admin_user.deactivator_id = nil
-      @admin_user.status = :active
-      @admin_user.save!
+      @admin_user.activate!
 
       redirect_to admin_admin_users_url, notice: "Admin was successfully activated."
     end
@@ -51,10 +48,7 @@ module Admin
       if current_user == @admin_user
         redirect_to admin_admin_users_url, alert: "You can not deactivate your own account."
       else
-        @admin_user.deactivated_at = Time.now
-        @admin_user.deactivator_id = current_user.id
-        @admin_user.status = :inactive
-        @admin_user.save!
+        @admin_user.deactivate!(deactivator_id: current_user.id)
 
         redirect_to admin_admin_users_url, notice: "Admin was successfully deactivated."
       end
