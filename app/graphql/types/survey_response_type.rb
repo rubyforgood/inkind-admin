@@ -4,5 +4,6 @@ module Types
     field :student, StudentType, null: false
     field :volunteer, UserType, null: false
     field :meeting_duration, MeetingDurationType, null: true
+    field :survey, Types::SurveyType, null: false
   end
 end
