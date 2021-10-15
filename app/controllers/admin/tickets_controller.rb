@@ -13,12 +13,11 @@ module Admin
 
       if @ticket.valid?
         @ticket.save!
-        redirect_to admin_tickets_url, notice: 'Support ticket was successfully created.'
+        redirect_to admin_tickets_url, notice: "Support ticket was successfully created."
       else
         flash[:alert] = format_errors(@ticket)
         render :new
       end
-
     end
 
     def show
@@ -29,9 +28,9 @@ module Admin
       @ticket = SupportTicket.find(params[:id])
 
       if @ticket.close!(current_user)
-        redirect_to admin_tickets_path, notice: 'The support ticket was successfully resolved.'
+        redirect_to admin_tickets_path, notice: "The support ticket was successfully resolved."
       else
-        flash[:alert] = 'Could not resolve the support ticket. Please try again.'
+        flash[:alert] = "Could not resolve the support ticket. Please try again."
         render :show
       end
     end
