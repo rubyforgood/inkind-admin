@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  include ExportToCsv
+
   has_many :students_users
   has_many :users, through: :students_users
   belongs_to :deactivator, class_name: "User",

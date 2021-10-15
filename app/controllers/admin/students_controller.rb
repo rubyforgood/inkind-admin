@@ -2,6 +2,13 @@ module Admin
   class StudentsController < ApplicationController
     def index
       @students = Student.all
+
+      respond_to do |format|
+        format.html
+        format.csv do
+          send_data Student.export_to_csv(@students, columns: %w[name guardian_name date_of_birth status]), filename: "students-#{Date.today}.csv"
+        end
+      end
     end
 
     def new

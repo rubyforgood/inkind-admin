@@ -35,6 +35,20 @@ module Admin
       end
     end
 
+    def activate
+      @volunteer = User.find(params[:id])
+      @volunteer.activate!
+
+      redirect_to admin_volunteers_url, alert: "Volunteer was successfully activated."
+    end
+
+    def deactivate
+      @volunteer = User.find(params[:id])
+      @volunteer.deactivate!(deactivator_id: current_user.id)
+
+      redirect_to admin_volunteers_url, alert: "Volunteer was successfully deactivated."
+    end
+
     def send_link
       volunteer = User.find(params[:id])
 
