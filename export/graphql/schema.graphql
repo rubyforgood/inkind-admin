@@ -31,7 +31,8 @@ type MeetingDuration {
 type Mutation {
   createSurveyQuestionResponse(optionIds: [ID!], questionId: ID!, reply: String, surveyResponseId: ID!): CreateSurveyQuestionResponsePayload
   createSurveyResponse(studentId: ID!, surveyId: ID!, userId: ID!): CreateSurveyResponsePayload
-  signInUser(credentials: AuthProviderCredentialsInput): SignInUserPayload
+  signInUser(credentials: AuthProviderCredentialsInput!): SignInUserPayload!
+  updateUser(data: UpdateUserInput!): User!
 }
 
 type Query {
@@ -122,6 +123,13 @@ type SurveyResponse {
   student: Student!
   survey: Survey!
   volunteer: User!
+}
+
+input UpdateUserInput {
+  email: String
+  firstName: String!
+  lastName: String!
+  phoneNumber: String
 }
 
 type User {

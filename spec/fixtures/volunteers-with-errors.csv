@@ -1,0 +1,4 @@
+first_name,last_name,email,phone_number
+John,Doe,email1@example.com,123-456-7890
+John,Doe,email2@example.com,231-456-7890
+John,Doe,invalid_email,321-456-7890

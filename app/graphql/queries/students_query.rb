@@ -19,7 +19,7 @@ module Queries
     end
 
     def students
-      context[:current_user]&.students
+      context[:current_user]&.students&.active
     end
   end
 end

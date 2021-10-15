@@ -15,15 +15,16 @@ module Queries
 
     describe ".resolve" do
       let(:user) { create(:user) }
-      let(:student) { create(:student) }
+      let!(:student) { create(:student) }
       let!(:other_student) { create(:student) }
+      let!(:inactive_student) { create(:student, status: :inactive) }
 
-      before { user.students << student }
+      before { user.students << [student, inactive_student] }
 
       context "when signed in" do
         before { sign_in(user) }
 
-        it "returns all students belonging to user", :aggregate_failures do
+        it "returns active students belonging to user", :aggregate_failures do
           post "/graphql", params: {query: query}
 
           expect(response).to be_successful
@@ -38,6 +39,7 @@ module Queries
           ids = data.pluck("id")
           expect(ids).to include(student.id.to_s)
           expect(ids).to_not include(other_student.id.to_s)
+          expect(ids).to_not include(inactive_student.id.to_s)
         end
       end
 

@@ -3,5 +3,6 @@ module Types
     field :sign_in_user, mutation: Mutations::SignInUser
     field :create_survey_response, mutation: Mutations::CreateSurveyResponse
     field :create_survey_question_response, mutation: Mutations::CreateSurveyQuestionResponse
+    field :update_user, mutation: Mutations::UpdateUser
   end
 end

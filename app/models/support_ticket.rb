@@ -10,4 +10,10 @@ class SupportTicket < ApplicationRecord
   enum status: {active: 0, closed: 1}
 
   validates :description, presence: true
+
+  def close!(closer)
+    return false if closed?
+
+    update!(status: :closed, closer: closer, closed_at: Time.current)
+  end
 end

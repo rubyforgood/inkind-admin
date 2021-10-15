@@ -34,6 +34,24 @@ module Admin
       end
     end
 
+    def activate
+      @student = Student.find(params[:id])
+
+      @student.update(status: "active")
+
+      redirect_to admin_students_url
+    end
+
+    def deactivate
+      @student = Student.find(params[:id])
+
+      @student.update(status: "inactive")
+      @student.update(deactivated_at: Time.now)
+      @student.update(deactivator_id: current_user.id)
+
+      redirect_to admin_students_url
+    end
+
     def students_params
       params.require(:student).permit(:first_name, :last_name,
         :email, :phone_number, :guardian_phone_number, :guardian_name,
