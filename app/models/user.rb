@@ -42,8 +42,6 @@ class User < ApplicationRecord
   end
 
   def activate!
-    self.deactivated_at = nil
-    self.deactivator_id = nil
     self.status = :active
     save!
   end

@@ -32,13 +32,9 @@
     <div class="col-4">
       <% if @volunteer.persisted? %>
         <% if @volunteer.active? %>
-          <td>
-            <%= link_to "Deactivate", deactivate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
-          </td>
+          <%= link_to "Deactivate", deactivate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
         <% else %>
-          <td>
-            <%= link_to "Activate", activate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
-          </td>
+          <%= link_to "Activate", activate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
         <% end %>
       <% end %>
     </div>
