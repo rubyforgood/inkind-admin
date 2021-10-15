@@ -3,6 +3,7 @@
 <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
   Import
 </button>
+<%= link_to 'Export', admin_volunteers_path(format: :csv), class: "btn btn-secondary m-2" %>
 
 <table class="table m-4">
   <thead>
@@ -30,8 +31,8 @@
           <%= volunteer.status %>
         </td>
         <td>
-          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> | 
-          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %> | 
+          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> |
+          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
 
           <% if volunteer.active? %>
             <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>

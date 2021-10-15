@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  subject(:user) { create(:user) }
+
   it "has valid factory" do
     expect(build(:user)).to be_valid
   end
@@ -9,6 +11,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:survey_responses) }
     it { is_expected.to have_many(:students_users) }
     it { is_expected.to have_many(:students).through(:students_users) }
+    it { is_expected.to have_many(:support_tickets) }
   end
 
   context "enum" do
@@ -50,6 +53,29 @@ RSpec.describe User, type: :model do
       expect(volunteer.status).to eq("inactive")
       expect(volunteer.deactivated_at).to_not be_nil
       expect(volunteer.deactivator_id).to eq(admin.id)
+    end
+  end
+
+  context "#last_seen" do
+    it "returns nil when the user has no survey response" do
+      expect(user.last_seen).to be_nil
+    end
+
+    it "returns the created date of the newest survey response " do
+      create(:survey_response, volunteer: user, created_at: DateTime.new(2021, 10, 15, 10, 35, 47))
+      create(:survey_response, volunteer: user, created_at: DateTime.new(2021, 10, 15, 11, 35, 47))
+
+      expect(user.last_seen).to eq DateTime.new(2021, 10, 15, 11, 35, 47)
+    end
+  end
+
+  context "#completed_surveys" do
+    it "returns completed survey responses of the user" do
+      completed1 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
+      create(:survey_response, volunteer: user)
+      complted2 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
+
+      expect(user.completed_surveys).to match_array [completed1, complted2]
     end
   end
 end

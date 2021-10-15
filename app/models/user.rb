@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include AuthenticationToken
+  include ExportToCsv
 
   attr_accessor :skip_password_validation
 
@@ -9,6 +10,7 @@ class User < ApplicationRecord
   has_many :students_users
   has_many :students, through: :students_users
   has_many :survey_responses
+  has_many :support_tickets, foreign_key: :requestor_id
 
   validates :first_name, :last_name, presence: true
 
@@ -44,5 +46,13 @@ class User < ApplicationRecord
     self.deactivator_id = nil
     self.status = :active
     save!
+  end
+
+  def last_seen
+    survey_responses.order(:created_at).last&.created_at
+  end
+
+  def completed_surveys
+    survey_responses.joins(:meeting_duration)
   end
 end
