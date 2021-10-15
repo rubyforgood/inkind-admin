@@ -17,6 +17,7 @@ type MeetingDuration {
 type Mutation {
   signInUser(credentials: AuthProviderCredentialsInput!): SignInUserPayload!
   updateUser(data: UpdateUserInput!): User!
+  updateUserPassword(oldPassword: String!, password: String!): Boolean!
 }
 
 type Query {
