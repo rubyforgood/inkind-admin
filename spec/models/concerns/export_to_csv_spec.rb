@@ -56,7 +56,6 @@ describe ExportToCsv do
         "1",""
         "2",""
       CSV
-
     end
   end
 

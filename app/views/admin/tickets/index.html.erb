@@ -1,5 +1,6 @@
 
 <%= link_to 'Add Ticket', new_admin_ticket_path, class: "btn btn-secondary m-2" %>
+<%= link_to 'Export', admin_tickets_path(format: :csv), class: "btn btn-secondary m-2" %>
 
 <table class="table m-4">
   <thead>
