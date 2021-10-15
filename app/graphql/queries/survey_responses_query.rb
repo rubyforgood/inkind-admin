@@ -12,10 +12,19 @@ module Queries
         description "All survey_responses for a specific student associated with signed in volunteer"
         argument :id, GraphQL::Types::ID, required: true
       end
+
+      field :survey_response, Types::SurveyResponseType, null: false do
+        description "A single survey response"
+        argument :id, GraphQL::Types::ID, required: true
+      end
     end
 
     def survey_responses
       context[:current_user]&.survey_responses
+    end
+
+    def survey_response(id:)
+      SurveyResponse.find(id)
     end
 
     def student_survey_responses(id:)
