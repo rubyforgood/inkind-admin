@@ -1,0 +1,24 @@
+<div class="m-5 container">
+  <h2 class="mb-5 mr-5"> New Support Ticket</h2>
+
+  <%= form_with(model: @ticket, url: admin_tickets_url) do |form| %>
+    <div class="row pr-3 pb-4">
+      <div class="col-4">
+        <%= form.collection_select :requestor_id, User.all, :id, :name, class: "form-control", prompt: "Please select the requestor" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-4">
+        <%= form.text_area :description, class: "form-control", placeholder: "Description" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-4">
+        <%= form.submit "Submit" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
