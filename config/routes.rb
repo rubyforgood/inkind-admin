@@ -15,12 +15,21 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :organizations, only: [:show, :edit, :update]
-    resources :admin_users, except: :destroy
+    resources :admin_users, except: :destroy do
+      member do
+        patch "activate"
+        patch "deactivate"
+      end
+    end
+
     resources :volunteers, except: :destroy do
       member do
+        patch "activate"
+        patch "deactivate"
         post :send_link
       end
     end
+
     resources :students, except: :destroy do
       member do
         get :activate

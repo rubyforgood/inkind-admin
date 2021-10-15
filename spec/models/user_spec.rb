@@ -29,4 +29,27 @@ RSpec.describe User, type: :model do
       expect(volunteer).to be_volunteer
     end
   end
+
+  context "activation" do
+    it "can be activated" do
+      admin = create(:user, :volunteer)
+      volunteer = create(:user, :volunteer, status: :inactive, deactivated_at: Time.now, deactivator_id: admin.id)
+      expect(volunteer.status).to eq("inactive")
+
+      volunteer.activate!
+      expect(volunteer.status).to eq("active")
+      expect(volunteer.deactivated_at).to be_nil
+      expect(volunteer.deactivator_id).to be_nil
+    end
+
+    it "can be deactivated" do
+      admin = create(:user, :volunteer)
+      volunteer = create(:user, :volunteer)
+
+      volunteer.deactivate!(deactivator_id: admin.id)
+      expect(volunteer.status).to eq("inactive")
+      expect(volunteer.deactivated_at).to_not be_nil
+      expect(volunteer.deactivator_id).to eq(admin.id)
+    end
+  end
 end

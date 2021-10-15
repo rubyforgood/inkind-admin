@@ -31,4 +31,18 @@ class User < ApplicationRecord
     return false if skip_password_validation
     super
   end
+
+  def deactivate!(deactivator_id:)
+    self.deactivated_at = Time.now
+    self.deactivator_id = deactivator_id
+    self.status = :inactive
+    save!
+  end
+
+  def activate!
+    self.deactivated_at = nil
+    self.deactivator_id = nil
+    self.status = :active
+    save!
+  end
 end
