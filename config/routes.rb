@@ -16,8 +16,17 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:show, :edit, :update]
     resources :admin_users, except: :destroy
-    resources :volunteers, except: :destroy
-    resources :students, except: :destroy
+    resources :volunteers, except: :destroy do
+      member do
+        post :send_link
+      end
+    end
+    resources :students, except: :destroy do
+      member do
+        get :activate
+        get :deactivate
+      end
+    end
     resources :tickets, except: :destroy do
       member do
         post :resolve
@@ -25,5 +34,6 @@ Rails.application.routes.draw do
     end
 
     match "imports/volunteers", to: "imports#volunteers", via: :post
+    match "imports/students", to: "imports#students", via: :post
   end
 end

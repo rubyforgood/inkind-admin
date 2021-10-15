@@ -31,6 +31,7 @@
         </td>
         <td>
           <%= link_to "edit", edit_admin_volunteer_path(volunteer) %>
+          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %>
         </td>
       </tr>
     <% end %>

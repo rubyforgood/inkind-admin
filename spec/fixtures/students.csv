@@ -1,0 +1,4 @@
+first_name,last_name,date_of_birth,email,phone_number,guardian_name,guardian_phone_number,emergency_contact_name,emergency_contact_phone_number
+John,Doe1,2006-01-01,email1@example.com,123-456-7890,Mary Doe1,123-456-7891,Jane Smith1,123-456-7892
+John,Doe2,2007-01-01,email2@example.com,231-456-7890,Mary Doe2,231-456-7891,Jane Smith2,123-456-7892
+John,Doe3,2008-01-01,email3@example.com,321-456-7890,Mary Doe3,321-456-7891,Jane Smith3,123-456-7892

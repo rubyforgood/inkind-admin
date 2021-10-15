@@ -6,6 +6,12 @@ module Admin
       redirect_to admin_volunteers_path
     end
 
+    def students
+      result = import_for(Student)
+      flash[:alert] = "Imported #{result.count} Students"
+      redirect_to admin_students_path
+    end
+
     private
 
     def import_for(model, additional_properties = {})

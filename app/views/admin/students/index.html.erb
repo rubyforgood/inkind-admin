@@ -11,7 +11,7 @@
       <th scope="col">Guardian name</th>
       <th scope="col">DOB</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -29,9 +29,18 @@
         <td>
           <%= student.status %>
         </td>
-        <td>
-          <%= link_to "edit", edit_admin_student_path(student) %>
+        <td class="text-center">
+          <%= link_to "Edit", edit_admin_student_path(student) %>
         </td>
+        <% if student.status == "active" %>
+          <td>
+            <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>
+          </td>
+        <% else %>
+          <td>
+            <%= link_to "Activate", activate_admin_student_path(student), data: { confirm: "Are you sure?" } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -42,7 +51,7 @@
         locals: {
             title: "Import New Students",
             csv_template_url: "/students.csv",
-            csv_import_url: "#"
+            csv_import_url: admin_imports_students_path
         }
     ) do %>
   <p>Open the CSV file with excel or your favourite spreadsheet program.</p>
@@ -51,3 +60,4 @@
   </p>
   <p>Save the file as a CSV file.</p>
 <% end %>
+
