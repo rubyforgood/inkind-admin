@@ -43,20 +43,17 @@ module Admin
 
     def activate
       @student = Student.find(params[:id])
+      @student.activate!
 
-      @student.update(status: "active")
-
-      redirect_to admin_students_url
+      redirect_to admin_students_url, notice: "Student was successfully activated."
     end
 
     def deactivate
       @student = Student.find(params[:id])
 
-      @student.update(status: "inactive")
-      @student.update(deactivated_at: Time.now)
-      @student.update(deactivator_id: current_user.id)
+      @student.deactivate!(deactivator_id: current_user.id)
 
-      redirect_to admin_students_url
+      redirect_to admin_students_url, notice: "Student was successfully deactivated."
     end
 
     def students_params

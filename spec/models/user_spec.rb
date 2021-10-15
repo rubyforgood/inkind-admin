@@ -38,8 +38,6 @@ RSpec.describe User, type: :model do
 
       volunteer.activate!
       expect(volunteer.status).to eq("active")
-      expect(volunteer.deactivated_at).to be_nil
-      expect(volunteer.deactivator_id).to be_nil
     end
 
     it "can be deactivated" do
