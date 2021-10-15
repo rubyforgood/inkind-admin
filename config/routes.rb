@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     resources :admin_users, except: :destroy
     resources :volunteers, except: :destroy
     resources :students, except: :destroy
+    resources :tickets, except: :destroy do
+      member do
+        post :resolve
+      end
+    end
 
     match "imports/volunteers", to: "imports#volunteers", via: :post
   end
