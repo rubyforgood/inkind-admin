@@ -46,6 +46,17 @@ describe ExportToCsv do
         "2","Rodolfo","Santos","31","Brazil"
       CSV
     end
+
+    it "supports null safe nested columns" do
+      headers = %w[id middle_name]
+      columns = %w[id identity.middle.name]
+
+      expect(fake_person.export_to_csv(collection, headers: headers, columns: columns)).to eq <<~CSV
+        "id","middle_name"
+        "1",""
+        "2",""
+      CSV
+    end
   end
 
   context "when to_csv method is available" do
