@@ -1,5 +1,9 @@
 module AuthenticationStrategies
   class UserToken < Warden::Strategies::Base
+    def store?
+      false
+    end
+
     def valid?
       bearer_token.present?
     end
