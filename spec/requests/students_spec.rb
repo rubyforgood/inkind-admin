@@ -20,7 +20,7 @@ RSpec.describe "/admin/students", type: :request do
           create(:student, first_name: "Campbell", last_name: "McClure", email: "laila@koelpin.io", status: :active, date_of_birth: Date.new(2010, 8, 6))
           create(:student, first_name: "Indigo", last_name: "Torp", email: "denese.mcglynn@breitenberg.io", status: :inactive, date_of_birth: Date.new(2012, 7, 7))
 
-          get admin_students_url, params: { format: :csv }
+          get admin_students_url, params: {format: :csv}
 
           expect(response.header["Content-Type"]).to include "text/csv"
           expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"students-2021-10-14.csv\""

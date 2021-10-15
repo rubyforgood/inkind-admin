@@ -7,10 +7,10 @@ module ExportToCsv
         csv << headers
 
         collection.each do |obj|
-          if obj.respond_to?(:to_csv)
-            csv << obj.to_csv
+          csv << if obj.respond_to?(:to_csv)
+            obj.to_csv
           else
-            csv << columns.map { |column| column.split(".").inject(obj, :send) }
+            columns.map { |column| column.split(".").inject(obj, :send) }
           end
         end
       end
