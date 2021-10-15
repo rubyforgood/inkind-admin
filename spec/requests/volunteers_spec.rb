@@ -29,7 +29,7 @@ RSpec.describe "/admin/volunteers", type: :request do
 
           create(:support_ticket, requestor: volunteer2)
 
-          get admin_volunteers_url, params: { format: :csv }
+          get admin_volunteers_url, params: {format: :csv}
 
           expect(response.header["Content-Type"]).to include "text/csv"
           expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"volunteers-2021-10-14.csv\""
