@@ -34,6 +34,9 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Yarn Install
+        run: yarn install
+
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
