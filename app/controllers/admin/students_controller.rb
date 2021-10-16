@@ -1,7 +1,7 @@
 module Admin
   class StudentsController < ApplicationController
     def index
-      @students = Student.all.order(:last_name)
+      @students = Student.order(:last_name)
 
       respond_to do |format|
         format.html
