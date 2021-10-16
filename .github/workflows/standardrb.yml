@@ -1,4 +1,4 @@
-name: standardrb lint
+name: lint
 
 on:
   push:
