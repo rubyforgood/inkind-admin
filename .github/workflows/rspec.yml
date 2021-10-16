@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  rspec:
+  test:
     runs-on: ubuntu-latest
 
     services:
