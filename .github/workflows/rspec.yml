@@ -29,9 +29,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2.3.4
 
-      - name: Setup Yarn
-        uses: borales/actions-yarn@v2.3.0
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -51,6 +48,7 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_PORT: 5432
         run: |
+          yarn
           bin/rake db:create
           bin/rake db:schema:load
 
