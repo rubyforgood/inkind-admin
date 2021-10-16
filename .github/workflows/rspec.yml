@@ -34,6 +34,9 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Yarn Install
+        run: yarn install
+
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
@@ -48,7 +51,6 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_PORT: 5432
         run: |
-          yarn
           bin/rake db:create
           bin/rake db:schema:load
 
