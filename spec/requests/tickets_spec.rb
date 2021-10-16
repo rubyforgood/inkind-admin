@@ -38,10 +38,11 @@ RSpec.describe "/admin/tickets", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Support Ticket" do
+      it "creates an admin Support Ticket", :aggregate_failures do
         expect do
           post admin_tickets_path, params: {support_ticket: valid_attributes}
         end.to change(SupportTicket, :count).by(1)
+        expect(SupportTicket.last.category).to eq "admin"
       end
 
       it "redirects to support tickets index" do

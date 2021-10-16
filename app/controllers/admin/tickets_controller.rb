@@ -20,6 +20,7 @@ module Admin
 
     def create
       @ticket = SupportTicket.new(ticket_params)
+      @ticket.category = :admin
 
       if @ticket.valid?
         @ticket.save!
