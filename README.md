@@ -1,3 +1,6 @@
+[![rspec](https://github.com/rubyforgood/inkind-admin/workflows/rspec/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/rspec.yml)
+[![linting](https://github.com/rubyforgood/inkind-admin/actions/workflows/ruby_lint.yml/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/ruby_lint.yml)
+
 # InKind - Supporting Community Education Partnerships
 
 This repository is the backend code for an application named InKind, which is a [Ruby For Good](https://rubyforgood.org/) project serving [Community Education Partnerships](https://www.cep.ngo/) (CEP).
