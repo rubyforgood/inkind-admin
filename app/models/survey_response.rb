@@ -7,4 +7,6 @@ class SurveyResponse < ApplicationRecord
   has_many :question_responses, class_name: "SurveyQuestionResponse", dependent: :destroy
 
   validates :volunteer, :student, :survey, presence: true
+
+  enum status: {incomplete: 0, complete: 1}
 end

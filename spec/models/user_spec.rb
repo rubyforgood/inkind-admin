@@ -59,9 +59,9 @@ RSpec.describe User, type: :model do
       expect(user.last_seen).to be_nil
     end
 
-    it "returns the created date of the newest survey response " do
-      create(:survey_response, volunteer: user, created_at: DateTime.new(2021, 10, 15, 10, 35, 47))
-      create(:survey_response, volunteer: user, created_at: DateTime.new(2021, 10, 15, 11, 35, 47))
+    it "returns the updated time of the latest survey response " do
+      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 15, 10, 35, 47))
+      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 15, 11, 35, 47))
 
       expect(user.last_seen).to eq DateTime.new(2021, 10, 15, 11, 35, 47)
     end
@@ -69,9 +69,9 @@ RSpec.describe User, type: :model do
 
   context "#completed_surveys" do
     it "returns completed survey responses of the user" do
-      completed1 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
+      completed1 = create(:survey_response, volunteer: user, status: :complete)
       create(:survey_response, volunteer: user)
-      complted2 = create(:survey_response, volunteer: user, meeting_duration: create(:meeting_duration))
+      complted2 = create(:survey_response, volunteer: user, status: :complete)
 
       expect(user.completed_surveys).to match_array [completed1, complted2]
     end

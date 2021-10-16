@@ -47,10 +47,10 @@ class User < ApplicationRecord
   end
 
   def last_seen
-    survey_responses.maximum(:created_at)
+    survey_responses.maximum(:updated_at)
   end
 
   def completed_surveys
-    survey_responses.joins(:meeting_duration)
+    survey_responses.where(status: :complete)
   end
 end
