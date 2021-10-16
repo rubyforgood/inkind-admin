@@ -1,7 +1,7 @@
 module Admin
   class VolunteersController < ApplicationController
     def index
-      @volunteers = User.where(role: :volunteer)
+      @volunteers = User.where(role: :volunteer).order(:last_name)
 
       respond_to do |format|
         format.html
