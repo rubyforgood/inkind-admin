@@ -1,7 +1,7 @@
 module Admin
   class TicketsController < ApplicationController
     def index
-      @tickets = SupportTicket.all
+      @tickets = SupportTicket.all.order(:created_at)
 
       respond_to do |format|
         format.html

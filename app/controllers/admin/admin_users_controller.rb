@@ -1,7 +1,7 @@
 module Admin
   class AdminUsersController < ApplicationController
     def index
-      @admin_users = User.where(role: :admin)
+      @admin_users = User.where(role: :admin).order(:last_name)
     end
 
     def new
