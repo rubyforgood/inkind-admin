@@ -1,7 +1,8 @@
 en:
-  title: "InKind Admin"
+  title: "INKIND"
   user_menu:
     edit_profile: "Edit Profile"
+    edit_organization: "Edit Organization"
     logout: "Logout"
     login: "Login"
   magic_link_mailer:
