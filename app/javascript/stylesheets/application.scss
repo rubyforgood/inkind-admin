@@ -1,5 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+    font-family: "Nunito"
+}
+
 #wrapper {
     overflow-x: hidden;
 }
@@ -16,6 +20,7 @@
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    color: white;
 }
 
 #sidebar-wrapper .list-group {
@@ -24,6 +29,18 @@
 
 #page-content-wrapper {
     min-width: 100vw;
+}
+
+.inkind-logo {
+    font-family: "Tenor Sans";
+}
+
+.dark-purple {
+    background-color: #311B92
+}
+
+#navbarDropdown {
+    color: white;
 }
 
 #topbar .avatar {
