@@ -8,7 +8,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
         <td>
           <%= admin_user.status %>
         </td>
-        <td>
+        <td class="text-center teal-text">
           <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
 
           <% if admin_user.active? %>

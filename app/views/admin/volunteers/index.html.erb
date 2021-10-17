@@ -12,7 +12,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -30,9 +30,9 @@
         <td>
           <%= volunteer.status %>
         </td>
-        <td>
+        <td class="text-center teal-text">
           <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "Send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
 
           <% if volunteer.active? %>
             <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
