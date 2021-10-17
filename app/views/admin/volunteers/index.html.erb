@@ -5,46 +5,7 @@
 </button>
 <%= link_to 'Export', admin_volunteers_path(format: :csv), class: "btn btn-secondary m-2" %>
 
-<table class="table m-4">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @volunteers.each do |volunteer| %>
-      <tr scope="row">
-        <td>
-          <%= volunteer.name %>
-        </td>
-        <td>
-          <%= volunteer.email %>
-        </td>
-        <td>
-          <%= volunteer.phone_number %>
-        </td>
-        <td>
-          <%= volunteer.status %>
-        </td>
-        <td>
-          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
-
-          <% if volunteer.active? %>
-            <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% else %>
-            <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% end %>
-
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "volunteers_table", volunteers: @volunteers %>
 
 <%= render(
         layout: "admin/shared/csv_import_modal",

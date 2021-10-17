@@ -51,6 +51,24 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: 0;
 }
 
+.sort {
+  position: absolute;
+  top: 5px;
+  left: -1rem;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.sort-desc {
+  border-top: 8px solid #fff;
+}
+
+.sort-asc {
+  border-bottom: 8px solid #fff;
+}
+
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
