@@ -27,6 +27,10 @@ body {
     width: 15rem;
 }
 
+.list-group-item {
+    border: none;
+}
+
 #page-content-wrapper {
     min-width: 100vw;
 }
@@ -64,4 +68,28 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         margin-left: -15rem;
     }
+}
+
+.list-group-item.active {
+    color: #495057;
+    background-color: #ede7f6;
+}
+
+.table-gray {
+    color: #a6b6be;
+    background-color: #f6f8fa;
+}
+
+.nav-link {
+    svg {
+        path {
+            fill: #ede7f6;
+        }
+    }
+}
+
+.btn-purple {
+    color: #fff;
+    background-color: #311B92;
+    border-color: #311B92;
 }
