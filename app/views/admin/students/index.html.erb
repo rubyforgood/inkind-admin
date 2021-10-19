@@ -1,5 +1,14 @@
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-2">
+      <h3>Students</h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to 'ADD NEW', new_admin_student_path, class: "btn btn-purple m-2" %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Add Student', new_admin_student_path, class: "btn btn-secondary m-2" %>
 <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
   Import
 </button>
