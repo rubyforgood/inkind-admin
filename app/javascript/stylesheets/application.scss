@@ -1,7 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
+$teal: #00838F;
+$dark-purple: #311B92;
+
 body {
-    font-family: "Nunito"
+    font-family: "Nunito";
+}
+
+a {
+    color: $teal;
+}
+
+.teal-text {
+   color: $teal;
 }
 
 #wrapper {
@@ -40,7 +51,7 @@ body {
 }
 
 .dark-purple {
-    background-color: #311B92
+    background-color: $dark-purple;
 }
 
 #navbarDropdown {

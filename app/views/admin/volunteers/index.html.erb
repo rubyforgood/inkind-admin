@@ -4,7 +4,7 @@
       <h3>Volunteers</h3>
     </div>
     <div class="col-2 offset-8">
-      <%= link_to 'ADD NEW', new_admin_volunteer_path, class: "btn btn-purple m-2"  %>
+      <%= link_to 'Add New', new_admin_volunteer_path, class: "btn btn-purple m-2"  %>
     </div>
   </div>
 </div>
@@ -16,11 +16,11 @@
 <table class="table m-4">
   <thead class="table-gray">
     <tr>
-      <th scope="col">NAME</th>
-      <th scope="col">EMAIL</th>
-      <th scope="col">PHONE</th>
-      <th scope="col">STATUS</th>
-      <th scope="col">ACTION</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -38,9 +38,9 @@
         <td>
           <%= volunteer.status %>
         </td>
-        <td>
+        <td class="text-center teal-text">
           <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "Send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
 
           <% if volunteer.active? %>
             <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>

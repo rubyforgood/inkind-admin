@@ -10,7 +10,7 @@
       <th scope="col">Created At</th>
       <th scope="col">Description</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -31,8 +31,8 @@
         <td>
           <%= ticket.status.capitalize %>
         </td>
-        <td>
-          <%= link_to "view", admin_ticket_path(ticket) %>
+        <td class="text-center teal-text">
+          <%= link_to "View", admin_ticket_path(ticket) %>
         </td>
       </tr>
     <% end %>

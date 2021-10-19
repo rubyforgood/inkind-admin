@@ -1,6 +1,6 @@
 <div id="sidebar-wrapper" class="border-end bg-white">
   <div class="list-group list-group-flush">
-    <%= link_to root_path, class: "list-group-item list-group-item-action active p-3" do %>
+    <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
       <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_home_24_regular.svg').read %> Home
     <% end %>
     <%= link_to admin_students_path, class: "list-group-item list-group-item-action p-3" do %>
@@ -15,5 +15,6 @@
     <%= link_to admin_tickets_path, class: "list-group-item list-group-item-action p-3" do %>
       <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_ticket_diagonal_24_regular.svg').read %> Tickets
     <% end %>
+    <small class="list-group-item list-group-item-light p-3">&copy; 2021 <strong>Made by Ruby for Good</strong></small>
   </div>
 </div>
