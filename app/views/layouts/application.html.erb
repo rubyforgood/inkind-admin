@@ -17,11 +17,12 @@
   </head>
 
   <body>
+    <%= render "layouts/application/topbar" %>
+
     <div class="d-flex" id="wrapper">
       <%= render "layouts/application/sidebar" %>
 
       <div id="page-content-wrapper">
-        <%= render "layouts/application/topbar" %>
 
         <div class="container-fluid p-3">
           <%= flash_banner(:alert, flash[:alert]) %>
