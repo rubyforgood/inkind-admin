@@ -1,18 +1,26 @@
-
-<%= link_to 'Add Volunteer', new_admin_volunteer_path, class: "btn btn-secondary m-2"  %>
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-2">
+      <h3>Volunteers</h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to 'ADD NEW', new_admin_volunteer_path, class: "btn btn-purple m-2"  %>
+    </div>
+  </div>
+</div>
 <button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
   Import
 </button>
 <%= link_to 'Export', admin_volunteers_path(format: :csv), class: "btn btn-secondary m-2" %>
 
 <table class="table m-4">
-  <thead>
+  <thead class="table-gray">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">ACTION</th>
     </tr>
   </thead>
   <tbody>
@@ -31,8 +39,8 @@
           <%= volunteer.status %>
         </td>
         <td>
-          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+          <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
+          <%= link_to "Send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
 
           <% if volunteer.active? %>
             <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
