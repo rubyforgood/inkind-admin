@@ -1,10 +1,19 @@
 <div id="sidebar-wrapper" class="border-end bg-white">
-  <div class="sidebar-heading border-bottom dark-purple inkind-logo"><%= t(:title) %></div>
   <div class="list-group list-group-flush">
-    <%= link_to "Dashboard", root_path, class: "list-group-item list-group-item-action list-group-item-light p-3" %>
-    <%= link_to "Students", admin_students_path, class: "list-group-item list-group-item-action list-group-item-light p-3" %>
-    <%= link_to "Volunteers", admin_volunteers_path, class: "list-group-item list-group-item-action list-group-item-light p-3" %>
-    <%= link_to "Admins", admin_admin_users_path, class: "list-group-item list-group-item-action list-group-item-light p-3" %>
-    <%= link_to "Tickets", admin_tickets_path, class: "list-group-item list-group-item-action list-group-item-light p-3" %>
+    <%= link_to root_path, class: "list-group-item list-group-item-action active p-3" do %>
+      <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_home_24_regular.svg').read %> Home
+    <% end %>
+    <%= link_to admin_students_path, class: "list-group-item list-group-item-action p-3" do %>
+      <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_people_24_regular.svg').read %> Students
+    <% end %>
+    <%= link_to admin_volunteers_path, class: "list-group-item list-group-item-action p-3" do %>
+      <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_people_community_24_regular.svg').read %> Volunteers
+    <% end %>
+    <%= link_to admin_volunteers_path, class: "list-group-item list-group-item-action p-3" do %>
+      <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_person_accounts_24_regular.svg').read %> Admins
+    <% end %>
+    <%= link_to admin_tickets_path, class: "list-group-item list-group-item-action p-3" do %>
+      <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'regular', 'ic_fluent_ticket_diagonal_24_regular.svg').read %> Tickets
+    <% end %>
   </div>
 </div>
