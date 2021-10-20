@@ -1,9 +1,9 @@
 <nav id="topbar" class="navbar navbar-expand-lg navbar-dark dark-purple border-bottom">
   <div class="container-fluid">
 
-    <a class="navbar-brand dark-purple inkind-logo">
+    <%= link_to root_path, class: "navbar-brand dark-purple inkind-logo" do %>
       <%= t(:title) %>
-    </a>
+    <% end %>
 
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col">
               <a class="nav-link" href="#">
-                <%= render inline: Rails.root.join('app', 'assets', 'images', 'fluent_icons', 'solid', 'ic_fluent_alert_24_filled.svg').read %>
+                <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'alert_24_filled.svg').read %>
               </a>
             </div>
             <div class="col">
