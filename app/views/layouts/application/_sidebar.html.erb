@@ -1,33 +1,33 @@
 <div id="sidebar-wrapper" class="bg-white">
   <div class="list-group list-group-flush">
-    <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'home_20_regular.svg').read %> Home
+    <%= link_to root_path, class: "list-group-item list-group-item-action p-3 active" do %>
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'home_20_filled.svg').read %> <span class="">Home</span>
     <% end %>
 
     <%= link_to admin_volunteers_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_community_20_regular.svg').read %> Volunteers
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_20_regular.svg').read %> <span class="sidebar-options">Volunteers</span>
     <% end %>
 
     <%= link_to admin_students_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_20_regular.svg').read %> Students
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_community_20_regular.svg').read %> <span class="sidebar-options">Students</span>
     <% end %>
 
     <%= link_to admin_admin_users_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_toolbox_20_regular.svg').read %> Admins
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_toolbox_20_regular.svg').read %> <span class="sidebar-options">Admins</span>
     <% end %>
 
     <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_regular.svg').read %> Surveys
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_regular.svg').read %> <span class="sidebar-options">Surveys</span>
     <% end %>
     
     <%= link_to admin_tickets_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'ticket_diagonal_20_regular.svg').read %> Tickets
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'ticket_diagonal_20_regular.svg').read %> <span class="sidebar-options">Tickets</span>
     <% end %>
     
     <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
-      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'content_view_20_regular.svg').read %> Reports
+      <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'content_view_20_regular.svg').read %> <span class="sidebar-options">Reports</span>
     <% end %>
 
-    <small class="list-group-item list-group-item-light p-3">&copy; 2021 <strong>Made by Ruby for Good</strong></small>
+    <small class="list-group-item list-group-item-light p-3"><div>&copy; 2021 Built with love 💙</div><div>by Ruby for Good.</div></small>
   </div>
 </div>
