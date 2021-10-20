@@ -1,5 +1,18 @@
+<% content_for(:title) do %>
+  Admins
+<% end %>
 
-<%= link_to 'Add Ticket', new_admin_ticket_path, class: "btn btn-secondary m-2" %>
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to 'Add Ticket', new_admin_ticket_path, class: "btn btn-purple" %>
+    </div>
+  </div>
+</div>
+
 <%= link_to 'Export', admin_tickets_path(format: :csv), class: "btn btn-secondary m-2" %>
 
 <table class="table m-4">

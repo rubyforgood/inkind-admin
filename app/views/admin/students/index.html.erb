@@ -1,10 +1,14 @@
+<% content_for(:title) do %>
+  Students
+<% end %>
+
 <div class="container-fluid">
   <div class="row justify-content-around">
     <div class="col-2">
-      <h3>Students</h3>
+      <h3><%= page_header_title %></h3>
     </div>
     <div class="col-2 offset-8">
-      <%= link_to 'ADD NEW', new_admin_student_path, class: "btn btn-purple m-2" %>
+      <%= link_to 'Add new', new_admin_student_path, class: "btn btn-purple" %>
     </div>
   </div>
 </div>
