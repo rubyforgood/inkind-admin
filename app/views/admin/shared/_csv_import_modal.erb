@@ -2,34 +2,43 @@
   <div class="modal fade" id="csvImportModal" tabindex="-1"  aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"><%= title %></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header text-center">
+          <h3 class="modal-title w-100"><%= title %></h3>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body pb-0">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <h6>Download example CSV file</h6>
+              <h6 id="dark-gray">STEP 1</h6>
+              <h6 class="fw-bold">Download example CSV file</h6>
               <%= yield %>
             </div>
             <div class="col-md-6 col-sm-12">
-              <h6>Upload your CSV file</h6>
-              <p>Click the choose file button and navigate to the saved file and select it.</li>
-              <p><%= f.file_field :file, accept: 'text/csv', class: 'form-control-file' %></p>
-              <p>Then click the "Import CSV" button to import your storage locations.</p>
+              <h6 id="dark-gray">STEP 2</h6>
+              <h6 class="fw-bold">Upload your CSV file</h6>
+              <ul>
+                <li>Click the choose file button and navigate to the saved file and select it.</li>
+                <div class="my-3">
+                  <%= button_tag class: "btn btn-gray-secondary col-12" do %>
+                    <% "Browse".upcase %>
+                  <% end %>
+                  <div>No file selected</div>
+                </div>
+                <li>Then click the "Import CSV" button to import your storage locations.</li>
+              </ul>
             </div>
           </div>
         </div>
         <div class="modal-body pt-0">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <%= link_to csv_template_url, format: :csv, class: "btn btn-secondary" do %>
-                Download sample CSV
+              <%= link_to csv_template_url, format: :csv, class: "btn btn-purple-primary col-12" do %>
+                <% "Download sample CSV".upcase %>
               <% end %>
             </div>
             <div class="col-md-6 col-sm-12">
-              <%= button_tag class: "btn btn-secondary" do %>
-                Import CSV
+              <%= button_tag class: "btn btn-gray-secondary col-12" do %>
+                <% "Import #{page_header_title.singularize} CSV".upcase %>
               <% end %>
             </div>
           </div>
