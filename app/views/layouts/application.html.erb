@@ -17,21 +17,13 @@
   </head>
 
   <body>
-    <div class="d-flex" id="wrapper">
+    <%= render "layouts/application/topbar" %>
+    <div class="d-flex my-2" id="wrapper">
       <%= render "layouts/application/sidebar" %>
-
-      <div id="page-content-wrapper">
-        <%= render "layouts/application/topbar" %>
-
-        <div class="container-fluid p-3">
-          <%= flash_banner(:alert, flash[:alert]) %>
-          <%= flash_banner(:notice, flash[:notice]) %>
-
-          <h1><%= page_header_title %></h1>
-
-          <%= yield %>
-
-        </div>
+      <div class="container-fluid p-3 content-wrapper">
+        <%= flash_banner(:alert, flash[:alert]) %>
+        <%= flash_banner(:notice, flash[:notice]) %>
+        <%= yield %>
       </div>
     </div>
   </body>

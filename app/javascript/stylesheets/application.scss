@@ -2,6 +2,10 @@
 
 $teal: #00838F;
 $dark-purple: #311B92;
+$medium-purple: #6C3CB2;
+$light-purple: #D1C4E9;
+$dark-gray: #66787F;
+$white: #FFF;
 
 body {
     font-family: "Nunito";
@@ -19,38 +23,24 @@ a {
     overflow-x: hidden;
 }
 
-#sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-}
-
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-    color: white;
-}
-
 #sidebar-wrapper .list-group {
     width: 15rem;
 }
 
-#page-content-wrapper {
-    min-width: 100vw;
+.list-group-item {
+    border: none;
 }
 
 .inkind-logo {
     font-family: "Tenor Sans";
+    font-size: 200%;
 }
 
 .dark-purple {
     background-color: $dark-purple;
 }
 
-#navbarDropdown {
+#navbarDropdownMenu {
     color: white;
 }
 
@@ -62,17 +52,75 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: 0;
 }
 
-@media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
+.list-group-item.active {
+    color: $dark-purple;
+    background-color: $light-purple;
+    font-weight: bold;
+}
 
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
+.list-group {
+    svg {
+        path {
+            fill: $dark-purple;
+        }
     }
+}
 
-    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-        margin-left: -15rem;
+.nav-link {
+    svg {
+        path {
+            fill: $light-purple;
+        }
     }
+}
+
+.btn-purple-primary {
+    color: $white;
+    background-color: $medium-purple;
+    border-color: $medium-purple;
+    &:hover {
+        color: $white;
+    }
+}
+
+.btn-purple-secondary {
+    color: black;
+    background-color: $white;
+    border-color: $medium-purple;
+}
+
+.hamburger-menu {
+    svg {
+        path {
+            fill: $white;
+        }
+    }
+}
+
+.sidebar-options {
+    color: $dark-gray;
+}
+
+.stylized-link {
+    text-decoration: none;
+}
+
+#profile-circle {
+    display: block;
+    position: relative;
+    line-height: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background: $light-purple;
+    color: $dark-gray;
+}
+
+.circle-text {
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bolder;
 }

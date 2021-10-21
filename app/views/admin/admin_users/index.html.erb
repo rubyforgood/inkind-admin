@@ -1,7 +1,20 @@
+<% content_for(:title) do %>
+  Admins
+<% end %>
 
-<%= link_to 'Add Admin', new_admin_admin_user_path, class: "btn btn-secondary m-4"  %>
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-lg-1 col-md-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-lg-1 offset-lg-10 col-md-2 offset-md-8">
+      <%= link_to 'Add new', new_admin_admin_user_path, class: "btn btn-purple-primary m-2"  %>
+    </div>
+  </div>
+</div>
 
-<table class="table m-4">
+
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>

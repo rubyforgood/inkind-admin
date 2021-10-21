@@ -1,11 +1,24 @@
+<% content_for(:title) do %>
+  Students
+<% end %>
 
-<%= link_to 'Add Student', new_admin_student_path, class: "btn btn-secondary m-2" %>
-<button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to 'Add new', new_admin_student_path, class: "btn btn-purple-primary m-2" %>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-purple-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
   Import
 </button>
-<%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-secondary m-2" %>
+<%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-purple-secondary m-2" %>
 
-<table class="table m-4">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
