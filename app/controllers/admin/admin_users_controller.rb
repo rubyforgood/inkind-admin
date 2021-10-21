@@ -1,6 +1,7 @@
 module Admin
   class AdminUsersController < ApplicationController
     def index
+      @nav = "Admins"
       @admin_users = User.where(role: :admin).order(:last_name)
     end
 

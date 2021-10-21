@@ -1,6 +1,7 @@
 module Admin
   class VolunteersController < ApplicationController
     def index
+      @nav = "Volunteers"
       @volunteers = User.where(role: :volunteer).order(:last_name)
 
       respond_to do |format|

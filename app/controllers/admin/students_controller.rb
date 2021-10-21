@@ -1,6 +1,7 @@
 module Admin
   class StudentsController < ApplicationController
     def index
+      @nav = "Students"
       @students = Student.order(:last_name)
 
       respond_to do |format|
