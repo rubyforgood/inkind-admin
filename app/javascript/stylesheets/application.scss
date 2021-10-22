@@ -5,7 +5,8 @@ $dark-purple: #311B92;
 $medium-purple: #6C3CB2;
 $light-purple: #D1C4E9;
 $dark-gray: #66787F;
-$white: #FFF;
+$light-gray: #EBEFF1;
+$white: #FFFFFF;
 
 body {
     font-family: "Nunito";
@@ -83,6 +84,15 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     }
 }
 
+.btn-gray-secondary {
+    color: $dark-gray;
+    background-color: $light-gray;
+    border-color: $light-gray;
+    &:hover {
+        color: $dark-gray;
+    }
+}
+
 .btn-purple-secondary {
     color: black;
     background-color: $white;
@@ -116,6 +126,10 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     color: $dark-gray;
 }
 
+#dark-gray {
+    color: $dark-gray;
+}
+
 .circle-text {
     position: absolute;
     bottom: 50%;
@@ -123,4 +137,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     text-align: center;
     font-size: 100%;
     font-weight: bolder;
+}
+
+.modal-dialog {
+    max-width: 600px;
 }
