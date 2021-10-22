@@ -19,10 +19,11 @@
               <ul>
                 <li>Click the choose file button and navigate to the saved file and select it.</li>
                 <div class="my-3">
-                  <%= button_tag class: "btn btn-gray-secondary col-12" do %>
-                    <% "Browse".upcase %>
-                  <% end %>
-                  <div>No file selected</div>
+                    <%= f.file_field :file, accept: 'text/csv', hidden: 'true' %>
+                    <%= label_tag 'file', class: 'btn btn-gray-secondary col-12' do %>
+                      <% "Browse".upcase %>
+                    <% end %>
+                    <span>No file selected</span>
                 </div>
                 <li>Then click the "Import CSV" button to import your storage locations.</li>
               </ul>
