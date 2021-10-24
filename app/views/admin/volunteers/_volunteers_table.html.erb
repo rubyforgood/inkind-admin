@@ -9,7 +9,17 @@
         scope="col"
         class="hover:cursor-pointer"
       >
-        <span>Name</span>
+        <span>First name</span>
+      </th>
+      <th
+        id="volunteers-last-name"
+        data-reflex="click->VolunteersTable#sort"
+        data-column="last_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Last name</span>
       </th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -21,7 +31,10 @@
     <% volunteers.each do |volunteer| %>
       <tr scope="row">
         <td>
-          <%= volunteer.name %>
+          <%= volunteer.first_name %>
+        </td>
+        <td>
+          <%= volunteer.last_name %>
         </td>
         <td>
           <%= volunteer.email %>
