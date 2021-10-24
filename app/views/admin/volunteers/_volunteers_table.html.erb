@@ -1,12 +1,12 @@
-<table class="table m-4 table-sortable" id="volunteers">
-  <thead>
+<table class="table" id="volunteers">
+  <thead class="table-gray">
     <tr>
       <th
         id="volunteers-first-name"
         data-reflex="click->VolunteersTable#sort"
         data-column="first_name"
         data-direction="asc"
-        <%# scope="col" %>
+        scope="col"
         class="hover:cursor-pointer"
       >
         <span>Name</span>
@@ -14,7 +14,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -32,9 +32,9 @@
         <td>
           <%= volunteer.status %>
         </td>
-        <td>
-          <%= link_to "edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "send link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+        <td class="text-center teal-text">
+          <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
+          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
 
           <% if volunteer.active? %>
             <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
