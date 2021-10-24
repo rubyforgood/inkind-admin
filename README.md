@@ -61,6 +61,7 @@ We're in #team-inkind
 #### Front-end
 
 1. Run `yarn install`
+1. You have to enable Redis cache in your development environment just once before a server will work. To do this, run: `bin/rails dev:cache`
 
 #### Server
 
