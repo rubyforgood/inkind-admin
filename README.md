@@ -39,6 +39,12 @@ We're in #team-inkind
   - If you're on Fedora/Cent Os use `sudo dnf install libpq-devel`. [If you prefer choose package of libpq-devel via rpm](https://pkgs.org/download/libpq-devel)
   - If you're on Windows, use the official [installer](https://www.postgresql.org/download/windows/) and accept all defaults.  Alternatively, a [Chocolatey](https://chocolatey.org/packages/postgresql) package is available with `choco install postgresql`.
 
+#### Redis
+
+1. Make sure that Redis is installed.
+  - If you're on MacOS, we recommend using homebrew, `brew install redis`
+  - If you're running another OS, use [installation docs on redis.io](https://redis.io/download)
+
 #### Downloading the Project
 
 1. Fork this repository and clone down a copy. See [our contributing guide](CONTRIBUTING.md) for detailed instructions.
