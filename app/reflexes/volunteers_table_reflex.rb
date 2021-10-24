@@ -32,37 +32,37 @@ class VolunteersTableReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
-    def sort
-      volunteers = User.where(role: :volunteer).order("#{element.dataset.column} #{element.dataset.direction}")
-      morph '#volunteers', render(partial: 'volunteers_table', locals: { volunteers: volunteers })
+  def sort
+    volunteers = User.where(role: :volunteer).order("#{element.dataset.column} #{element.dataset.direction}")
+    morph "#volunteers", render(partial: "volunteers_table", locals: {volunteers: volunteers})
 
-      set_sort_direction if next_direction(element.dataset.direction) == 'desc'
-      insert_indicator
-    end
+    set_sort_direction if next_direction(element.dataset.direction) == "desc"
+    insert_indicator
+  end
 
-    private
+  private
 
-    def next_direction(direction)
-      direction == 'asc' ? 'desc' : 'asc'
-    end
+  def next_direction(direction)
+    direction == "asc" ? "desc" : "asc"
+  end
 
-    def set_sort_direction
-      cable_ready
-        .set_dataset_property(
-          selector: "##{element.id}",
-          name: 'direction',
-          value: next_direction(element.dataset.direction)
+  def set_sort_direction
+    cable_ready
+      .set_dataset_property(
+        selector: "##{element.id}",
+        name: "direction",
+        value: next_direction(element.dataset.direction)
+      )
+  end
+
+  def insert_indicator
+    cable_ready
+      .prepend(
+        selector: "##{element.id}",
+        html: render(
+          partial: "admin/volunteers/sort_indicator",
+          locals: {direction: element.dataset.direction}
         )
-    end
-
-    def insert_indicator
-      cable_ready
-        .prepend(
-          selector: "##{element.id}",
-          html: render(
-            partial: 'admin/volunteers/sort_indicator',
-            locals: { direction: element.dataset.direction }
-          )
-        )
-    end
+      )
+  end
 end
