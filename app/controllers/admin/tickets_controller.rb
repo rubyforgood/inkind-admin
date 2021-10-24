@@ -1,6 +1,7 @@
 module Admin
   class TicketsController < ApplicationController
     def index
+      @nav = "Tickets"
       @tickets = SupportTicket.order(:created_at)
 
       respond_to do |format|

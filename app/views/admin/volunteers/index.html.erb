@@ -1,9 +1,29 @@
+<% content_for(:title) do %>
+  Volunteers
+<% end %>
 
-<%= link_to 'Add Volunteer', new_admin_volunteer_path, class: "btn btn-secondary m-2"  %>
-<button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
-  Import
-</button>
-<%= link_to 'Export', admin_volunteers_path(format: :csv), class: "btn btn-secondary m-2" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-md-2 offset-md-8">
+      <%= link_to "ADD NEW", new_admin_volunteer_path, class: "btn btn-purple-primary m-2"  %>
+    </div>
+  </div>
+
+  <div class="row">
+    <form class="col-md-3 form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="&#x1F50D;" aria-label="Search">
+    </form>
+    <div class="col-md-1 offset-6">
+      <button type="button" class="btn btn-purple-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">Import</button>
+    </div>
+    <div class="col-md-2">
+      <%= link_to 'Export', admin_volunteers_path(format: :csv), class: "btn btn-purple-secondary m-2" %>
+    </div>
+  </div>
+</div>
 
 <%= render "volunteers_table", volunteers: @volunteers %>
 
@@ -15,9 +35,9 @@
             csv_import_url: admin_imports_volunteers_path
         }
     ) do %>
-  <p>Open the CSV file with excel or your favourite spreadsheet program.</p>
-  <p>Delete the sample data and enter you partner agency names and addresses in the appropriate
-    columns.
-  </p>
-  <p>Save the file as a CSV file.</p>
+    <ul>
+      <li>Open the CSV file with excel or your favourite spreadsheet program.</li>
+      <li>Delete the sample data and enter you partner agency names and addresses in the appropriate columns.</li>
+      <li>Save the file as a CSV file.</li>
+    </ul>
 <% end %>

@@ -1,11 +1,24 @@
+<% content_for(:title) do %>
+  Students
+<% end %>
 
-<%= link_to 'Add Student', new_admin_student_path, class: "btn btn-secondary m-2" %>
-<button type="button" class="btn btn-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to "ADD NEW", new_admin_student_path, class: "btn btn-purple-primary m-2" %>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-purple-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
   Import
 </button>
-<%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-secondary m-2" %>
+<%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-purple-secondary m-2" %>
 
-<table class="table m-4">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -30,7 +43,7 @@
         <td>
           <%= student.status %>
         </td>
-        <td class="text-center">
+        <td class="text-center teal-text">
           <%= link_to "Edit", edit_admin_student_path(student) %> |
           <% if student.status == "active" %>
             <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>
@@ -51,10 +64,10 @@
             csv_import_url: admin_imports_students_path
         }
     ) do %>
-  <p>Open the CSV file with excel or your favourite spreadsheet program.</p>
-  <p>Delete the sample data and enter your student names and data in the appropriate
-    columns.
-  </p>
-  <p>Save the file as a CSV file.</p>
+    <ul>
+      <li>Open the CSV file with excel or your favourite spreadsheet program.</li>
+      <li>Delete the sample data and enter your student names and data in the appropriate columns.</li>
+      <li>Save the file as a CSV file.</li>
+    </ul>
 <% end %>
 

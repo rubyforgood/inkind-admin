@@ -37,3 +37,6 @@ app/.DS_Store
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore package-lock.json
+package-lock.json

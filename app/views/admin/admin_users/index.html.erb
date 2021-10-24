@@ -1,14 +1,26 @@
+<% content_for(:title) do %>
+  Admins
+<% end %>
 
-<%= link_to 'Add Admin', new_admin_admin_user_path, class: "btn btn-secondary m-4"  %>
+<div class="container-fluid">
+  <div class="row justify-content-around">
+    <div class="col-md-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+    <div class="col-2 offset-8">
+      <%= link_to "ADD NEW", new_admin_admin_user_path, class: "btn btn-purple-primary m-2"  %>
+    </div>
+  </div>
+</div>
 
-<table class="table m-4">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Status</th>
-      <th scope="col">Action</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,8 +38,8 @@
         <td>
           <%= admin_user.status %>
         </td>
-        <td>
-          <%= link_to "edit", edit_admin_admin_user_path(admin_user) %> |
+        <td class="text-center teal-text">
+          <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
 
           <% if admin_user.active? %>
             <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
