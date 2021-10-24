@@ -11,7 +11,7 @@
       <%= link_to "ADD NEW", new_admin_volunteer_path, class: "btn btn-purple-primary m-2"  %>
     </div>
   </div>
-  
+
   <div class="row">
     <form class="col-md-3 form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="&#x1F50D;" aria-label="Search">
@@ -25,46 +25,7 @@
   </div>
 </div>
 
-<table class="table">
-  <thead class="table-gray">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Status</th>
-      <th class="text-center" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @volunteers.each do |volunteer| %>
-      <tr scope="row">
-        <td>
-          <%= volunteer.name %>
-        </td>
-        <td>
-          <%= volunteer.email %>
-        </td>
-        <td>
-          <%= volunteer.phone_number %>
-        </td>
-        <td>
-          <%= volunteer.status %>
-        </td>
-        <td class="text-center teal-text">
-          <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
-
-          <% if volunteer.active? %>
-            <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% else %>
-            <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% end %>
-
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "volunteers_table", volunteers: @volunteers %>
 
 <%= render(
         layout: "admin/shared/csv_import_modal",

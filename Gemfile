@@ -13,6 +13,7 @@ gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails"
 gem "sass-rails", "~> 6.0"
+gem "turbolinks", "~> 5.2.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -39,3 +40,5 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "devise-security", "~> 0.16.0"
+
+gem "stimulus_reflex", "~> 3.4"

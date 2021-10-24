@@ -1,0 +1,62 @@
+<table class="table" id="volunteers">
+  <thead class="table-gray">
+    <tr>
+      <th
+        id="volunteers-first-name"
+        data-reflex="click->VolunteersTable#sort"
+        data-column="first_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>First name</span>
+      </th>
+      <th
+        id="volunteers-last-name"
+        data-reflex="click->VolunteersTable#sort"
+        data-column="last_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Last name</span>
+      </th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      <th class="text-center" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% volunteers.each do |volunteer| %>
+      <tr scope="row">
+        <td>
+          <%= volunteer.first_name %>
+        </td>
+        <td>
+          <%= volunteer.last_name %>
+        </td>
+        <td>
+          <%= volunteer.email %>
+        </td>
+        <td>
+          <%= volunteer.phone_number %>
+        </td>
+        <td>
+          <%= volunteer.status %>
+        </td>
+        <td class="text-center teal-text">
+          <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
+          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+
+          <% if volunteer.active? %>
+            <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% else %>
+            <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% end %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
