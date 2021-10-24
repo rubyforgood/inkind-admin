@@ -1,4 +1,4 @@
-<table class="table m-4" id="volunteers">
+<table class="table m-4 table-sortable" id="volunteers">
   <thead>
     <tr>
       <th
@@ -6,7 +6,8 @@
         data-reflex="click->VolunteersTable#sort"
         data-column="first_name"
         data-direction="asc"
-        scope="col"
+        <%# scope="col" %>
+        class="hover:cursor-pointer"
       >
         <span>Name</span>
       </th>
@@ -17,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @volunteers.each do |volunteer| %>
+    <% volunteers.each do |volunteer| %>
       <tr scope="row">
         <td>
           <%= volunteer.name %>

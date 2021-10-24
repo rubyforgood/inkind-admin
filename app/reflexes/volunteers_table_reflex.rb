@@ -33,7 +33,7 @@ class VolunteersTableReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com/reflexes#reflex-classes
 
     def sort
-      volunteers = VoluntUser.where(role: :volunteer).order("#{element.dataset.column} #{element.dataset.direction}")
+      volunteers = User.where(role: :volunteer).order("#{element.dataset.column} #{element.dataset.direction}")
       morph '#volunteers', render(partial: 'volunteers_table', locals: { volunteers: volunteers })
 
       set_sort_direction if next_direction(element.dataset.direction) == 'desc'
@@ -60,11 +60,9 @@ class VolunteersTableReflex < ApplicationReflex
         .prepend(
           selector: "##{element.id}",
           html: render(
-            partial: 'volunteers/sort_indicator',
+            partial: 'admin/volunteers/sort_indicator',
             locals: { direction: element.dataset.direction }
           )
         )
     end
-  end
-
 end
