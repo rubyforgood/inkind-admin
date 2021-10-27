@@ -3,4 +3,6 @@ class Survey < ApplicationRecord
   has_many :responses, class_name: "SurveyResponse", dependent: :destroy
 
   validates :name, presence: true
+
+  scope :complete, -> { where(status: "complete") }
 end

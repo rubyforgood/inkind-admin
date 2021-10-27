@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="container-fluid">
-  <div class="row justify-content-around">
+  <div class="row">
     <div class="col-2">
       <h3><%= page_header_title %></h3>
     </div>
@@ -30,7 +30,7 @@
         <%= survey.created_at.strftime('%m/%d/%Y') %>
       </td>
       <td>
-        <%= survey.responses.count %>
+        <%= survey.responses.complete.count %>
       </td>
       <td>
       </td>
