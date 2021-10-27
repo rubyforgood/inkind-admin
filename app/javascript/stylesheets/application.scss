@@ -145,16 +145,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
 .sort {
   position: relative;
-  top: 5px;
-  left: 3rem;
-  width: 0;
-  height: 0;
+  top: 15px;
+  left: -.65rem;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
 }
+
 .sort-desc {
   border-top: 8px solid #311B92;
 }
+
 .sort-asc {
   border-bottom: 8px solid #311B92;
 }

@@ -8,7 +8,7 @@ class StudentsTableReflex < ApplicationReflex
     morph "#students", render(partial: "students_table", locals: {students: students})
 
     set_sort_direction if next_direction(element.dataset.direction) == "desc"
-    # insert_indicator
+    insert_indicator
   end
 
   private
@@ -26,14 +26,14 @@ class StudentsTableReflex < ApplicationReflex
       )
   end
 
-  # def insert_indicator
-  #   cable_ready
-  #     .prepend(
-  #       selector: "##{element.id}",
-  #       html: render(
-  #         partial: "admin/students/sort_indicator",
-  #         locals: {direction: element.dataset.direction}
-  #       )
-  #     )
-  # end
+  def insert_indicator
+    cable_ready
+      .prepend(
+        selector: "##{element.id}",
+        html: render(
+          partial: "admin/students/sort_indicator",
+          locals: {direction: element.dataset.direction}
+        )
+      )
+  end
 end
