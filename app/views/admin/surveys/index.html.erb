@@ -1,0 +1,45 @@
+<% content_for(:title) do %>
+  Surveys
+<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <h3><%= page_header_title %></h3>
+    </div>
+  </div>
+</div>
+
+<table class="table" id="students">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Responses</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Status</th>
+      <th class="text-center" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <td>
+        <%= survey.name %>
+      </td>
+      <td>
+        <%= survey.created_at.strftime('%m/%d/%Y') %>
+      </td>
+      <td>
+        <%= survey.responses.complete.count %>
+      </td>
+      <td>
+        <%= survey.creator_name %>
+      </td>
+      <td>
+        <%= survey.status %>
+      </td>
+       <td>
+      </td>
+    <% end %>
+  </tbody>
+</table>

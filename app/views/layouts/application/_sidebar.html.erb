@@ -41,11 +41,11 @@
     <% end %>
 
     <% if @nav == "Surveys" %>
-      <%= link_to root_path, class: "list-group-item list-group-item-action p-3 active" do %>
+      <%= link_to admin_surveys_path, class: "list-group-item list-group-item-action p-3 active" do %>
         <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_filled.svg').read %> <span class="">Surveys</span>
       <% end %>
     <% else %>
-      <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
+      <%= link_to admin_surveys_path, class: "list-group-item list-group-item-action p-3" do %>
         <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_regular.svg').read %> <span class="sidebar-options">Surveys</span>
       <% end %>
     <% end %>
