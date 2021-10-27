@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StudentsTableReflex < ApplicationReflex
-
   def sort
     students = Student.order("#{element.dataset.column} #{element.dataset.direction}")
 
