@@ -1,0 +1,55 @@
+<table class="table" id="students">
+  <thead>
+    <tr>
+      <th
+        id="students-last-name"
+        data-reflex="click->StudentsTable#sort"
+        data-column="last_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span> Name </span>
+      </th>
+      <th
+        id="guardian-name"
+        data-reflex="click->StudentsTable#sort"
+        data-column="guardian_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span> Guardian Name </span>
+      </th>
+      <th scope="col">DOB</th>
+      <th scope="col">Status</th>
+      <th class="text-center" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% students.each do |student| %>
+      <tr scope="row">
+        <td>
+          <%= student.name %>
+        </td>
+        <td>
+          <%= student.guardian_name %>
+        </td>
+        <td>
+          <%= student.date_of_birth %>
+        </td>
+        <td>
+          <%= student.status %>
+        </td>
+        <td class="text-center teal-text">
+          <%= link_to "Edit", edit_admin_student_path(student) %> |
+          <% if student.status == "active" %>
+            <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>
+          <% else %>
+            <%= link_to "Activate", activate_admin_student_path(student), data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

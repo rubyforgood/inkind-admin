@@ -18,43 +18,7 @@
 </button>
 <%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-purple-secondary m-2" %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Guardian name</th>
-      <th scope="col">DOB</th>
-      <th scope="col">Status</th>
-      <th class="text-center" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
-      <tr scope="row">
-        <td>
-          <%= student.name %>
-        </td>
-        <td>
-          <%= student.guardian_name %>
-        </td>
-        <td>
-          <%= student.date_of_birth %>
-        </td>
-        <td>
-          <%= student.status %>
-        </td>
-        <td class="text-center teal-text">
-          <%= link_to "Edit", edit_admin_student_path(student) %> |
-          <% if student.status == "active" %>
-            <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>
-          <% else %>
-            <%= link_to "Activate", activate_admin_student_path(student), data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "students_table", students: @students %>
 
 <%= render(
         layout: "admin/shared/csv_import_modal",
