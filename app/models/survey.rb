@@ -5,4 +5,10 @@ class Survey < ApplicationRecord
   validates :name, presence: true
 
   scope :complete, -> { where(status: "complete") }
+
+  enum status: {Inactive: 0, Active: 1}
+
+  def creator_name
+    User.find(creator_id).name
+  end
 end
