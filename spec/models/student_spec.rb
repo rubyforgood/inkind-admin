@@ -7,6 +7,21 @@ RSpec.describe Student, type: :model do
     expect(create(:student)).to be_valid
   end
 
+  context "associations" do
+    it { is_expected.to have_many(:students_users) }
+    it { is_expected.to have_many(:users).through(:students_users) }
+    it { is_expected.to belong_to(:deactivator).class_name("User").optional(true) }
+  end
+
+  context "validations" do
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
+  end
+
+  context "enum" do
+    it { is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
+  end
+
   it "joins to users" do
     volunteer = create(:user, :volunteer)
     student = create(:student)
