@@ -6,26 +6,7 @@ class VolunteersTableReflex < ApplicationReflex
   def sort
     params[:order_by] = element.dataset.column
     params[:direction] = element.dataset.direction
-
-    volunteers = User.where(role: :volunteer).order("#{@order_by} #{@direction}")
-    @pagy, @volunteers = pagy(volunteers, page: @page)
-
     update_client
-    # prepare_variables
-
-    # assigns = {
-    #   order_by: @order_by,
-    #   direction: @direction,
-    #   page: @page,
-    #   pagy: @pagy,
-    #   volunteers: @volunteers
-    # }
-
-    # morph "#volunteers", render(partial: "volunteers_table", locals: {volunteers: volunteers})
-    # morph "#volunteers", render(partial: "volunteers_table", assigns: assigns)
-
-
-    # morph "#volunteers", render(partial: "volunteers_table", assigns: assigns)
   end
 
   def paginate
@@ -35,10 +16,7 @@ class VolunteersTableReflex < ApplicationReflex
 
   private
 
-  def do_assign()
-  end
-
-  def update_client()
+  def update_client
     prepare_variables
 
     volunteers = User.where(role: :volunteer).order("#{@order_by} #{@direction}")
@@ -52,16 +30,7 @@ class VolunteersTableReflex < ApplicationReflex
       volunteers: @volunteers
     }
 
-    uri = URI.parse([request.base_url, request.path].join)
-    uri.query = assigns.except(:volunteers, :pagy).to_query
-
-    morph :nothing
-
-    cable_ready
-      .inner_html(selector: "#volunteers", html: render(partial: "volunteers_table", assigns: assigns))
-      .push_state(url: uri.to_s)
-      .broadcast
-
-    # morph "#volunteers", render(partial: "volunteers_table", assigns: assigns)
+    morph "#volunteers", render(partial: "admin/volunteers/volunteers_table", assigns: assigns)
+    morph "#paginator", render(partial: "admin/shared/paginator", assigns: assigns)
   end
 end

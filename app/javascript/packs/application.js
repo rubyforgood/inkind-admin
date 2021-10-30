@@ -1,14 +1,8 @@
 require("@rails/ujs").start()
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
+require("turbolinks").start()
+require("@rails/activestorage").start()
 import "channels"
 import "controllers"
-
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
-
 import 'bootstrap'
 import "stylesheets/application.scss"
 
