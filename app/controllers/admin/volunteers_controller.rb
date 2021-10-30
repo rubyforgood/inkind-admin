@@ -1,8 +1,13 @@
 module Admin
   class VolunteersController < ApplicationController
+    include Tabular
+
     def index
+      prepare_variables
+
       @nav = "Volunteers"
-      @volunteers = User.where(role: :volunteer).order(:last_name)
+      volunteers = User.where(role: :volunteer).order(:last_name)
+      @pagy, @volunteers = pagy(volunteers, page: @page)
 
       respond_to do |format|
         format.html

@@ -1,16 +1,17 @@
 <table class="table" id="volunteers">
   <thead class="table-gray">
     <tr>
-      <th
+            <th
         id="volunteers-first-name"
         data-reflex="click->VolunteersTable#sort"
         data-column="first_name"
-        data-direction="asc"
+        data-direction=<%= "#{direction}" %>
         scope="col"
         class="hover:cursor-pointer"
       >
-        <span>First name</span>
+        <span><%= "First name #{arrow :first_name}" %></span>
       </th>
+
       <th
         id="volunteers-last-name"
         data-reflex="click->VolunteersTable#sort"
@@ -19,7 +20,7 @@
         scope="col"
         class="hover:cursor-pointer"
       >
-        <span>Last name</span>
+        <span><%= "Last name #{arrow :last_name}" %></span>
       </th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -28,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    <% volunteers.each do |volunteer| %>
+    <% @volunteers.each do |volunteer| %>
       <tr scope="row">
         <td>
           <%= volunteer.first_name %>
@@ -60,3 +61,4 @@
     <% end %>
   </tbody>
 </table>
+<%= render "admin/shared/paginator" if @pagy.pages > 1 %>
