@@ -53,20 +53,10 @@
 
   <div class="row pr-3 pb-4">
     <div class="col-2">
-      <%= form.submit "Submit", class: "btn btn-secondary" %>
+      <%= link_to "CANCEL", admin_students_path, class: "btn btn-lg btn-purple-secondary" %>
     </div>
-    <div class="col-4">
-      <% if @student.id %>
-        <% if @student.status == "active" %>
-          <td>
-            <%= link_to "Deactivate", deactivate_admin_student_path(@student), class: "btn btn-secondary", data: { confirm: "Are you sure?" }  %>
-          </td>
-        <% else %>
-          <td>
-            <%= link_to "Activate", activate_admin_student_path(@student), class: "btn btn-secondary", data: { confirm: "Are you sure?" }  %>
-          </td>
-        <% end %>
-      <% end %>
+    <div class="col-2">
+      <%= form.submit "SAVE", class: "btn btn-lg btn-purple-primary" %>
     </div>
   </div>
 <% end %>
