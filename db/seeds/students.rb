@@ -1,8 +1,10 @@
 Student.destroy_all
+StudentVolunteerAssignment.destroy_all
+StudentStaffAssignment.destroy_all
 
 User
   .where(role: :volunteer)
-  .each do |user|
+  .each do |volunteer|
     3.times do
       student =
         Student.create(
@@ -15,8 +17,22 @@ User
           guardian_phone_number: Faker::PhoneNumber.phone_number,
           emergency_contact_name: Faker::Name.name,
           emergency_contact_phone_number: Faker::PhoneNumber.phone_number,
-          users: [user]
         )
+
+      StudentVolunteerAssignment.create!(
+        student: student,
+        volunteer: volunteer,
+        start_date: Date.current,
+        end_date: Date.new(3000),
+      )
+
+      StudentStaffAssignment.create!(
+        student: student,
+        staff: User.find_by(role: :admin),
+        start_date: Date.current - 1.week,
+        end_date: Date.new(3000),
+      )
+
       puts "Created student: #{student.name}"
     end
   end
