@@ -1,6 +1,6 @@
 Survey.destroy_all
 
-survey = Survey.create!(name: "Student Session", creator_id: 1, status: 1)
+survey = Survey.create!(name: "Student Session", creator: User.find_by(role: :admin), status: 1)
 
 question1 = SurveyQuestion.create!(
   survey: survey,
