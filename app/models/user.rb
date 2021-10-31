@@ -7,8 +7,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable,
     :password_expirable, :recoverable, :rememberable
 
-  has_many :students_users
-  has_many :students, through: :students_users
+  has_many :student_volunteer_assignments, inverse_of: :volunteer, foreign_key: :volunteer_id
+  has_many :students, through: :student_volunteer_assignments
+
+  has_many :student_staff_assignments, inverse_of: :staff, foreign_key: :staff_id
+  has_many :managed_students, through: :student_staff_assignments, source: :student
+
   has_many :survey_responses
   has_many :support_tickets, foreign_key: :requestor_id
 
