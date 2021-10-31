@@ -36,7 +36,7 @@
           <%= ticket.survey_response&.student&.name || "N/A" %>
         </td>
         <td>
-          <%= ticket.created_at %>
+          <%= ticket.created_at.strftime('%m/%d/%Y') %>
         </td>
         <td>
           <%= ticket.description %>
