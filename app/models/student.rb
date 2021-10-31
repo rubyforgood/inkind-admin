@@ -9,6 +9,24 @@ class Student < ApplicationRecord
 
   enum status: {active: 0, inactive: 1}
 
+  def active_student_volunteer_assignment
+    @active_student_volunteer_assignment ||=
+      StudentVolunteerAssignment.where(student: self).find_by("end_date > ?", Date.current)
+  end
+
+  def update_with_assignments!(student_attributes, volunteer_id)
+    transaction do
+      self.update(student_attributes)
+      if active_student_volunteer_assignment.present? &&
+         active_student_volunteer_assignment&.volunteer_id != volunteer_id.to_s
+        active_student_volunteer_assignment.update(end_date: Date.current)
+        StudentVolunteerAssignment.create(student: self, volunteer_id: volunteer_id, start_date: Date.current)
+      elsif active_student_volunteer_assignment.blank?
+        StudentVolunteerAssignment.create(student: self, volunteer_id: volunteer_id, start_date: Date.current)
+      end
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
