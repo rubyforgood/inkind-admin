@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :student_staff_assignments, inverse_of: :staff, foreign_key: :staff_id
   has_many :managed_students, through: :student_staff_assignments, source: :student
+  has_many :volunteers, -> { distinct }, through: :managed_students
 
   has_many :survey_responses
   has_many :support_tickets, foreign_key: :requestor_id
