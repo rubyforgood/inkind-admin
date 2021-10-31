@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:support_tickets) }
   end
 
+  context "validations" do
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
+  end
+
   context "enum" do
     it { is_expected.to define_enum_for(:status).with_values(active: 0, inactive: 1) }
     it { is_expected.to define_enum_for(:role).with_values(volunteer: 0, admin: 1) }

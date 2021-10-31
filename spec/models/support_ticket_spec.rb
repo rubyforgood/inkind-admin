@@ -5,6 +5,21 @@ RSpec.describe SupportTicket, type: :model do
     expect(create(:support_ticket)).to be_valid
   end
 
+  context "associations" do
+    it { is_expected.to belong_to(:requestor).class_name("User") }
+    it { is_expected.to belong_to(:closer).class_name("User").optional(true) }
+    it { is_expected.to belong_to(:survey_response).optional(true) }
+  end
+
+  context "validations" do
+    it { is_expected.to validate_presence_of(:description) }
+  end
+
+  context "enum" do
+    it { is_expected.to define_enum_for(:status).with_values(active: 0, closed: 1) }
+    it { is_expected.to define_enum_for(:category).with_values(survey_response: 0, admin: 1, contact_info: 2) }
+  end
+
   context "#close!(user)" do
     let(:user) { create(:user) }
     subject(:support_ticket) { create(:support_ticket) }
@@ -13,17 +28,17 @@ RSpec.describe SupportTicket, type: :model do
       expect(build(:support_ticket, status: :closed).close!(user)).to be_falsey
     end
 
-    it "udpates ticket's status to closed" do
+    it "updates ticket's status to closed" do
       support_ticket.close!(user)
       expect(support_ticket).to be_closed
     end
 
-    it "udpates ticket's closer" do
+    it "updates ticket's closer" do
       support_ticket.close!(user)
       expect(support_ticket.closer).to eq user
     end
 
-    it "udpates ticket's closed_at" do
+    it "updates ticket's closed_at" do
       freeze_time do
         support_ticket.close!(user)
         expect(support_ticket.closed_at).to eq Time.current
