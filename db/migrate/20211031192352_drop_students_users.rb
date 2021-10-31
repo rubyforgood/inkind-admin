@@ -3,5 +3,6 @@ class DropStudentsUsers < ActiveRecord::Migration[6.1]
     drop_table :students_users
   end
 
-  def down; end
+  def down
+  end
 end

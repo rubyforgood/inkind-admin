@@ -16,21 +16,21 @@ User
           guardian_name: Faker::Name.name,
           guardian_phone_number: Faker::PhoneNumber.phone_number,
           emergency_contact_name: Faker::Name.name,
-          emergency_contact_phone_number: Faker::PhoneNumber.phone_number,
+          emergency_contact_phone_number: Faker::PhoneNumber.phone_number
         )
 
       StudentVolunteerAssignment.create!(
         student: student,
         volunteer: volunteer,
         start_date: Date.current,
-        end_date: Date.new(3000),
+        end_date: Date.new(3000)
       )
 
       StudentStaffAssignment.create!(
         student: student,
         staff: User.find_by(role: :admin),
         start_date: Date.current - 1.week,
-        end_date: Date.new(3000),
+        end_date: Date.new(3000)
       )
 
       puts "Created student: #{student.name}"
