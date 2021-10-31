@@ -60,16 +60,6 @@
       <% end %>
     <% end %>
 
-    <% if @nav == "Reports" %>
-      <%= link_to root_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'content_view_20_filled.svg').read %> <span class="">Reports</span>
-      <% end %>
-    <% else %>
-      <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'content_view_20_regular.svg').read %> <span class="sidebar-options">Reports</span>
-      <% end %>
-    <% end %>
-
     <small class="list-group-item list-group-item-light p-3"><div>&copy; 2021 Built with love 💙</div><div>by <a class="stylized-link" href="https://rubyforgood.org/">Ruby for Good</a>.</div></small>
   </div>
 </div>

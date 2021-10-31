@@ -1,76 +1,62 @@
-
 <%= form_with(model: @student, url: path) do |form| %>
-
   <div class="row pr-3 pb-4">
-    <div class="col-4">
+    <div class="col-3">
       <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
     </div>
-  </div>
 
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
+    <div class="col-3">
       <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
     </div>
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :phone_number, class: "form-control", placeholder: "Phone Number" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :guardian_name, class: "form-control", placeholder: "Guardian Name" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :guardian_phone_number, class: "form-control", placeholder: "Guardian Phone Number" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :emergency_contact_name, class: "form-control", placeholder: "Emergency Contact Name" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :emergency_contact_phone_number, class: "form-control", placeholder: "Emergency Contact Phone Number" %>
-    </div>
-  </div>
-
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
+    <div class="col-6">
       <%= form.text_field :date_of_birth, class: "form-control", placeholder: "Date of Birth" %>
     </div>
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-1">
-      <%= form.submit "Submit", class: "btn btn-secondary" %>
+    <div class="col-6">
+      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
     </div>
-    <div class="col-4">
-      <% if @student.id %>
-        <% if @student.status == "active" %>
-          <td>
-            <%= link_to "Deactivate", deactivate_admin_student_path(@student), class: "btn btn-secondary", data: { confirm: "Are you sure?" }  %>
-          </td>
-        <% else %>
-          <td>
-            <%= link_to "Activate", activate_admin_student_path(@student), class: "btn btn-secondary", data: { confirm: "Are you sure?" }  %>
-          </td>
-        <% end %>
-      <% end %>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.text_field :phone_number, class: "form-control", placeholder: "Phone Number" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.text_field :guardian_name, class: "form-control", placeholder: "Guardian Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.text_field :guardian_phone_number, class: "form-control", placeholder: "Guardian Phone Number" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.text_field :emergency_contact_name, class: "form-control", placeholder: "Emergency Contact Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.text_field :emergency_contact_phone_number, class: "form-control", placeholder: "Emergency Contact Phone Number" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-2">
+      <%= link_to "CANCEL", admin_students_path, class: "btn btn-lg btn-purple-secondary" %>
+    </div>
+    <div class="col-2">
+      <%= form.submit "SAVE", class: "btn btn-lg btn-purple-primary" %>
     </div>
   </div>
 <% end %>

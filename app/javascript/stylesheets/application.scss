@@ -82,6 +82,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     &:hover {
         color: $white;
     }
+    width: 100%;
 }
 
 .btn-gray-secondary {
@@ -91,12 +92,14 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     &:hover {
         color: $dark-gray;
     }
+    width: 100%;
 }
 
 .btn-purple-secondary {
     color: black;
     background-color: $white;
     border-color: $medium-purple;
+    width: 100%;
 }
 
 .hamburger-menu {

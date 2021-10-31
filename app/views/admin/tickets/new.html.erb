@@ -1,5 +1,7 @@
 <div class="m-5 container">
-  <h2 class="mb-5 mr-5"> New Support Ticket</h2>
+  <%= link_to "Back", admin_tickets_path %>
+
+  <h2 class="my-4 mr-5">New Support Ticket</h2>
 
   <%= form_with(model: @ticket, url: admin_tickets_url) do |form| %>
     <div class="row pr-3 pb-4">
