@@ -3,20 +3,24 @@
 <% end %>
 
 <div class="container-fluid">
-  <div class="row justify-content-around">
-    <div class="col-2">
+  <div class="row">
+    <div class="col-md-2">
       <h3><%= page_header_title %></h3>
     </div>
-    <div class="col-2 offset-8">
-      <%= link_to "ADD NEW", new_admin_student_path, class: "btn btn-purple-primary m-2" %>
+    <div class="col-md-2 offset-md-8">
+      <%= link_to "ADD NEW", new_admin_student_path, class: "btn btn-purple-primary" %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-2 offset-md-8">
+      <button type="button" class="btn btn-purple-secondary" data-bs-toggle="modal" data-bs-target="#csvImportModal">IMPORT</button>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "EXPORT", admin_students_path(format: :csv), class: "btn btn-purple-secondary" %>
     </div>
   </div>
 </div>
-
-<button type="button" class="btn btn-purple-secondary m-2" data-bs-toggle="modal" data-bs-target="#csvImportModal">
-  Import
-</button>
-<%= link_to 'Export', admin_students_path(format: :csv), class: "btn btn-purple-secondary m-2" %>
 
 <%= render "students_table", students: @students %>
 
