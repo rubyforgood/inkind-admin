@@ -7,7 +7,6 @@
         data-column="first_name"
         data-direction=<%= "#{direction}" %>
         scope="col"
-        class="hover:cursor-pointer"
       >
         <span><%= "First name #{arrow :first_name}" %></span>
       </th>
@@ -16,9 +15,7 @@
         id="volunteers-last-name"
         data-reflex="click->VolunteersTable#sort"
         data-column="last_name"
-        data-direction="asc"
         scope="col"
-        class="hover:cursor-pointer"
       >
         <span><%= "Last name #{arrow :last_name}" %></span>
       </th>

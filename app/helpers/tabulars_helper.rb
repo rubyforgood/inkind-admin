@@ -3,7 +3,7 @@ module TabularsHelper
 
   def arrow(column_name)
     return if column_name.to_s != @order_by
-    @direction == "desc" ? "↑" : "↓"
+    @direction == "asc" ? "↑" : "↓"
   end
 
   def direction
