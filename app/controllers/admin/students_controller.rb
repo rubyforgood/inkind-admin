@@ -35,7 +35,11 @@ module Admin
     def update
       @student = Student.find(params[:id])
 
-      if @student.update_with_assignments!(students_params, params[:student][:volunteer_id])
+      if @student.update_with_assignments!(
+        student_attributes: students_params,
+        volunteer_id: params[:student][:volunteer_id],
+        staff_id: params[:student][:staff_id]
+      )
         redirect_to admin_students_url, notice: "Student was successfully updated."
       else
         flash[:alert] = format_errors(@student)
