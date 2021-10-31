@@ -15,17 +15,6 @@ RSpec.describe Survey, type: :model do
   end
 
   context "enum" do
-    it { is_expected.to define_enum_for(:status).with_values(Inactive: 0, Active: 1) }
-  end
-
-  describe ".complete" do
-    it "includes completed surveys" do
-      survey = create(:survey, status: 0)
-      expect(Survey.complete).to include(survey)
-    end
-
-    it "excludes incomplete surveys" do
-
-    end
+    it { is_expected.to define_enum_for(:status).with_values(inactive: 0, active: 1) }
   end
 end

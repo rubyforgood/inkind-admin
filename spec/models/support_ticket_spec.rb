@@ -12,7 +12,7 @@ RSpec.describe SupportTicket, type: :model do
   end
 
   context "validations" do
-    it { is_expected.to validate_presence_of(:description)}
+    it { is_expected.to validate_presence_of(:description) }
   end
 
   context "enum" do
