@@ -2,61 +2,61 @@
   <div class="list-group list-group-flush">
     <% if @nav == "Home" %>
       <%= link_to root_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'home_20_filled.svg').read %> <span class="">Home</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'home_20_filled.svg').read %> <span class="">Home</span>
       <% end %>
     <% else %>
       <%= link_to root_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'home_20_regular.svg').read %> <span class="sidebar-options">Home</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'home_20_regular.svg').read %> <span class="sidebar-options">Home</span>
       <% end %>
     <% end %>
 
     <% if @nav == "Volunteers" %>
       <%= link_to admin_volunteers_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_20_filled.svg').read %> <span class="">Volunteers</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_20_filled.svg').read %> <span class="">Volunteers</span>
       <% end %>
     <% else %>
       <%= link_to admin_volunteers_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_20_regular.svg').read %> <span class="sidebar-options">Volunteers</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_20_regular.svg').read %> <span class="sidebar-options">Volunteers</span>
       <% end %>
     <% end %>
 
     <% if @nav == "Students" %>
       <%= link_to admin_students_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_community_20_filled.svg').read %> <span class="">Students</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_community_20_filled.svg').read %> <span class="">Students</span>
       <% end %>
     <% else %>
       <%= link_to admin_students_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_community_20_regular.svg').read %> <span class="sidebar-options">Students</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_community_20_regular.svg').read %> <span class="sidebar-options">Students</span>
       <% end %>
     <% end %>
 
     <% if @nav == "Admins" %>
       <%= link_to admin_admin_users_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_toolbox_20_filled.svg').read %> <span class="">Admins</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_toolbox_20_filled.svg').read %> <span class="">Admins</span>
       <% end %>
     <% else %>
       <%= link_to admin_admin_users_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'people_toolbox_20_regular.svg').read %> <span class="sidebar-options">Admins</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'people_toolbox_20_regular.svg').read %> <span class="sidebar-options">Admins</span>
       <% end %>
     <% end %>
 
     <% if @nav == "Surveys" %>
       <%= link_to admin_surveys_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_filled.svg').read %> <span class="">Surveys</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'clipboard_bullet_list_ltr_20_filled.svg').read %> <span class="">Surveys</span>
       <% end %>
     <% else %>
       <%= link_to admin_surveys_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'clipboard_bullet_list_ltr_20_regular.svg').read %> <span class="sidebar-options">Surveys</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'clipboard_bullet_list_ltr_20_regular.svg').read %> <span class="sidebar-options">Surveys</span>
       <% end %>
     <% end %>
 
     <% if @nav == "Tickets" %>
       <%= link_to admin_tickets_path, class: "list-group-item list-group-item-action p-3 active" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'ticket_diagonal_20_filled.svg').read %> <span class="">Tickets</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'ticket_diagonal_20_filled.svg').read %> <span class="">Tickets</span>
       <% end %>
     <% else %>
       <%= link_to admin_tickets_path, class: "list-group-item list-group-item-action p-3" do %>
-        <%= render inline: Rails.root.join('node_modules', '@fluentui', 'svg-icons', 'icons', 'ticket_diagonal_20_regular.svg').read %> <span class="sidebar-options">Tickets</span>
+        <%= render inline: Rails.root.join('app', 'assets', 'images', 'icons', 'ticket_diagonal_20_regular.svg').read %> <span class="sidebar-options">Tickets</span>
       <% end %>
     <% end %>
 
