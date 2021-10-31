@@ -11,6 +11,11 @@ FactoryBot.define do
       role { User.roles[:admin] }
     end
 
+    factory :staff do
+      sequence(:email) { |n| "staff-#{n}@example.edu" }
+      role { User.roles[:admin] }
+    end
+
     factory :volunteer do
       sequence(:email) { |n| "volunteer-#{n}@example.edu" }
       role { User.roles[:volunteer] }
