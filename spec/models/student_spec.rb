@@ -8,8 +8,6 @@ RSpec.describe Student, type: :model do
   end
 
   context "associations" do
-    it { is_expected.to have_many(:students_users) }
-    it { is_expected.to have_many(:users).through(:students_users) }
     it { is_expected.to belong_to(:deactivator).class_name("User").optional(true) }
   end
 
@@ -26,7 +24,7 @@ RSpec.describe Student, type: :model do
     volunteer = create(:user, :volunteer)
     student = create(:student)
 
-    student.users << volunteer
+    create(:student_volunteer_assignment, student: student, volunteer: volunteer)
 
     expect(volunteer.students).to include(student)
   end

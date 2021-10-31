@@ -14,17 +14,20 @@ module Queries
     end
 
     describe ".resolve" do
-      let(:user) { create(:user) }
+      let(:volunteer) { create(:volunteer) }
       let!(:student) { create(:student) }
       let!(:other_student) { create(:student) }
       let!(:inactive_student) { create(:student, status: :inactive) }
 
-      before { user.students << [student, inactive_student] }
+      before do
+        create(:student_volunteer_assignment, student: student, volunteer: volunteer)
+        create(:student_volunteer_assignment, student: inactive_student, volunteer: volunteer)
+      end
 
       context "when signed in" do
-        before { sign_in(user) }
+        before { sign_in(volunteer) }
 
-        it "returns active students belonging to user", :aggregate_failures do
+        it "returns active students belonging to volunteer", :aggregate_failures do
           post "/graphql", params: {query: query}
 
           expect(response).to be_successful

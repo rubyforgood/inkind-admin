@@ -9,8 +9,6 @@ RSpec.describe User, type: :model do
 
   context "associations" do
     it { is_expected.to have_many(:survey_responses) }
-    it { is_expected.to have_many(:students_users) }
-    it { is_expected.to have_many(:students).through(:students_users) }
     it { is_expected.to have_many(:support_tickets) }
   end
 
