@@ -3,25 +3,17 @@ class Student < ApplicationRecord
 
   has_many :student_volunteer_assignments
   has_many :volunteers, through: :student_volunteer_assignments
+  has_one :active_student_volunteer_assignment, -> { where("end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
 
   has_many :student_staff_assignments
   has_many :staff, through: :student_staff_assignments
+  has_one :active_student_staff_assignment, -> { where("end_date > ?", Date.current) }, class_name: "StudentStaffAssignment"
 
   belongs_to :deactivator, class_name: "User", optional: true
 
   validates :first_name, :last_name, presence: true
 
   enum status: {active: 0, inactive: 1}
-
-  def active_student_volunteer_assignment
-    @active_student_volunteer_assignment ||=
-      StudentVolunteerAssignment.where(student: self).find_by("end_date > ?", Date.current)
-  end
-
-  def active_student_staff_assignment
-    @active_student_staff_assignment ||=
-      StudentStaffAssignment.where(student: self).find_by("end_date > ?", Date.current)
-  end
 
   def update_with_assignments!(student_attributes:, volunteer_id:, staff_id:)
     transaction do

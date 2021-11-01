@@ -12,6 +12,62 @@ RSpec.describe Student, type: :model do
     it { is_expected.to have_many(:student_volunteer_assignments) }
     it { is_expected.to have_many(:volunteers).through(:student_volunteer_assignments) }
     it { is_expected.to have_many(:student_staff_assignments) }
+
+    describe "#active_student_volunteer_assignment" do
+      it "returns assignment that is active" do
+        student = create(:student)
+        volunteer = create(:volunteer)
+        assignment = create(
+          :student_volunteer_assignment,
+          student: student,
+          volunteer: volunteer,
+          end_date: Date.current + 1.week
+        )
+
+        expect(student.active_student_volunteer_assignment).to eq assignment
+      end
+
+      it "returns nil when there is no active assignment" do
+        student = create(:student)
+        volunteer = create(:volunteer)
+        create(
+          :student_volunteer_assignment,
+          student: student,
+          volunteer: volunteer,
+          end_date: Date.current - 1.week
+        )
+
+        expect(student.active_student_volunteer_assignment).to eq nil
+      end
+    end
+
+    describe "#active_student_staff_assignment" do
+      it "returns assignment that is active" do
+        student = create(:student)
+        staff = create(:staff)
+        assignment = create(
+          :student_staff_assignment,
+          student: student,
+          staff: staff,
+          end_date: Date.current + 1.week
+        )
+
+        expect(student.active_student_staff_assignment).to eq assignment
+      end
+
+      it "returns nil when there is no active assignment" do
+        student = create(:student)
+        staff = create(:staff)
+        create(
+          :student_staff_assignment,
+          student: student,
+          staff: staff,
+          end_date: Date.current - 1.week
+        )
+
+        expect(student.active_student_staff_assignment).to eq nil
+      end
+    end
   end
 
   context "validations" do
@@ -57,62 +113,6 @@ RSpec.describe Student, type: :model do
       expect(student.status).to eq("inactive")
       expect(student.deactivated_at).to_not be_nil
       expect(student.deactivator_id).to eq(current_user.id)
-    end
-  end
-
-  describe "#active_student_volunteer_assignment" do
-    it "returns assignment that is active" do
-      student = create(:student)
-      volunteer = create(:volunteer)
-      assignment = create(
-        :student_volunteer_assignment,
-        student: student,
-        volunteer: volunteer,
-        end_date: Date.current + 1.week
-      )
-
-      expect(student.active_student_volunteer_assignment).to eq assignment
-    end
-
-    it "returns nil when there is no active assignment" do
-      student = create(:student)
-      volunteer = create(:volunteer)
-      create(
-        :student_volunteer_assignment,
-        student: student,
-        volunteer: volunteer,
-        end_date: Date.current - 1.week
-      )
-
-      expect(student.active_student_volunteer_assignment).to eq nil
-    end
-  end
-
-  describe "#active_student_staff_assignment" do
-    it "returns assignment that is active" do
-      student = create(:student)
-      staff = create(:staff)
-      assignment = create(
-        :student_staff_assignment,
-        student: student,
-        staff: staff,
-        end_date: Date.current + 1.week
-      )
-
-      expect(student.active_student_staff_assignment).to eq assignment
-    end
-
-    it "returns nil when there is no active assignment" do
-      student = create(:student)
-      staff = create(:staff)
-      create(
-        :student_staff_assignment,
-        student: student,
-        staff: staff,
-        end_date: Date.current - 1.week
-      )
-
-      expect(student.active_student_staff_assignment).to eq nil
     end
   end
 end
