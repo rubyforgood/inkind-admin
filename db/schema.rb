@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_184819) do
+ActiveRecord::Schema.define(version: 2021_10_31_192810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,28 @@ ActiveRecord::Schema.define(version: 2021_10_27_184819) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "student_staff_assignments", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "staff_id", null: false
+    t.date "start_date", default: -> { "CURRENT_DATE" }, null: false
+    t.date "end_date", default: "3000-01-01", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["staff_id"], name: "index_student_staff_assignments_on_staff_id"
+    t.index ["student_id"], name: "index_student_staff_assignments_on_student_id"
+  end
+
+  create_table "student_volunteer_assignments", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "volunteer_id", null: false
+    t.date "start_date", default: -> { "CURRENT_DATE" }, null: false
+    t.date "end_date", default: "3000-01-01", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_student_volunteer_assignments_on_student_id"
+    t.index ["volunteer_id"], name: "index_student_volunteer_assignments_on_volunteer_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -53,15 +75,6 @@ ActiveRecord::Schema.define(version: 2021_10_27_184819) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "deactivator_id"
     t.index ["deactivator_id"], name: "index_students_on_deactivator_id"
-  end
-
-  create_table "students_users", force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_students_users_on_student_id"
-    t.index ["user_id"], name: "index_students_users_on_user_id"
   end
 
   create_table "support_tickets", force: :cascade do |t|
@@ -158,8 +171,10 @@ ActiveRecord::Schema.define(version: 2021_10_27_184819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "students_users", "students"
-  add_foreign_key "students_users", "users"
+  add_foreign_key "student_staff_assignments", "students"
+  add_foreign_key "student_staff_assignments", "users", column: "staff_id"
+  add_foreign_key "student_volunteer_assignments", "students"
+  add_foreign_key "student_volunteer_assignments", "users", column: "volunteer_id"
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "survey_responses", "students"
   add_foreign_key "survey_responses", "surveys"

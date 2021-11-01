@@ -51,7 +51,31 @@
     </div>
   </div>
 
+  <label class="gray-text mt-4 mb-1">ASSIGN VOLUNTEER</label>
   <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.select(
+        :volunteer_id,
+        User.where(role: :volunteer).map { |volunteer| [volunteer.name, volunteer.id] },
+        { include_blank: "Select Volunteer", selected: @student.active_student_volunteer_assignment&.volunteer_id },
+        class: "form-select"
+      ) %>
+    </div>
+  </div>
+
+  <label class="gray-text mt-4 mb-1">ASSIGN STAFF CONTACT</label>
+  <div class="row pr-3 pb-4">
+    <div class="col-6">
+      <%= form.select(
+        :staff_id,
+        User.where(role: :admin).map { |staff| [staff.name, staff.id] },
+        { include_blank: "Select Staff", selected: @student.active_student_staff_assignment&.staff_id },
+        class: "form-select"
+      ) %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4 mt-4">
     <div class="col-2">
       <%= link_to "CANCEL", admin_students_path, class: "btn btn-lg btn-purple-secondary" %>
     </div>

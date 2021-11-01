@@ -1,17 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "/admin/students", type: :request do
-  before(:each) do
-    sign_in create(:user, role: :admin)
-  end
-
-  let(:valid_attributes) do
-    attributes_for(:student)
-  end
-
-  let(:invalid_attributes) do
-    attributes_for(:student, first_name: "", last_name: "")
-  end
+  before { sign_in(create(:user, role: :admin)) }
 
   describe "GET /index" do
     context "with format csv" do
@@ -34,16 +24,16 @@ RSpec.describe "/admin/students", type: :request do
     end
   end
 
-  describe "POST /create" do
+  describe "POST #create" do
     context "with valid parameters" do
       it "creates a new Student" do
         expect do
-          post admin_students_path, params: {student: valid_attributes}
+          post admin_students_path, params: {student: attributes_for(:student)}
         end.to change(Student, :count).by(1)
       end
 
       it "redirects to the created student" do
-        post admin_students_url, params: {student: valid_attributes}
+        post admin_students_url, params: {student: attributes_for(:student)}
         expect(response).to redirect_to(admin_students_url)
       end
     end
@@ -51,21 +41,68 @@ RSpec.describe "/admin/students", type: :request do
     context "with invalid parameters" do
       it "does not create a new student" do
         expect do
-          post admin_students_url, params: {student: invalid_attributes}
+          post admin_students_url, params: {student: attributes_for(:student, last_name: "")}
         end.to change(Student, :count).by(0)
       end
 
       it "renders a successful response" do
-        post admin_students_url, params: {student: invalid_attributes}
+        post admin_students_url, params: {student: attributes_for(:student, last_name: "")}
+        expect(response).to be_successful
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+    context "with invalid parameters" do
+      it "renders a successful response" do
+        student = Student.create(attributes_for(:student))
+        patch admin_student_url(student), params: {student: attributes_for(:student, last_name: "")}
         expect(response).to be_successful
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a successful response" do
-        volunteer = Student.create! valid_attributes
-        patch admin_student_url(volunteer), params: {student: invalid_attributes}
-        expect(response).to be_successful
+    context "assigns volunteer to student" do
+      it "affiliates a volunteer with the student", :aggregate_failures do
+        volunteer = create(:volunteer)
+        student = create(:student)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge("volunteer_id" => volunteer.id)}
+        end.to change(StudentVolunteerAssignment, :count).by(1)
+        expect(student.active_student_volunteer_assignment).to eq StudentVolunteerAssignment.last
+        expect(student.volunteers).to include(volunteer)
+      end
+
+      it "remove volunteer from student & mark end of assignment" do
+        volunteer = create(:volunteer)
+        student = create(:student)
+        student_volunteer_assignment = create(:student_volunteer_assignment, student: student, volunteer: volunteer)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes}
+        end.to_not change(StudentVolunteerAssignment, :count)
+        expect(student.active_student_volunteer_assignment).to eq nil
+        expect(student_volunteer_assignment.reload.end_date).to eq Date.current
+      end
+    end
+
+    context "assigns staff to student" do
+      it "affiliates a staff contact with the student", :aggregate_failures do
+        staff = create(:staff)
+        student = create(:student)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge("staff_id" => staff.id)}
+        end.to change(StudentStaffAssignment, :count).by(1)
+        expect(student.active_student_staff_assignment).to eq StudentStaffAssignment.last
+      end
+
+      it "remove staff from student & mark end of assignment" do
+        staff = create(:staff)
+        student = create(:student)
+        student_staff_assignment = create(:student_staff_assignment, student: student, staff: staff)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes}
+        end.to_not change(StudentStaffAssignment, :count)
+        expect(student.active_student_staff_assignment).to eq nil
+        expect(student_staff_assignment.reload.end_date).to eq Date.current
       end
     end
   end
