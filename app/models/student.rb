@@ -5,6 +5,7 @@ class Student < ApplicationRecord
   has_many :volunteers, through: :student_volunteer_assignments
 
   has_many :student_staff_assignments
+  has_many :staff, through: :student_staff_assignments
 
   belongs_to :deactivator, class_name: "User", optional: true
 

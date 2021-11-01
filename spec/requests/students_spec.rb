@@ -55,9 +55,54 @@ RSpec.describe "/admin/students", type: :request do
   describe "PATCH #update" do
     context "with invalid parameters" do
       it "renders a successful response" do
-        volunteer = Student.create!(attributes_for(:student))
-        patch admin_student_url(volunteer), params: {student: attributes_for(:student, last_name: "")}
+        student = Student.create(attributes_for(:student))
+        patch admin_student_url(student), params: {student: attributes_for(:student, last_name: "")}
         expect(response).to be_successful
+      end
+    end
+
+    context "assigns volunteer to student" do
+      it "affiliates a volunteer with the student", :aggregate_failures do
+        volunteer = create(:volunteer)
+        student = create(:student)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge("volunteer_id" => volunteer.id)}
+        end.to change(StudentVolunteerAssignment, :count).by(1)
+        expect(student.active_student_volunteer_assignment).to eq StudentVolunteerAssignment.last
+        expect(student.volunteers).to include(volunteer)
+      end
+
+      it "remove volunteer from student & mark end of assignment" do
+        volunteer = create(:volunteer)
+        student = create(:student)
+        student_volunteer_assignment = create(:student_volunteer_assignment, student: student, volunteer: volunteer)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes}
+        end.to_not change(StudentVolunteerAssignment, :count)
+        expect(student.active_student_volunteer_assignment).to eq nil
+        expect(student_volunteer_assignment.reload.end_date).to eq Date.current
+      end
+    end
+
+    context "assigns staff to student" do
+      it "affiliates a staff contact with the student", :aggregate_failures do
+        staff = create(:staff)
+        student = create(:student)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge("staff_id" => staff.id)}
+        end.to change(StudentStaffAssignment, :count).by(1)
+        expect(student.active_student_staff_assignment).to eq StudentStaffAssignment.last
+      end
+
+      it "remove staff from student & mark end of assignment" do
+        staff = create(:staff)
+        student = create(:student)
+        student_staff_assignment = create(:student_staff_assignment, student: student, staff: staff)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes}
+        end.to_not change(StudentStaffAssignment, :count)
+        expect(student.active_student_staff_assignment).to eq nil
+        expect(student_staff_assignment.reload.end_date).to eq Date.current
       end
     end
   end
