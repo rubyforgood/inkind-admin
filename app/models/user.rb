@@ -17,6 +17,8 @@ class User < ApplicationRecord
   enum status: {active: 0, inactive: 1}
   enum role: {volunteer: 0, admin: 1}
 
+  scope :volunteer, -> { where(role: :volunteer) }
+
   def active_for_authentication?
     super && active?
   end

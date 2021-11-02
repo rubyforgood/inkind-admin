@@ -1,23 +1,24 @@
 <table class="table" id="volunteers">
   <thead class="table-gray">
-    <tr>
-            <th
-        id="volunteers-first-name"
-        data-reflex="click->VolunteersTable#sort"
-        data-column="first_name"
-        data-direction=<%= "#{direction}" %>
+    <tr data-controller="sort">
+      <th
+        data-filter="<%= @filter.id %>"
+        data-order="first_name"
+        data-direction="asc"
+        data-reflex="click->Volunteers#sort"
         scope="col"
       >
-        <span><%= "First name #{arrow :first_name}" %></span>
+        <span>First name</span>
       </th>
 
       <th
-        id="volunteers-last-name"
-        data-reflex="click->VolunteersTable#sort"
-        data-column="last_name"
+        data-filter="<%= @filter.id %>"
+        data-order="last_name"
+        data-direction="asc"
+        data-reflex="click->Volunteers#sort"
         scope="col"
       >
-        <span><%= "Last name #{arrow :last_name}" %></span>
+        <span>Last name</span>
       </th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -25,8 +26,8 @@
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
-    <% @volunteers.each do |volunteer| %>
+  <tbody id="volunteers">
+    <% volunteers.each do |volunteer| %>
       <tr scope="row">
         <td>
           <%= volunteer.first_name %>
@@ -58,5 +59,4 @@
     <% end %>
   </tbody>
 </table>
-<%= render "admin/shared/paginator" %>
-
+<%= render partial: "admin/shared/paginator", locals: {pagy: @pagy, filter: @filter} %>

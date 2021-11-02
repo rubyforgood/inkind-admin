@@ -14,7 +14,13 @@ gem "rack-cors"
 gem "rails"
 gem "sass-rails", "~> 6.0"
 gem "turbolinks", "~> 5.2.0"
+gem "cable_ready", "5.0.0.pre2"
+gem "stimulus_reflex", "3.5.0.pre2"
 gem "pagy", "~> 5.1"
+gem "redis", "~> 4.5"
+gem "redis-session-store", "~> 0.11.3"
+gem "kredis", "~> 0.4"
+gem "all_futures", "~> 1.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
@@ -41,5 +47,3 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "devise-security", "~> 0.16.0"
-
-gem "stimulus_reflex", "~> 3.4"

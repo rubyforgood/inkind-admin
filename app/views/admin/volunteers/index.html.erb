@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<%= render "volunteers_table", volunteers: @volunteers %>
+<%= render "volunteers_table", volunteers: @volunteers, filter: @filter %>
 
 <%= render(
         layout: "admin/shared/csv_import_modal",
