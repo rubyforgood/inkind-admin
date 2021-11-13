@@ -5,6 +5,7 @@ ruby "3.0.2"
 
 gem "bootsnap", ">= 1.4.4", require: false
 gem "devise"
+gem "devise-security", "~> 0.16.0"
 gem "faker", "~> 2.17"
 gem "graphiql-rails", "1.8.0"
 gem "graphql", "~> 1.12"
@@ -12,8 +13,11 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails"
+gem "redis", "~> 4.5"
 gem "sass-rails", "~> 6.0"
+gem "stimulus_reflex", "~> 3.4"
 gem "turbolinks", "~> 5.2.0"
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "~> 5.4"
 
 group :development, :test do
@@ -36,9 +40,3 @@ group :test do
   gem "selenium-webdriver", "4.0.0.rc2" # temporarily locking to a beta version until 4.x comes out - to fix docker tests https://github.com/SeleniumHQ/selenium/issues/9001
   gem "shoulda-matchers"
 end
-
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-
-gem "devise-security", "~> 0.16.0"
-
-gem "stimulus_reflex", "~> 3.4"

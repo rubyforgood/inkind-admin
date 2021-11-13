@@ -305,6 +305,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails
+  redis (~> 4.5)
   rspec-rails (~> 5.0.0)
   sass-rails (~> 6.0)
   selenium-webdriver (= 4.0.0.rc2)
