@@ -39,4 +39,5 @@ group :test do
   gem "standardrb"
   gem "selenium-webdriver", "4.0.0.rc2" # temporarily locking to a beta version until 4.x comes out - to fix docker tests https://github.com/SeleniumHQ/selenium/issues/9001
   gem "shoulda-matchers"
+  gem "stimulus_reflex_testing"
 end
