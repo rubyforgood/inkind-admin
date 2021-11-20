@@ -76,11 +76,11 @@ Student.last(2).each do |student|
       question: question
     )
     SurveyQuestionOptionResponse.create!(
-      option: question.options.third,
+      option: question.options.last,
       question_response: question_response
     )
     SurveyQuestionOptionResponse.create!(
-      option: question.options.fourth,
+      option: question.options.first,
       question_response: question_response
     )
   end
