@@ -1,9 +1,9 @@
 <table class="table" id="sortable">
-  <thead class="table-gray">
+  <thead>
     <tr>
       <th
-        id="volunteers-first-name"
-        data-reflex="click->VolunteersTable#sort"
+        id="admins-first-name"
+        data-reflex="click->AdminsTable#sort"
         data-column="first_name"
         data-direction="asc"
         scope="col"
@@ -12,8 +12,8 @@
         <span>First name</span>
       </th>
       <th
-        id="volunteers-last-name"
-        data-reflex="click->VolunteersTable#sort"
+        id="admins-last-name"
+        data-reflex="click->AdminsTable#sort"
         data-column="last_name"
         data-direction="asc"
         scope="col"
@@ -23,10 +23,9 @@
       </th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-
       <th
-        id="volunteers-status"
-        data-reflex="click->VolunteersTable#sort"
+        id="admins-status"
+        data-reflex="click->AdminsTable#sort"
         data-column="status"
         data-direction="asc"
         scope="col"
@@ -36,33 +35,31 @@
     </tr>
   </thead>
   <tbody>
-    <% records.each do |volunteer| %>
+    <% records.each do |admin_user| %>
       <tr scope="row">
         <td>
-          <%= volunteer.first_name %>
+          <%= admin_user.first_name %>
         </td>
         <td>
-          <%= volunteer.last_name %>
+          <%= admin_user.last_name %>
         </td>
         <td>
-          <%= volunteer.email %>
+          <%= admin_user.email %>
         </td>
         <td>
-          <%= volunteer.phone_number %>
+          <%= admin_user.phone_number %>
         </td>
         <td>
-          <%= volunteer.status %>
+          <%= admin_user.status %>
         </td>
         <td class="text-center teal-text">
-          <%= link_to "Edit", edit_admin_volunteer_path(volunteer) %> |
-          <%= link_to "Send Link", send_link_admin_volunteer_path(volunteer), method: :post %> |
+          <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
 
-          <% if volunteer.active? %>
-            <%= link_to "Deactivate", deactivate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% if admin_user.active? %>
+            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
           <% else %>
-            <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Activate", activate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
           <% end %>
-
         </td>
       </tr>
     <% end %>

@@ -13,41 +13,4 @@
   </div>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Status</th>
-      <th class="text-center" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @admin_users.each do |admin_user| %>
-      <tr scope="row">
-        <td>
-          <%= admin_user.name %>
-        </td>
-        <td>
-          <%= admin_user.email %>
-        </td>
-        <td>
-          <%= admin_user.phone_number %>
-        </td>
-        <td>
-          <%= admin_user.status %>
-        </td>
-        <td class="text-center teal-text">
-          <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
-
-          <% if admin_user.active? %>
-            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% else %>
-            <%= link_to "Activate", activate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render "admins_table", records: @admin_users %>
