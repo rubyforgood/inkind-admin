@@ -5,12 +5,12 @@ module SortHelper
     # Although risk of sql injection on `order` is pretty low with rails 6.1. IMO It is better to validate the input.
     sort_column = sort_columns.include?(element.dataset.column) ? element.dataset.column : sort_columns.first
 
-    records.order!("#{sort_column} #{sort_direction}")
+    records.order!(sort_column => sort_direction)
 
     set_sort_direction
     insert_indicator
 
-    morph '#sortable', render(partial: partial, locals: {records: records})
+    morph "#sortable", render(partial: partial, locals: {records: records})
   end
 
   private

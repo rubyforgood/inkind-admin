@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require_relative "./reflex_helper"
 
 RSpec.describe VolunteersTableReflex, type: :reflex do
   let(:reflex) { build_reflex(url: admin_volunteers_path) }
@@ -13,32 +13,10 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
       end
     end
 
-    context "status" do
-      it "sort asc on status" do
-        reflex.element.dataset.column = "status"
-        reflex.element.dataset.direction = "asc"
+    it_behaves_like "sortable table", "status", User.all, "admin/volunteers/_volunteers_table"
 
-        reflex.run(:sort)
+    it_behaves_like "sortable table", "first_name", User.all, "admin/volunteers/_volunteers_table"
 
-        morph = reflex.broadcaster.morphs.first
-        expect(morph.first).to eql "#sortable"
-        expect(morph.second).to eql Admin::VolunteersController.render(:_volunteers_table,
-          layout: false,
-          locals: {records: User.all.order(status: :asc)})
-      end
-
-      it "sorts desc on status" do
-        reflex.element.dataset.column = "status"
-        reflex.element.dataset.direction = "desc"
-
-        reflex.run(:sort)
-
-        morph = reflex.broadcaster.morphs.first
-        expect(morph.first).to eql "#sortable"
-        expect(morph.second).to eql Admin::VolunteersController.render(:_volunteers_table,
-          layout: false,
-          locals: {records: User.all.order(status: :desc)})
-      end
-    end
+    it_behaves_like "sortable table", "last_name", User.all, "admin/volunteers/_volunteers_table"
   end
 end

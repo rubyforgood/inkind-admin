@@ -1,0 +1,67 @@
+<table class="table" id="sortable">
+  <thead>
+    <tr>
+      <th
+        id="admins-first-name"
+        data-reflex="click->AdminsTable#sort"
+        data-column="first_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>First name</span>
+      </th>
+      <th
+        id="admins-last-name"
+        data-reflex="click->AdminsTable#sort"
+        data-column="last_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Last name</span>
+      </th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th
+        id="admins-status"
+        data-reflex="click->AdminsTable#sort"
+        data-column="status"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >Status</th>
+      <th class="text-center" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% records.each do |admin_user| %>
+      <tr scope="row">
+        <td>
+          <%= admin_user.first_name %>
+        </td>
+        <td>
+          <%= admin_user.last_name %>
+        </td>
+        <td>
+          <%= admin_user.email %>
+        </td>
+        <td>
+          <%= admin_user.phone_number %>
+        </td>
+        <td>
+          <%= admin_user.status %>
+        </td>
+        <td class="text-center teal-text">
+          <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
+
+          <% if admin_user.active? %>
+            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% else %>
+            <%= link_to "Activate", activate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
