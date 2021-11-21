@@ -21,10 +21,10 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
         reflex.run(:sort)
 
         morph = reflex.broadcaster.morphs.first
-        expect(morph.first).to eql "#volunteers"
+        expect(morph.first).to eql "#sortable"
         expect(morph.second).to eql Admin::VolunteersController.render(:_volunteers_table,
           layout: false,
-          locals: {volunteers: User.all.order(status: :asc)})
+          locals: {records: User.all.order(status: :asc)})
       end
 
       it "sorts desc on status" do
@@ -34,10 +34,10 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
         reflex.run(:sort)
 
         morph = reflex.broadcaster.morphs.first
-        expect(morph.first).to eql "#volunteers"
+        expect(morph.first).to eql "#sortable"
         expect(morph.second).to eql Admin::VolunteersController.render(:_volunteers_table,
           layout: false,
-          locals: {volunteers: User.all.order(status: :desc)})
+          locals: {records: User.all.order(status: :desc)})
       end
     end
   end
