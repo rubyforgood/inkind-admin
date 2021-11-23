@@ -58,7 +58,7 @@ SurveyQuestion.create!(
 
 question6 = SurveyQuestion.create!(
   survey: survey,
-  type: "SurveySingleSelectQuestion",
+  type: "SurveySupportTicketQuestion",
   heading: "Question for your:",
   prompt: "Would you like a staff member to contact you?"
 )
