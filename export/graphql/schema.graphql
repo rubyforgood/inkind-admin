@@ -74,6 +74,8 @@ type Query {
 }
 
 type Question {
+  description: String
+  heading: String
   id: ID!
   options: [QuestionOption!]
   prompt: String!
