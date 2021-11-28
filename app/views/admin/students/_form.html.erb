@@ -15,7 +15,7 @@
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+      <%= form.text_field :date_of_birth, class: "form-control", placeholder: "Date of Birth" %>
     </div>
   </div>
 
@@ -27,7 +27,19 @@
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= form.text_field :guardian_name, class: "form-control", placeholder: "Guardian Name" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :guardian_first_name, class: "form-control", placeholder: "Guardian First Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :guardian_last_name, class: "form-control", placeholder: "Guardian Last Name" %>
     </div>
   </div>
 
@@ -39,7 +51,13 @@
 
   <div class="row pr-3 pb-4">
     <div class="col-4">
-      <%= form.text_field :emergency_contact_name, class: "form-control", placeholder: "Emergency Contact Name" %>
+      <%= form.text_field :emergency_contact_first_name, class: "form-control", placeholder: "Emergency Contact First Name" %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4">
+    <div class="col-4">
+      <%= form.text_field :emergency_contact_last_name, class: "form-control", placeholder: "Emergency Contact Last Name" %>
     </div>
   </div>
 
@@ -49,11 +67,6 @@
     </div>
   </div>
 
-  <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= form.text_field :date_of_birth, class: "form-control", placeholder: "Date of Birth" %>
-    </div>
-  </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-1">

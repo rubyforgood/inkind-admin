@@ -29,4 +29,12 @@ class Student < ApplicationRecord
     self.status = :active
     save!
   end
+
+  def guardian_full_name
+    "#{guardian_first_name} #{guardian_last_name}"
+  end
+
+  def emergency_contact_full_name
+    "#{emergency_contact_first_name} #{emergency_contact_last_name}"
+  end
 end
