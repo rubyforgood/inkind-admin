@@ -57,8 +57,8 @@ module Admin
 
     def admin_user_params
       params.require(:user)
-        .permit(:first_name, :last_name, :email, :phone_number)
-        .merge(role: :admin)
+            .permit(:first_name, :last_name, :email, :phone_number)
+            .merge(role: :admin)
     end
   end
 end

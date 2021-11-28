@@ -23,7 +23,7 @@ module Mutations
             survey_question_option_id: option
           )
         end
-        {question_response: question_response}
+        { question_response: question_response }
       end
     end
   end

@@ -8,9 +8,11 @@ module Admin
         format.html
         format.csv do
           columns = %w[name email phone_number status last_seen completed_surveys.count support_tickets.count]
-          headers = ["Name", "Email", "Phone", "Status", "Last Seeen", "Total Surveys Completed", "Total Support Tickets Created"]
+          headers = ["Name", "Email", "Phone", "Status", "Last Seeen", "Total Surveys Completed",
+                     "Total Support Tickets Created"]
 
-          send_data User.export_to_csv(@volunteers, columns: columns, headers: headers), filename: "volunteers-#{Date.today}.csv"
+          send_data User.export_to_csv(@volunteers, columns: columns, headers: headers),
+                    filename: "volunteers-#{Date.today}.csv"
         end
       end
     end
@@ -69,7 +71,7 @@ module Admin
       redirect_to action: :index
     end
 
-    private
+  private
 
     def volunteer_params
       params.require(:user).permit(:first_name, :last_name, :email, :phone_number)

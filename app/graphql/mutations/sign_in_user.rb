@@ -15,7 +15,7 @@ module Mutations
 
       raise GraphQL::ExecutionError, "invalid password for user" unless user.valid_password?(credentials[:password])
 
-      {user: user, token: user.token}
+      { user: user, token: user.token }
     end
   end
 end

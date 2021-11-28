@@ -9,9 +9,9 @@ module Queries
       end
 
       field :students,
-        [Types::StudentType],
-        null: true,
-        description: "All students associated with signed in volunteer"
+            [Types::StudentType],
+            null: true,
+            description: "All students associated with signed in volunteer"
     end
 
     def student(id:)

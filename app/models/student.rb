@@ -8,7 +8,7 @@ class Student < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  enum status: {active: 0, inactive: 1}
+  enum status: { active: 0, inactive: 1 }
 
   def name
     "#{first_name} #{last_name}"

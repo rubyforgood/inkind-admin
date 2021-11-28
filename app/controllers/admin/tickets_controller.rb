@@ -10,7 +10,8 @@ module Admin
           columns = %w[requestor.name survey_response.student.name created_at description status]
           headers = ["Requestor", "Student", "Created At", "Description", "Status"]
 
-          send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers), filename: "support-tickets-#{Date.today}.csv"
+          send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers),
+                    filename: "support-tickets-#{Date.today}.csv"
         end
       end
     end

@@ -14,7 +14,7 @@ module Admin
       end
     end
 
-    private
+  private
 
     def organization_params
       params.require(:organization).permit(

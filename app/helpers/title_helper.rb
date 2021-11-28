@@ -2,7 +2,7 @@ module TitleHelper
   def page_title
     [
       page_header_title,
-      default_title
+      default_title,
     ].compact.join(" | ")
   end
 

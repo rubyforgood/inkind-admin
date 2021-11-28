@@ -4,9 +4,9 @@ module Queries
 
     included do
       field :survey_responses,
-        [Types::SurveyResponseType],
-        null: true,
-        description: "All survey_responses associated with signed in volunteer"
+            [Types::SurveyResponseType],
+            null: true,
+            description: "All survey_responses associated with signed in volunteer"
 
       field :student_survey_responses, [Types::SurveyResponseType], null: true do
         description "All survey_responses for a specific student associated with signed in volunteer"

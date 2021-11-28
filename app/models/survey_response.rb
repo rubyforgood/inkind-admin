@@ -8,5 +8,5 @@ class SurveyResponse < ApplicationRecord
 
   validates :volunteer, :student, :survey, presence: true
 
-  enum status: {incomplete: 0, complete: 1}
+  enum status: { incomplete: 0, complete: 1 }
 end

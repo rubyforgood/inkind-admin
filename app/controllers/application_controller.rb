@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
     model.errors.map(&:full_message).join(", ")
   end
 
-  def verify_user!(message, &block)
-    return if block.call(current_user)
+  def verify_user!(message)
+    return if yield(current_user)
 
     flash[:alert] = message
     redirect_to :root

@@ -1,7 +1,7 @@
 module Admin
   class ImportsController < ApplicationController
     def volunteers
-      result = import_for(User, {skip_password_validation: true})
+      result = import_for(User, { skip_password_validation: true })
       flash[:alert] = "Imported #{result.count} Volunteers"
       redirect_to admin_volunteers_path
     end
@@ -12,7 +12,7 @@ module Admin
       redirect_to admin_students_path
     end
 
-    private
+  private
 
     def import_for(model, additional_properties = {})
       Importer::Csv.import(file_params[:file].tempfile, model, additional_properties)

@@ -22,9 +22,9 @@ group :development, :test do
 end
 
 group :development do
+  gem "foreman"
   gem "listen", "~> 3.3"
   gem "spring"
-  gem "foreman"
 end
 
 group :test do
@@ -32,9 +32,9 @@ group :test do
   gem "capybara-screenshot"
   gem "factory_bot_rails", "~> 6.2"
   gem "rspec-rails", "~> 5.0.0"
-  gem "standardrb"
   gem "selenium-webdriver", "4.0.0.rc2" # temporarily locking to a beta version until 4.x comes out - to fix docker tests https://github.com/SeleniumHQ/selenium/issues/9001
   gem "shoulda-matchers"
+  gem "standardrb"
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]

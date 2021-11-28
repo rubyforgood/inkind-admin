@@ -5,7 +5,7 @@ class User < ApplicationRecord
   attr_accessor :skip_password_validation
 
   devise :database_authenticatable, :registerable, :validatable,
-    :password_expirable, :recoverable, :rememberable
+         :password_expirable, :recoverable, :rememberable
 
   has_many :students_users
   has_many :students, through: :students_users
@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  enum status: {active: 0, inactive: 1}
-  enum role: {volunteer: 0, admin: 1}
+  enum status: { active: 0, inactive: 1 }
+  enum role: { volunteer: 0, admin: 1 }
 
   def active_for_authentication?
     super && active?
@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   def password_required?
     return false if skip_password_validation
+
     super
   end
 

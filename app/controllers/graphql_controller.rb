@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {current_user: current_user}
+    context = { current_user: current_user }
     result =
       InkindSchema.execute(
         query,
@@ -26,7 +26,7 @@ class GraphqlController < ApplicationController
     handle_error_in_development(e)
   end
 
-  private
+private
 
   def current_user
     warden.authenticate(:user_token, scope: :graphql) || warden.authenticate
@@ -53,8 +53,8 @@ class GraphqlController < ApplicationController
     logger.error error.backtrace.join("\n")
 
     render json: {
-      errors: [{message: error.message, backtrace: error.backtrace}],
-      data: {}
+      errors: [{ message: error.message, backtrace: error.backtrace }],
+      data: {},
     }, status: :internal_server_error
   end
 end

@@ -34,13 +34,13 @@ class VolunteersTableReflex < ApplicationReflex
 
   def sort
     volunteers = User.where(role: :volunteer).order("#{element.dataset.column} #{element.dataset.direction}")
-    morph "#volunteers", render(partial: "volunteers_table", locals: {volunteers: volunteers})
+    morph "#volunteers", render(partial: "volunteers_table", locals: { volunteers: volunteers })
 
     set_sort_direction if next_direction(element.dataset.direction) == "desc"
     insert_indicator
   end
 
-  private
+private
 
   def next_direction(direction)
     direction == "asc" ? "desc" : "asc"
@@ -61,7 +61,7 @@ class VolunteersTableReflex < ApplicationReflex
         selector: "##{element.id}",
         html: render(
           partial: "admin/volunteers/sort_indicator",
-          locals: {direction: element.dataset.direction}
+          locals: { direction: element.dataset.direction }
         )
       )
   end

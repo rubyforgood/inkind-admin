@@ -5,7 +5,7 @@ class MeetingDuration < ApplicationRecord
 
   after_create :complete_response
 
-  private
+private
 
   def complete_response
     survey_response.complete!
