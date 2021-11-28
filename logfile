@@ -1,0 +1,11 @@
+2021-10-27 08:31:16.306 EDT [38193] LOG:  starting PostgreSQL 14.0 on x86_64-apple-darwin20.6.0, compiled by Apple clang version 13.0.0 (clang-1300.0.29.3), 64-bit
+2021-10-27 08:31:16.307 EDT [38193] LOG:  listening on IPv6 address "::1", port 5432
+2021-10-27 08:31:16.307 EDT [38193] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-10-27 08:31:16.308 EDT [38193] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-10-27 08:31:16.316 EDT [38194] LOG:  database system was shut down at 2021-10-11 14:02:27 EDT
+2021-10-27 08:31:16.321 EDT [38193] LOG:  database system is ready to accept connections
+2021-11-01 11:53:41.637 EDT [46780] FATAL:  database "casa_development" does not exist
+2021-11-23 10:42:29.743 EST [38193] LOG:  received smart shutdown request
+2021-11-23 10:42:29.745 EST [38193] LOG:  background worker "logical replication launcher" (PID 38200) exited with exit code 1
+2021-11-23 10:42:29.745 EST [38195] LOG:  shutting down
+2021-11-23 10:42:29.755 EST [38193] LOG:  database system is shut down
