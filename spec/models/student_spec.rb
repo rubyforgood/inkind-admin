@@ -17,7 +17,7 @@ RSpec.describe Student, type: :model do
       it "returns assignment that is active" do
         student = create(:student)
         volunteer = create(:volunteer)
-        volunteer2 = create(:volunteer2)
+        volunteer2 = create(:volunteer)
         assignment = create(
           :student_volunteer_assignment,
           student: student,
