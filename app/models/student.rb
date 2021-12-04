@@ -56,14 +56,8 @@ class Student < ApplicationRecord
     active_student_volunteer_assignments.where(volunteer_id: inactive_ids).update(end_date: Date.current) if inactive_ids.present?
 
     new_volunteers = volunteer_ids - active_volunteer_ids
-    if new_volunteers.present?
-      StudentVolunteerAssignment
-        .insert_all!(new_volunteers.map { |volunteer_id|
-                       {student_id: id,
-                        volunteer_id: volunteer_id,
-                        created_at: Time.zone.now,
-                        updated_at: Time.zone.now}
-                     })
+    new_volunteers.each do |volunteer_id|
+      StudentVolunteerAssignment.create!(student: self, volunteer_id: volunteer_id, start_date: Date.current)
     end
   end
 
