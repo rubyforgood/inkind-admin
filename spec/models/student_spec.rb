@@ -13,10 +13,11 @@ RSpec.describe Student, type: :model do
     it { is_expected.to have_many(:volunteers).through(:student_volunteer_assignments) }
     it { is_expected.to have_many(:student_staff_assignments) }
 
-    describe "#active_student_volunteer_assignment" do
+    describe "#active_student_volunteer_assignments" do
       it "returns assignment that is active" do
         student = create(:student)
         volunteer = create(:volunteer)
+        volunteer2 = create(:volunteer)
         assignment = create(
           :student_volunteer_assignment,
           student: student,
@@ -24,7 +25,14 @@ RSpec.describe Student, type: :model do
           end_date: Date.current + 1.week
         )
 
-        expect(student.active_student_volunteer_assignment).to eq assignment
+        assignment2 = create(
+          :student_volunteer_assignment,
+          student: student,
+          volunteer: volunteer2,
+          end_date: Date.current + 1.week
+        )
+
+        expect(student.active_student_volunteer_assignments).to eq [assignment, assignment2]
       end
 
       it "returns nil when there is no active assignment" do
@@ -37,7 +45,7 @@ RSpec.describe Student, type: :model do
           end_date: Date.current - 1.week
         )
 
-        expect(student.active_student_volunteer_assignment).to eq nil
+        expect(student.active_student_volunteer_assignments).to be_empty
       end
     end
 

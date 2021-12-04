@@ -55,10 +55,12 @@
   <div class="row pr-3 pb-4">
     <div class="col-6">
       <%= form.select(
-        :volunteer_id,
-        User.where(role: :volunteer).map { |volunteer| [volunteer.name, volunteer.id] },
-        { include_blank: "Select Volunteer", selected: @student.active_student_volunteer_assignment&.volunteer_id },
-        class: "form-select"
+        :volunteer_ids,
+        User.where(role: :volunteer, status: :active).map { |volunteer| [volunteer.name, volunteer.id] },
+        { include_hidden: false, selected: @student.active_student_volunteer_assignments.map(&:volunteer_id) },
+        { 'data-controller' => 'autocomplete-select',
+          'data-autocomplete-select-placeholder' => "Select Volunteer",
+          multiple: true }
       ) %>
     </div>
   </div>
