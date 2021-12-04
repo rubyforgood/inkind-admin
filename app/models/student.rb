@@ -3,7 +3,7 @@ class Student < ApplicationRecord
 
   has_many :student_volunteer_assignments
   has_many :volunteers, through: :student_volunteer_assignments
-  has_one :active_student_volunteer_assignment, -> { where("end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
+  has_many :active_student_volunteer_assignments, -> { where("end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
 
   has_many :student_staff_assignments
   has_many :staff, through: :student_staff_assignments
@@ -15,10 +15,10 @@ class Student < ApplicationRecord
 
   enum status: {active: 0, inactive: 1}
 
-  def update_with_assignments!(student_attributes:, volunteer_id:, staff_id:)
+  def update_with_assignments!(student_attributes:, staff_id:, volunteer_ids: [])
     transaction do
-      update_volunteer_assignment(volunteer_id.to_s)
       update_staff_assignment(staff_id.to_s)
+      update_volunteer_assignments(volunteer_ids: volunteer_ids)
       update(student_attributes)
     end
   end
@@ -45,13 +45,25 @@ class Student < ApplicationRecord
 
   private
 
-  def update_volunteer_assignment(volunteer_id)
-    if active_student_volunteer_assignment.present? &&
-        active_student_volunteer_assignment.volunteer_id.to_s != volunteer_id
-      active_student_volunteer_assignment.update!(end_date: Date.current)
-      StudentVolunteerAssignment.create!(student: self, volunteer_id: volunteer_id, start_date: Date.current) if volunteer_id.present?
-    elsif active_student_volunteer_assignment.blank?
-      StudentVolunteerAssignment.create!(student: self, volunteer_id: volunteer_id, start_date: Date.current) if volunteer_id.present?
+  def update_volunteer_assignments(volunteer_ids: [])
+    active_volunteer_ids = active_student_volunteer_assignments.pluck(:volunteer_id).map(&:to_s).sort || []
+    volunteer_ids ||= []
+
+    return if active_volunteer_ids == volunteer_ids&.sort
+    volunteer_ids.compact_blank!
+
+    inactive_ids = active_volunteer_ids - volunteer_ids
+    active_student_volunteer_assignments.where(volunteer_id: inactive_ids).update(end_date: Date.current) if inactive_ids.present?
+
+    new_volunteers = volunteer_ids - active_volunteer_ids
+    if new_volunteers.present?
+      StudentVolunteerAssignment
+        .insert_all!(new_volunteers.map { |volunteer_id|
+                       {student_id: id,
+                        volunteer_id: volunteer_id,
+                        created_at: Time.zone.now,
+                        updated_at: Time.zone.now}
+                     })
     end
   end
 
