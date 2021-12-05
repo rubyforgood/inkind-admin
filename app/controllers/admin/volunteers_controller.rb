@@ -7,17 +7,12 @@ module Admin
       respond_to do |format|
         format.html
         format.csv do
-          # TODO: Staff Contacts
-          columns = %w[
-            name status email phone_number student_names last_seen completed_responses.count
-            minutes_logged open_ticket_request? support_tickets.count
-          ]
-          headers = [
-            "Name", "Status", "Email", "Phone Number", "Student Name(s)", "Last Seen", "Number of Sessions",
-            "Minutes Logged", "Outstanding Ticket Request", "Total Support Tickets Created"
-          ]
-
-          send_data User.export_to_csv(@volunteers, columns: columns, headers: headers), filename: "volunteers-#{Date.current}.csv"
+          send_data(
+            User.export_to_csv(@volunteers,
+              columns: User::VOLUNTEER_EXPORT_COLUMNS,
+              headers: User::VOLUNTEER_EXPORT_HEADERS),
+            filename: "volunteers-#{Date.current}.csv"
+          )
         end
       end
     end

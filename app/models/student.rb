@@ -2,12 +2,12 @@ class Student < ApplicationRecord
   include ExportToCsv
 
   has_many :student_volunteer_assignments
-  has_many :volunteers, through: :student_volunteer_assignments
-  has_many :active_student_volunteer_assignments, -> { where("end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
+  has_many :active_student_volunteer_assignments, -> { where("student_volunteer_assignments.end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
+  has_many :volunteers, through: :active_student_volunteer_assignments
 
   has_many :student_staff_assignments
-  has_many :staff, through: :student_staff_assignments
-  has_one :active_student_staff_assignment, -> { where("end_date > ?", Date.current) }, class_name: "StudentStaffAssignment"
+  has_one :active_student_staff_assignment, -> { where("student_staff_assignments.end_date > ?", Date.current) }, class_name: "StudentStaffAssignment"
+  has_one :staff, through: :active_student_staff_assignment
 
   belongs_to :deactivator, class_name: "User", optional: true
 

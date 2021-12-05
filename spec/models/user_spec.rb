@@ -67,11 +67,11 @@ RSpec.describe User, type: :model do
       expect(user.last_seen).to be_nil
     end
 
-    it "returns the updated time of the latest survey response " do
-      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 15, 10, 35, 47))
-      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 15, 11, 35, 47))
+    it "returns the updated date string of the latest survey response " do
+      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 15))
+      create(:survey_response, volunteer: user, updated_at: DateTime.new(2021, 10, 16))
 
-      expect(user.last_seen).to eq DateTime.new(2021, 10, 15, 11, 35, 47)
+      expect(user.last_seen).to eq(DateTime.new(2021, 10, 16).strftime("%m/%d/%Y"))
     end
   end
 

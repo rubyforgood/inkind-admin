@@ -15,13 +15,15 @@ RSpec.describe "/admin/volunteers", type: :request do
 
   describe "GET /index" do
     context "with format csv" do
-      it "generates csv file" do
+      it "generates csv file", :aggregate_failures do
         travel_to(Date.new(2021, 10, 14)) do
           volunteer1 = create(:volunteer, first_name: "Zion", last_name: "Vandervort", email: "volunteer-1@example.edu", status: :inactive)
           create(:support_ticket, requestor: volunteer1)
           create(:support_ticket, requestor: volunteer1)
 
-          volunteer2 = create(:volunteer, first_name: "Sutton", last_name: "Faddel", email: "volunteer-2@example.edu")
+          volunteer2 = create(:volunteer, first_name: "Sutton", last_name: "Faddel", email: "volunteer-2@example.edu", phone_number: "123-456-7890")
+          student = create(:student, first_name: "Jim", last_name: "Adil")
+          create(:student_volunteer_assignment, student: student, volunteer: volunteer2)
 
           create(:survey_response, volunteer: volunteer2, meeting_duration: build(:meeting_duration))
           create(:survey_response, volunteer: volunteer2, meeting_duration: build(:meeting_duration))
@@ -33,11 +35,18 @@ RSpec.describe "/admin/volunteers", type: :request do
 
           expect(response.header["Content-Type"]).to include "text/csv"
           expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"volunteers-2021-10-14.csv\""
-          expect(response.body).to eq <<~CSV
-            "Name","Email","Phone","Status","Last Seeen","Total Surveys Completed","Total Support Tickets Created"
-            "Sutton Faddel","volunteer-2@example.edu","","active","2021-10-14 00:00:00 UTC","2","1"
-            "Zion Vandervort","volunteer-1@example.edu","","inactive","","0","2"
-          CSV
+          response_rows = response.body.split("\n")
+          sanitized_response_headers = response_rows.first.split(",").map { |header| header.delete('\"') }
+          sanitized_first_row = response_rows.second.split(",").map { |header| header.delete('\"') }
+          sanitized_second_row = response_rows.third.split(",").map { |header| header.delete('\"') }
+
+          expect(sanitized_response_headers).to eq User::VOLUNTEER_EXPORT_HEADERS
+          expect(sanitized_first_row).to eq(
+            ["Sutton Faddel", "active", "volunteer-2@example.edu", volunteer2.phone_number, student.name, "", "10/14/2021", "2", "90", "true", "1"]
+          )
+          expect(sanitized_second_row).to eq(
+            ["Zion Vandervort", "inactive", "volunteer-1@example.edu", "", "", "", "", "0", "0", "true", "2"]
+          )
         end
       end
     end
