@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2021_12_05_210424) do
     t.string "phone_number"
     t.integer "status", default: 0, null: false
     t.string "guardian_phone_number"
-    t.string "emergency_contact_name"
     t.string "emergency_contact_phone_number"
     t.date "date_of_birth"
     t.datetime "deactivated_at"
