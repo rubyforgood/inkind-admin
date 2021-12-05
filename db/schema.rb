@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_165531) do
+ActiveRecord::Schema.define(version: 2021_12_05_210424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2021_11_20_165531) do
     t.string "email"
     t.string "phone_number"
     t.integer "status", default: 0, null: false
-    t.string "guardian_name"
     t.string "guardian_phone_number"
     t.string "emergency_contact_name"
     t.string "emergency_contact_phone_number"
@@ -74,6 +73,10 @@ ActiveRecord::Schema.define(version: 2021_11_20_165531) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "deactivator_id"
+    t.string "guardian_first_name"
+    t.string "guardian_last_name"
+    t.string "emergency_contact_first_name"
+    t.string "emergency_contact_last_name"
     t.index ["deactivator_id"], name: "index_students_on_deactivator_id"
   end
 

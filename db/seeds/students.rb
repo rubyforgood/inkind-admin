@@ -13,9 +13,11 @@ User
           email: Faker::Internet.email,
           date_of_birth: Faker::Date.between(from: 18.years.ago, to: 5.years.ago),
           phone_number: Faker::PhoneNumber.phone_number,
-          guardian_name: Faker::Name.name,
+          guardian_first_name: Faker::Name.gender_neutral_first_name,
+          guardian_last_name: Faker::Name.last_name,
           guardian_phone_number: Faker::PhoneNumber.phone_number,
-          emergency_contact_name: Faker::Name.name,
+          emergency_contact_first_name: Faker::Name.gender_neutral_first_name,
+          emergency_contact_last_name: Faker::Name.last_name,
           emergency_contact_phone_number: Faker::PhoneNumber.phone_number
         )
 

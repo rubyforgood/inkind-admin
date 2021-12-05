@@ -15,7 +15,7 @@ RSpec.describe "/admin/students", type: :request do
           expect(response.header["Content-Type"]).to include "text/csv"
           expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"students-2021-10-14.csv\""
           expect(response.body).to eq <<~CSV
-            "name","guardian_name","date_of_birth","status"
+            "name","guardian_last_name","date_of_birth","status"
             "Campbell McClure","","2010-08-06","active"
             "Indigo Torp","","2012-07-07","inactive"
           CSV

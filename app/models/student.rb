@@ -43,6 +43,14 @@ class Student < ApplicationRecord
     save!
   end
 
+  def guardian_full_name
+    "#{guardian_first_name} #{guardian_last_name}"
+  end
+
+  def emergency_contact_full_name
+    "#{emergnecy_contact_first_name} #{emergency_conatct_last_name}"
+  end
+
   private
 
   def update_volunteer_assignment(volunteer_id)
