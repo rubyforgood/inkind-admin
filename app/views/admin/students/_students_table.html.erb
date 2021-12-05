@@ -11,6 +11,8 @@
       >
         <span> Name </span>
       </th>
+      <th scope="col">Volunteers</th>
+      <th scope="col">Staff Contact</th>
       <th
         id="guardian-name"
         data-reflex="click->StudentsTable#sort"
@@ -31,6 +33,12 @@
       <tr scope="row">
         <td>
           <%= student.name %>
+        </td>
+        <td>
+          <%= student.volunteers.map(&:name).join(", ") %>
+        </td>
+        <td>
+          <%= student.staff.name %>
         </td>
         <td>
           <%= student.guardian_name %>

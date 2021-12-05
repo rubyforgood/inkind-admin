@@ -23,7 +23,8 @@
       </th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-
+      <th scope="col">Staff Contact</th>
+      <th scope="col">Students</th>
       <th
         id="volunteers-status"
         data-reflex="click->VolunteersTable#sort"
@@ -31,7 +32,9 @@
         data-direction="asc"
         scope="col"
         class="hover:cursor-pointer"
-      >Status</th>
+      >
+        <span>Status</span>
+      </th>
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
@@ -49,6 +52,12 @@
         </td>
         <td>
           <%= volunteer.phone_number %>
+        </td>
+        <td>
+          <%= volunteer.staff_names %>
+        </td>
+        <td>
+          <%= volunteer.student_names %>
         </td>
         <td>
           <%= volunteer.status %>
