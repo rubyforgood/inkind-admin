@@ -36,8 +36,8 @@ module Admin
       @student = Student.find(params[:id])
 
       if @student.update_with_assignments!(
-        student_attributes: students_params,
-        volunteer_id: params[:student][:volunteer_id],
+        student_attributes: students_params.except(:volunteer_ids),
+        volunteer_ids: params[:student][:volunteer_ids],
         staff_id: params[:student][:staff_id]
       )
         redirect_to admin_students_url, notice: "Student was successfully updated."
@@ -66,7 +66,7 @@ module Admin
       params.require(:student).permit(:first_name, :last_name,
         :email, :phone_number, :guardian_phone_number, :guardian_first_name,
         :guardian_last_name, :emergency_contact_first_name, :emergency_contact_last_name,
-        :emergency_contact_phone_number, :date_of_birth)
+        :emergency_contact_phone_number, :date_of_birth, volunteer_ids: [])
     end
   end
 end

@@ -61,14 +61,27 @@ RSpec.describe "/admin/students", type: :request do
       end
     end
 
-    context "assigns volunteer to student" do
+    context "assigns volunteers to student" do
       it "affiliates a volunteer with the student", :aggregate_failures do
         volunteer = create(:volunteer)
         student = create(:student)
         expect do
-          patch admin_student_url(student), params: {student: student.attributes.merge("volunteer_id" => volunteer.id)}
+          patch admin_student_url(student), params: {student: student.attributes.merge("volunteer_ids" => [volunteer.id])}
         end.to change(StudentVolunteerAssignment, :count).by(1)
-        expect(student.active_student_volunteer_assignment).to eq StudentVolunteerAssignment.last
+
+        expect(student.active_student_volunteer_assignments).to eq [StudentVolunteerAssignment.last]
+        expect(student.volunteers).to include(volunteer)
+      end
+
+      it "affiliates multiple volunteers with the student", :aggregate_failures do
+        volunteer = create(:volunteer)
+        volunteer2 = create(:volunteer)
+        student = create(:student)
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge("volunteer_ids" => [volunteer.id, volunteer2.id])}
+        end.to change(StudentVolunteerAssignment, :count).by(2)
+
+        expect(student.active_student_volunteer_assignments).to eq StudentVolunteerAssignment.last(2)
         expect(student.volunteers).to include(volunteer)
       end
 
@@ -79,8 +92,28 @@ RSpec.describe "/admin/students", type: :request do
         expect do
           patch admin_student_url(student), params: {student: student.attributes}
         end.to_not change(StudentVolunteerAssignment, :count)
-        expect(student.active_student_volunteer_assignment).to eq nil
+        expect(student.active_student_volunteer_assignments).to be_empty
         expect(student_volunteer_assignment.reload.end_date).to eq Date.current
+      end
+
+      it "removes and adds new volunteers from student & mark end of assignment" do
+        volunteer = create(:volunteer)
+        volunteer2 = create(:volunteer)
+        volunteer3 = create(:volunteer)
+        volunteer4 = create(:volunteer)
+        student = create(:student)
+        student_volunteer_assignment = create(:student_volunteer_assignment, student: student, volunteer: volunteer)
+        student_volunteer_assignment3 = create(:student_volunteer_assignment, student: student, volunteer: volunteer3)
+        student_volunteer_assignment4 = create(:student_volunteer_assignment, student: student, volunteer: volunteer4)
+
+        expect do
+          patch admin_student_url(student), params: {student: student.attributes.merge(volunteer_ids: [volunteer2.id, volunteer3.id])}
+        end.to change(StudentVolunteerAssignment, :count).by(1)
+
+        expect(student.active_student_volunteer_assignments.map(&:volunteer_id)).to eq [volunteer3.id, volunteer2.id]
+        expect(student_volunteer_assignment.reload.end_date).to eq Date.current
+        expect(student_volunteer_assignment4.reload.end_date).to eq Date.current
+        expect(student_volunteer_assignment3.reload.end_date).not_to eq Date.current
       end
     end
 

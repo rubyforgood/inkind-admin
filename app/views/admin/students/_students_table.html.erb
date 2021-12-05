@@ -1,6 +1,16 @@
-<table class="table" id="students">
+<table class="table" id="sortable">
   <thead>
     <tr>
+      <th
+        id="students-first-name"
+        data-reflex="click->StudentsTable#sort"
+        data-column="first_name"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>First Name</span>
+      </th>
       <th
         id="students-last-name"
         data-reflex="click->StudentsTable#sort"
@@ -9,8 +19,10 @@
         scope="col"
         class="hover:cursor-pointer"
       >
-        <span> Name </span>
+        <span>Last Name</span>
       </th>
+      <th scope="col">Volunteers</th>
+      <th scope="col">Staff Contact</th>
       <th
         id="guardian-name"
         data-reflex="click->StudentsTable#sort"
@@ -19,18 +31,36 @@
         scope="col"
         class="hover:cursor-pointer"
       >
-        <span> Guardian Name </span>
+        <span>Guardian Name</span>
       </th>
       <th scope="col">DOB</th>
-      <th scope="col">Status</th>
+      <th
+        id="student-status"
+        data-reflex="click->StudentsTable#sort"
+        data-column="status"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Status</span>
+      </th>
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% students.each do |student| %>
+    <% records.each do |student| %>
       <tr scope="row">
         <td>
-          <%= student.name %>
+          <%= student.first_name %>
+        </td>
+        <td>
+          <%= student.last_name %>
+        </td>
+        <td>
+          <%= student.volunteers.map(&:name).join(", ") %>
+        </td>
+        <td>
+          <%= student.staff&.name %>
         </td>
         <td>
           <%= student.guardian_last_name %>
