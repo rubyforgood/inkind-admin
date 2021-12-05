@@ -15,7 +15,7 @@ RSpec.describe StudentsTableReflex, type: :reflex do
 
     it_behaves_like "sortable table", "first_name", Student.all, "admin/students/_students_table"
     it_behaves_like "sortable table", "last_name", Student.all, "admin/students/_students_table"
-    it_behaves_like "sortable table", "guardian_name", Student.all, "admin/students/_students_table"
+    it_behaves_like "sortable table", "guardian_last_name", Student.all, "admin/students/_students_table"
     it_behaves_like "sortable table", "status", Student.all, "admin/students/_students_table"
   end
 end
