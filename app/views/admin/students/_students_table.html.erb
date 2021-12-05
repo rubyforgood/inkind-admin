@@ -34,7 +34,16 @@
         <span>Guardian Name</span>
       </th>
       <th scope="col">DOB</th>
-      <th scope="col">Status</th>
+      <th
+        id="student-status"
+        data-reflex="click->StudentsTable#sort"
+        data-column="status"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Status</span>
+      </th>
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
@@ -51,7 +60,7 @@
           <%= student.volunteers.map(&:name).join(", ") %>
         </td>
         <td>
-          <%= student.staff.name %>
+          <%= student.staff&.name %>
         </td>
         <td>
           <%= student.guardian_name %>

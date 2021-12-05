@@ -1,0 +1,54 @@
+<table class="table" id="sortable">
+  <thead>
+    <tr>
+      <th scope="col">Requestor</th>
+      <th scope="col">Student</th>
+      <th
+        id="tickets-created-at"
+        data-reflex="click->TicketsTable#sort"
+        data-column="created_at"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Created On</span>
+      </th>
+      <th scope="col">Description</th>
+      <th
+        id="tickets-status"
+        data-reflex="click->TicketsTable#sort"
+        data-column="status"
+        data-direction="asc"
+        scope="col"
+        class="hover:cursor-pointer"
+      >
+        <span>Status</span>
+      </th>
+      <th class="text-center" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% records.each do |ticket| %>
+      <tr scope="row">
+        <td>
+          <%= ticket.requestor.name %>
+        </td>
+        <td>
+          <%= ticket.survey_response&.student&.name || "N/A" %>
+        </td>
+        <td>
+          <%= ticket.created_at.strftime('%m/%d/%Y') %>
+        </td>
+        <td>
+          <%= ticket.description %>
+        </td>
+        <td>
+          <%= ticket.status.capitalize %>
+        </td>
+        <td class="text-center teal-text">
+          <%= link_to "View", admin_ticket_path(ticket) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
