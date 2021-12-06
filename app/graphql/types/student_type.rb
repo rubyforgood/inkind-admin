@@ -17,13 +17,12 @@ module Types
     field :emergency_contact_name, String, null: true
     field :emergency_contact_phone_number, String, null: true
 
-    def emergency_contact_name
-      object.student.emergency_contact_first_name_with_emergency_contact_last_name
+    def guardian_name
+      "#{object.guardian_first_name} #{object.guardian_last_name}"
     end
 
-    def guardian_name
-      object.student.guardian_first_name_with_guardian_last_name
+    def emergency_contact_name
+     "#{object.emergency_contact_full_name} #{object.emergency_contact_full_name}"
     end
   end
-
 end
