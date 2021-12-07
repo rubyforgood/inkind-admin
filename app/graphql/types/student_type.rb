@@ -22,7 +22,7 @@ module Types
     end
 
     def emergency_contact_name
-     "#{object.emergency_contact_full_name} #{object.emergency_contact_full_name}"
+      "#{object.emergency_contact_full_name} #{object.emergency_contact_full_name}"
     end
   end
 end

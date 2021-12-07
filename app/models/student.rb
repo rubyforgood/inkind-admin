@@ -43,7 +43,6 @@ class Student < ApplicationRecord
     save!
   end
 
-
   private
 
   def update_volunteer_assignments(volunteer_ids: [])
