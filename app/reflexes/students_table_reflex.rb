@@ -6,6 +6,6 @@ class StudentsTableReflex < ApplicationReflex
   def sort
     sort_records(records: Student.all,
       partial: "students_table",
-      sort_columns: %w[first_name last_name guardian_name status])
+      sort_columns: %w[first_name last_name guardian_last_name status])
   end
 end

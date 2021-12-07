@@ -100,8 +100,12 @@ type Student {
   createdAt: ISO8601DateTime!
   dateOfBirth: ISO8601DateTime
   email: String
+  emergencyContactFirstName: String
+  emergencyContactLastName: String
   emergencyContactName: String
   emergencyContactPhoneNumber: String
+  guardianFirstName: String
+  guardianLastName: String
   guardianName: String
   guardianPhoneNumber: String
   id: ID!
