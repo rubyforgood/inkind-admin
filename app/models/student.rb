@@ -12,6 +12,7 @@ class Student < ApplicationRecord
   belongs_to :deactivator, class_name: "User", optional: true
 
   validates :first_name, :last_name, presence: true
+  validates :state, length: {minimum: 2, maximum: 2}, allow_blank: true
 
   enum status: {active: 0, inactive: 1}
 

@@ -1,5 +1,7 @@
 module Admin
   class StudentsController < ApplicationController
+    include Carmen
+
     def index
       @nav = "Students"
       @students = Student.order(:last_name)
@@ -66,7 +68,7 @@ module Admin
       params.require(:student).permit(:first_name, :last_name,
         :email, :phone_number, :guardian_phone_number, :guardian_first_name,
         :guardian_last_name, :emergency_contact_first_name, :emergency_contact_last_name,
-        :emergency_contact_phone_number, :date_of_birth, volunteer_ids: [])
+        :emergency_contact_phone_number, :date_of_birth, :city, :state, volunteer_ids: [])
     end
   end
 end
