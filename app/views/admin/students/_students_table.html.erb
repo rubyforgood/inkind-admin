@@ -26,7 +26,7 @@
       <th
         id="guardian-name"
         data-reflex="click->StudentsTable#sort"
-        data-column="guardian_name"
+        data-column="guardian_last_name"
         data-direction="asc"
         scope="col"
         class="hover:cursor-pointer"
@@ -63,7 +63,7 @@
           <%= student.staff&.name %>
         </td>
         <td>
-          <%= student.guardian_last_name %>
+          <%= student.guardian_name %>
         </td>
         <td>
           <%= student.date_of_birth.strftime('%m/%d/%Y') %>
