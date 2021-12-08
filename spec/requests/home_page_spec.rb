@@ -16,7 +16,7 @@ RSpec.describe "/", type: :request do
       get root_url
 
       expect(response).to be_successful
-      expect(response.body).to include "Admin Home"
+      expect(response.body).to include "Home"
     end
   end
 
