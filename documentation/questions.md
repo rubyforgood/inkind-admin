@@ -1,3 +1,0 @@
-# Questions
-
-- Are surveys reusable?
