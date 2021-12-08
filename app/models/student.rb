@@ -27,6 +27,10 @@ class Student < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def guardian_name
+    "#{guardian_last_name}, #{guardian_first_name}"
+  end
+
   def initials
     first_name[0] + last_name[0]
   end
