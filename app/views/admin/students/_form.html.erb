@@ -59,6 +59,22 @@
     </div>
   </div>
 
+  <div class="row pr-3 pb-4">
+    <div class="col-3">
+      <%= form.text_field :city, class: "form-control", placeholder: "City" %>
+    </div>
+
+    <div class="col-3">
+      <%= form.select(
+        :state,
+        Carmen::Country.coded("US").subregions.typed("state").map { |state| [state.name, state.code] },
+        { include_hidden: false, selected: @student.state, class: "form-control" },
+        { 'data-controller' => 'autocomplete-select',
+          'data-autocomplete-select-placeholder' => "Select State" }
+      ) %>
+    </div>
+  </div>
+
   <label class="gray-text mt-4 mb-1">ASSIGN VOLUNTEER</label>
   <div class="row pr-3 pb-4">
     <div class="col-6">

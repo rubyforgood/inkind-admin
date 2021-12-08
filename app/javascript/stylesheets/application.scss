@@ -164,3 +164,13 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .sort-asc {
   border-bottom: 8px solid #311B92;
 }
+
+.ss-main {
+  .ss-single-selected {
+    .placeholder {
+      cursor: pointer;
+      opacity: 1;
+      background-color: transparent;
+    }
+  }
+}

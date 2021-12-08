@@ -82,6 +82,8 @@ GEM
     capybara-screenshot (1.0.25)
       capybara (>= 1.0, < 4)
       launchy
+    carmen (1.1.2)
+      activesupport (>= 3.0.0)
     childprocess (4.1.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
@@ -294,6 +296,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-screenshot
+  carmen (= 1.1.2)
   devise
   devise-security (~> 0.16.0)
   factory_bot_rails (~> 6.2)
