@@ -68,7 +68,7 @@
       <%= form.select(
         :state,
         Carmen::Country.coded("US").subregions.typed("state").map { |state| [state.name, state.code] },
-        { include_hidden: false, selected: @student.state, class: "form-control" },
+        { include_hidden: false, selected: @student.state },
         { 'data-controller' => 'autocomplete-select',
           'data-autocomplete-select-placeholder' => "Select State" }
       ) %>
@@ -95,8 +95,9 @@
       <%= form.select(
         :staff_id,
         User.where(role: :admin).map { |staff| [staff.name, staff.id] },
-        { include_blank: "Select Staff", selected: @student.active_student_staff_assignment&.staff_id },
-        class: "form-select"
+        { include_hidden: false, selected: @student.active_student_staff_assignment&.staff_id },
+        { 'data-controller' => 'autocomplete-select',
+          'data-autocomplete-select-placeholder' => "Select Staff" }
       ) %>
     </div>
   </div>
