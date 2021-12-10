@@ -1,49 +1,57 @@
-<h1>Edit Organization Profile</h1>
+<h3>Edit Organization Profile</h3>
 <br>
 
 <%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :name, class: "form-control", placeholder: "Organization Name" %>
+    <div class="col-6">
+      <%= f.text_field :name, class: "form-control text-input-common", placeholder: "Organization Name" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    <div class="col-6">
+      <%= f.text_field :email, class: "form-control text-input-common", placeholder: "Email Address" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :address1, class: "form-control", placeholder: "Street Address" %>
+    <div class="col-6">
+      <%= f.text_field :address1, class: "form-control text-input-common", placeholder: "Street Address" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :address2, class: "form-control", placeholder: "Apt, Suite, Building (Optional)" %>
+    <div class="col-6">
+      <%= f.text_field :address2, class: "form-control text-input-common", placeholder: "Apt, Suite, Building (Optional)" %>
     </div>  
   </div>
   
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :zip_code, class: "form-control", placeholder: "Zip Code" %>
+    <div class="col-6">
+      <%= f.text_field :zip_code, class: "form-control text-input-common", placeholder: "Zip Code" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+    <div class="col-6">
+      <%= f.text_field :city, class: "form-control text-input-common", placeholder: "City" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
-    <div class="col-4">
-      <%= f.text_field :state, class: "form-control", placeholder: "State" %>
+    <div class="col-6">
+      <%= f.text_field :state, class: "form-control text-input-common", placeholder: "State" %>
     </div>  
   </div>
 
-  <%= f.submit %>
+  <div class="row pr-3 pb-4 mt-4">
+    <div class="col-2">
+      <%= link_to 'CANCEL', :back, class: 'btn btn-purple-secondary'%>
+    </div>
+
+    <div class="col-2">
+      <%= f.submit 'SAVE', class: 'btn btn-purple-primary' %>
+    </div>
+  </div>
 <% end %>
 </div>
