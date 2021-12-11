@@ -175,14 +175,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 
-.text-input-common {
+.form-input-common {
     padding-top: 10px;
     padding-bottom: 10px;
-    ::placeholder {
-        font-style: italic;
-        font-size: 1em;
-        color: mintcream;
-        background: thistle;
-        padding: 5px;
-      }      
 }
