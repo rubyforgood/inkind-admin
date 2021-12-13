@@ -7,8 +7,9 @@ module Admin
       respond_to do |format|
         format.html
         format.csv do
-          columns = %w[requestor.name survey_response.student.name created_at description status]
-          headers = ["Requestor", "Student", "Created At", "Description", "Status"]
+          columns = %w[requestor.name created_at survey_response_id survey_response.student.name
+                       survey_response.student.active_student_staff_assignment.staff.name category_s status_s ]
+          headers = ["Requested By", "Date Created", "Response ID", "Student", "Staff Contact", "Type", "Status"]
 
           send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers), filename: "support-tickets-#{Date.today}.csv"
         end
