@@ -13,7 +13,15 @@ RSpec.describe TicketsTableReflex, type: :reflex do
       end
     end
 
-    it_behaves_like "sortable table", "created_at", SupportTicket.all, "admin/tickets/_tickets_table"
-    it_behaves_like "sortable table", "status", SupportTicket.all, "admin/tickets/_tickets_table"
+    it_behaves_like "sortable table", "created_at",
+      SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}), "admin/tickets/_tickets_table"
+    it_behaves_like "sortable table", "users.first_name",
+      SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}), "admin/tickets/_tickets_table"
+    it_behaves_like "sortable table", "students.last_name",
+      SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}), "admin/tickets/_tickets_table"
+    it_behaves_like "sortable table", "staffs_student_staff_assignments.last_name",
+      SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}), "admin/tickets/_tickets_table"
+    it_behaves_like "sortable table", "category",
+      SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}), "admin/tickets/_tickets_table"
   end
 end

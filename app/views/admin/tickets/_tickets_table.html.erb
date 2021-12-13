@@ -1,29 +1,38 @@
 <table class="table" id="sortable">
   <thead>
     <tr>
-      <th scope="col">Requestor</th>
-      <th scope="col">Student</th>
-      <th
-        id="tickets-created-at"
-        data-reflex="click->TicketsTable#sort"
-        data-column="created_at"
-        data-direction="asc"
-        scope="col"
-        class="hover:cursor-pointer"
-      >
-        <span>Created On</span>
-      </th>
-      <th scope="col">Description</th>
-      <th
-        id="tickets-status"
-        data-reflex="click->TicketsTable#sort"
-        data-column="status"
-        data-direction="asc"
-        scope="col"
-        class="hover:cursor-pointer"
-      >
-        <span>Status</span>
-      </th>
+      <th id="tickets-requested_by"
+          data-reflex="click->TicketsTable#sort"
+          data-column="users.first_name"
+          data-direction="asc"
+          scope="col"
+          class="hover:cursor-pointer">Requested By</th>
+      <th id="tickets-date-created"
+          data-reflex="click->TicketsTable#sort"
+          data-column="created_at"
+          data-direction="asc"
+          scope="col"
+          class="hover:cursor-pointer">
+        Date Created</th>
+      <th scope="col">Response ID</th>
+      <th id="tickets-student"
+          data-reflex="click->TicketsTable#sort"
+          data-column="students.last_name"
+          data-direction="asc"
+          scope="col"
+          class="hover:cursor-pointer">Student</th>
+      <th id="tickets-staff-contact"
+          data-reflex="click->TicketsTable#sort"
+          data-column="staffs_student_staff_assignments.last_name"
+          data-direction="asc"
+          scope="col"
+          class="hover:cursor-pointer">Staff Contact</th>
+      <th id="tickets-type"
+          data-reflex="click->TicketsTable#sort"
+          data-column="category"
+          data-direction="asc"
+          scope="col"
+          class="hover:cursor-pointer">Type</th>
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
@@ -34,19 +43,22 @@
           <%= ticket.requestor.name %>
         </td>
         <td>
-          <%= ticket.survey_response&.student&.name || "N/A" %>
-        </td>
-        <td>
           <%= ticket.created_at.strftime('%m/%d/%Y') %>
         </td>
         <td>
-          <%= ticket.description %>
+          <%= ticket.survey_response_id %>
         </td>
         <td>
-          <%= ticket.status.capitalize %>
+          <%= ticket.survey_response&.student&.name || "N/A" %>
+        </td>
+        <td>
+          <%= ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %>
+        </td>
+        <td>
+          <%= ticket.category_s %>
         </td>
         <td class="text-center teal-text">
-          <%= link_to "View", admin_ticket_path(ticket) %>
+          <%= link_to ticket.status_s, admin_ticket_path(ticket) %>
         </td>
       </tr>
     <% end %>
