@@ -20,4 +20,16 @@ class SupportTicket < ApplicationRecord
 
     update!(status: :closed, closer: closer, closed_at: Time.current)
   end
+
+  def category_s
+    ticket_types = {"survey_response" => "Support",
+                    "admin" => "Admin",
+                    "contact_info" => "Contact"}
+    ticket_types[category]
+  end
+
+  def status_s
+    statuses = {"active" => "Resolve", "closed" => "Closed"}
+    statuses[status]
+  end
 end
