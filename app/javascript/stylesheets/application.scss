@@ -89,6 +89,13 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     width: 100%;
 }
 
+.btn-purple-secondary {
+    color: black;
+    background-color: $white;
+    border-color: $medium-purple;
+    width: 100%;
+}
+
 .btn-gray-secondary {
     color: $dark-gray;
     background-color: $light-gray;
@@ -96,13 +103,6 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     &:hover {
         color: $dark-gray;
     }
-    width: 100%;
-}
-
-.btn-purple-secondary {
-    color: black;
-    background-color: $white;
-    border-color: $medium-purple;
     width: 100%;
 }
 
@@ -173,4 +173,9 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
       background-color: transparent;
     }
   }
+}
+
+.form-input-common {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
