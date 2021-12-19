@@ -1,20 +1,65 @@
 <div class="m-5 container">
-  <h5 class="mb-5 mr-5">
-    <%= @ticket.requestor.name %>
-  </h5>
+  <%= link_to "Back", admin_tickets_path %>
 
-  <% if @ticket.survey_response.present? %>
-    Student: <%= @ticket.survey_response.student.name %>
-  <% end %>
-  <div>Date Created: <%= @ticket.created_at %></div>
-  <div>Description: <%= @ticket.description %></div>
-  <div>Status: <%= @ticket.status.capitalize %></div>
+  <div class="pb-4">
+    <h2>
+      <%= @ticket.requestor.name %>
+      <p class="gray-text fs-5"><%= @ticket.category_s %> Request</p>
+    </h2>
+  </div>
+
+  <div class="pb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <table class="table table-borderless table-sm">
+          <thead>
+            <tr>
+              <th class="gray-text">DATE CREATED</th>
+              <th class="gray-text">CREATED BY</th>
+              <th class="gray-text">STUDENT</th>
+              <th class="gray-text">STAFF CONTACT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @ticket.created_at.to_date.to_formatted_s(:long) %></td>
+              <td><%= @ticket.requestor.name %></td>
+              <td><%= @ticket.survey_response&.student&.name || "N/A" %></td>
+              <td><%= @ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <label class="gray-text">DESCRIPTION</label>
+        <p class="card-text"><%= @ticket.description %></p>
+      </div>
+    </div>
+  </div>
 
   <% if @ticket.closer.blank? %>
-  <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
-    <%= f.button "Cancel", type: :reset, class: "btn btn-secondary" %>
-    <%= f.submit "Resolve", class: "btn btn-primary" %>
-  <% end %>
+    <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
+      <label class="gray-text mt-4 mb-1">RESOLUTION DESCRIPTION</label>
+      <div class="row pr-3 pb-4">
+        <div>
+          <%= f.text_area :closer_notes, class: "form-control", placeholder: "Describe how support request was resolved" %>
+        </div>
+      </div>
+
+      <div class="row pr-3 pb-4 mt-4">
+        <div class="col-2">
+          <%= link_to "CANCEL", admin_tickets_path, class: "btn btn-lg btn-purple-secondary" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "RESOLVE", class: "btn btn-lg btn-purple-primary" %>
+        </div>
+      </div>
+    <% end %>
   <% else %>
     <div>Closed by: <%= @ticket.closer.name %></div>
     <div>Closed on: <%= @ticket.closed_at %></div>
