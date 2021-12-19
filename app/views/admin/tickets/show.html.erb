@@ -1,14 +1,14 @@
 <div class="m-5 container">
   <%= link_to "Back", admin_tickets_path %>
 
-  <div class="pb-4">
+  <div class="pb-2">
     <h2>
       <%= @ticket.requestor.name %>
       <p class="gray-text fs-5"><%= @ticket.category_s %> Request</p>
     </h2>
   </div>
 
-  <div class="pb-4">
+  <div class="pb-2">
     <div class="card shadow-sm">
       <div class="card-body">
         <table class="table table-borderless table-sm">
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="pb-4">
+  <div class="pb-2">
     <div class="card shadow-sm">
       <div class="card-body">
         <label class="gray-text">DESCRIPTION</label>
@@ -45,7 +45,7 @@
   <% if @ticket.closer.blank? %>
     <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
       <label class="gray-text mt-4 mb-1">RESOLUTION DESCRIPTION</label>
-      <div class="row pr-3 pb-4">
+      <div class="row pr-3 pb-2">
         <div>
           <%= f.text_area :closer_notes, class: "form-control", placeholder: "Describe how support request was resolved" %>
         </div>
