@@ -11,27 +11,50 @@
   <div class="pb-2">
     <div class="card shadow-sm">
       <div class="card-body">
-        <table class="table table-borderless table-sm">
-          <thead>
-            <tr>
-              <th class="gray-text">DATE CREATED</th>
-              <th class="gray-text">CREATED BY</th>
-              <th class="gray-text">STUDENT</th>
-              <th class="gray-text">STAFF CONTACT</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= @ticket.created_at.to_date.to_formatted_s(:long) %></td>
-              <td><%= @ticket.requestor.name %></td>
-              <td><%= @ticket.survey_response&.student&.name || "N/A" %></td>
-              <td><%= @ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <div class="col-3">
+            <label class="gray-text">DATE CREATED</label>
+            <p><%= @ticket.created_at.to_date.to_formatted_s(:long) %></p>
+          </div>
+          <div class="col-3">
+            <label class="gray-text">CREATED BY</label>
+            <p><%= @ticket.requestor.name %></p>
+          </div>
+          <div class="col-3">
+            <label class="gray-text">STUDENT</label>
+            <p><%= @ticket.survey_response&.student&.name || "N/A" %></p>
+          </div>
+          <div class="col-3">
+            <label class="gray-text">DATE CREATED</label>
+            <p><%= @ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <% if @ticket.closer.present? %>
+    <div class="pb-2">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <label class="gray-text">CLOSE DATE</label>
+              <p><%= @ticket.closed_at.to_date.to_formatted_s(:long) %></p>
+            </div>
+            <div class="col-3">
+              <label class="gray-text">CLOSED BY</label>
+              <p><%= @ticket.closer.name %></p>
+            </div>
+            <div class="col-3">
+              <label class="gray-text">STATUS</label>
+              <p><%= @ticket.status_s %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="pb-2">
     <div class="card shadow-sm">
@@ -42,9 +65,20 @@
     </div>
   </div>
 
+  <% if @ticket.closer.present? %>
+    <div class="pb-2">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <label class="gray-text">RESOLUTION DESCRIPTION</label>
+          <p class="card-text"><%= @ticket.closer_notes %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <% if @ticket.closer.blank? %>
     <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
-      <label class="gray-text mt-4 mb-1">RESOLUTION DESCRIPTION</label>
+      <label class="gray-text mt-4 mb-1"></label>
       <div class="row pr-3 pb-2">
         <div>
           <%= f.text_area :closer_notes, class: "form-control", placeholder: "Describe how support request was resolved" %>
@@ -60,8 +94,5 @@
         </div>
       </div>
     <% end %>
-  <% else %>
-    <div>Closed by: <%= @ticket.closer.name %></div>
-    <div>Closed on: <%= @ticket.closed_at %></div>
   <% end %>
 </div>

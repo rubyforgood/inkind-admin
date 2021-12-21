@@ -69,13 +69,18 @@ RSpec.describe "/admin/tickets", type: :request do
   describe "POST id/resolve" do
     subject(:support_ticket) { create(:support_ticket) }
 
+    let(:ticket_update_params) do
+      attributes_for(:support_ticket, closer_notes: "We are closing the ticket")
+    end
+
     it "closes the support ticket" do
       freeze_time do
-        post resolve_admin_ticket_url(support_ticket)
+        post resolve_admin_ticket_url(support_ticket), params: {support_ticket: ticket_update_params}
 
         expect(support_ticket.reload).to be_closed
         expect(support_ticket.closer).to eq current_user
         expect(support_ticket.closed_at).to eq Time.current
+        expect(support_ticket.closer_notes).to eq "We are closing the ticket"
       end
     end
   end
