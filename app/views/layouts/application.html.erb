@@ -18,9 +18,9 @@
 
   <body>
     <%= render "layouts/application/topbar" %>
-    <div class="d-flex my-2" id="wrapper">
+    <div class="d-flex" id="wrapper">
       <%= render "layouts/application/sidebar" %>
-      <div class="container-fluid p-3 content-wrapper">
+      <div class="container-fluid p-4 content-wrapper">
         <%= flash_banner(:alert, flash[:alert]) %>
         <%= flash_banner(:notice, flash[:notice]) %>
         <%= yield %>

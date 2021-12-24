@@ -5,7 +5,7 @@ $dark-purple: #311B92;
 $medium-purple: #6C3CB2;
 $light-purple: #D1C4E9;
 $dark-gray: #66787F;
-$light-gray: #EBEFF1;
+$light-gray: #ECEFF1;
 $white: #FFFFFF;
 
 body {
@@ -16,12 +16,20 @@ a {
     color: $teal;
 }
 
+table {
+    background-color: $white;
+}
+
 .teal-text {
-   color: $teal;
+    color: $teal;
 }
 
 .gray-text {
-   color: $dark-gray;
+    color: $dark-gray;
+}
+
+.white {
+    background-color: $white;
 }
 
 #wrapper {
@@ -51,6 +59,10 @@ a {
 
 #topbar .avatar {
     width: 20px;
+}
+
+.content-wrapper {
+    background-color: #FAFCFE;
 }
 
 body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
