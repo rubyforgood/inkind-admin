@@ -34,13 +34,13 @@ module Admin
     end
 
     def show
-      @ticket = SupportTicket.find(params[:id])
+      ticket
     end
 
     def resolve
-      @ticket = SupportTicket.find(params[:id])
+      ticket.update ticket_update_params.merge(closed_at: Time.zone.now)
 
-      if @ticket.close!(current_user)
+      if ticket.close!(current_user)
         redirect_to admin_tickets_path, notice: "The support ticket was successfully resolved."
       else
         flash[:alert] = "Could not resolve the support ticket. Please try again."
@@ -48,8 +48,20 @@ module Admin
       end
     end
 
+    private
+
     def ticket_params
       params.require(:support_ticket).permit(:requestor_id, :description)
+    end
+
+    def ticket_update_params
+      params.require(:support_ticket).permit(:closer_notes)
+    end
+
+    def ticket
+      return @ticket if defined?(@ticket)
+
+      @ticket = SupportTicket.find(params[:id])
     end
   end
 end
