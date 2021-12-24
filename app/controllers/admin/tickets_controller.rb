@@ -1,5 +1,7 @@
 module Admin
   class TicketsController < ApplicationController
+    before_action :ticket, only: %i[show resolve]
+
     def index
       @nav = "Tickets"
       @tickets = SupportTicket.order(:created_at)
@@ -11,7 +13,8 @@ module Admin
             survey_response.student.active_student_staff_assignment.staff.name category_s status_s ]
           headers = ["Requested By", "Date Created", "Response ID", "Student", "Staff Contact", "Type", "Status"]
 
-          send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers), filename: "support-tickets-#{Date.today}.csv"
+          send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers),
+            filename: "support-tickets-#{Date.today}.csv"
         end
       end
     end
@@ -34,13 +37,10 @@ module Admin
     end
 
     def show
-      ticket
     end
 
     def resolve
-      ticket.update ticket_update_params.merge(closed_at: Time.zone.now)
-
-      if ticket.close!(current_user)
+      if ticket.close!(current_user, closer_notes: ticket_update_params[:closer_notes])
         redirect_to admin_tickets_path, notice: "The support ticket was successfully resolved."
       else
         flash[:alert] = "Could not resolve the support ticket. Please try again."
