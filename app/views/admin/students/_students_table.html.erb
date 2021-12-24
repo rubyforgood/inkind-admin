@@ -71,7 +71,7 @@
         <td>
           <%= student.status %>
         </td>
-        <td class="text-center teal-text">
+        <td class="text-center text-teal">
           <%= link_to "Edit", edit_admin_student_path(student) %> |
           <% if student.status == "active" %>
             <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>

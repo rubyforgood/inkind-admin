@@ -6,35 +6,35 @@
 <%= form_for @organization, url: admin_organization_path(@organization), html: { method: :put } do |f| %>
   <div class="row pr-3 pb-4">
     <div class="col-6">
-      <%= f.text_field :name, class: "form-control form-input-common", placeholder: "Organization Name" %>
+      <%= f.text_field :name, class: "form-control py-2", placeholder: "Organization Name" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-6">
-      <%= f.text_field :email, class: "form-control form-input-common", placeholder: "Email Address" %>
+      <%= f.text_field :email, class: "form-control py-2", placeholder: "Email Address" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-6">
-      <%= f.text_field :address1, class: "form-control form-input-common", placeholder: "Street Address" %>
+      <%= f.text_field :address1, class: "form-control py-2", placeholder: "Street Address" %>
     </div>  
   </div>
 
   <div class="row pr-3 pb-4">
     <div class="col-6">
-      <%= f.text_field :address2, class: "form-control form-input-common", placeholder: "Apt, Suite, Building (Optional)" %>
+      <%= f.text_field :address2, class: "form-control py-2", placeholder: "Apt, Suite, Building (Optional)" %>
     </div>  
   </div>
   
   <div class="row pr-3 pb-4">
     <div class="col-3">
-      <%= f.text_field :zip_code, class: "form-control form-input-common", placeholder: "Zip Code" %>
+      <%= f.text_field :zip_code, class: "form-control py-2", placeholder: "Zip Code" %>
     </div>
     
     <div class="col-3">
-      <%= f.text_field :city, class: "form-control form-input-common", placeholder: "City" %>
+      <%= f.text_field :city, class: "form-control py-2", placeholder: "City" %>
     </div>  
   </div>
 
