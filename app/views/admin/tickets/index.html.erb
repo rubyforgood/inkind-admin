@@ -4,15 +4,15 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2">
-      <h3><%= page_header_title %></h3>
+    <div class="col-md-4">
+      <h1><%= page_header_title %></h1>
     </div>
-    <div class="col-md-2 offset-md-8">
+    <div class="col-md-2 offset-md-6">
       <%= link_to "ADD NEW", new_admin_ticket_path, class: "btn btn-purple-primary" %>
     </div>
   </div>
 
-  <div class="row white mt-3">
+  <div class="row white py-3 mt-3">
     <div class="col-md-2 offset-md-10">
       <%= link_to "EXPORT", admin_tickets_path(format: :csv), class: "btn btn-purple-secondary" %>
     </div>
