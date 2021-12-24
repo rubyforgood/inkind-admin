@@ -1,4 +1,4 @@
-<table class="table" id="sortable">
+<table id="sortable">
   <thead>
     <tr>
       <th id="tickets-requested_by"
@@ -6,33 +6,42 @@
           data-column="users.first_name"
           data-direction="asc"
           scope="col"
-          class="hover:cursor-pointer">Requested By</th>
+          class="hover:cursor-pointer">
+        <span>Requested By</span>
+      </th>
       <th id="tickets-date-created"
           data-reflex="click->TicketsTable#sort"
           data-column="created_at"
           data-direction="asc"
           scope="col"
           class="hover:cursor-pointer">
-        Date Created</th>
+        <span>Date Created</span>
+      </th>
       <th scope="col">Response ID</th>
       <th id="tickets-student"
           data-reflex="click->TicketsTable#sort"
           data-column="students.last_name"
           data-direction="asc"
           scope="col"
-          class="hover:cursor-pointer">Student</th>
+          class="hover:cursor-pointer">
+        <span>Student</span>
+      </th>
       <th id="tickets-staff-contact"
           data-reflex="click->TicketsTable#sort"
           data-column="staffs_student_staff_assignments.last_name"
           data-direction="asc"
           scope="col"
-          class="hover:cursor-pointer">Staff Contact</th>
+          class="hover:cursor-pointer">
+        <span>Staff Contact</span>
+      </th>
       <th id="tickets-type"
           data-reflex="click->TicketsTable#sort"
           data-column="category"
           data-direction="asc"
           scope="col"
-          class="hover:cursor-pointer">Type</th>
+          class="hover:cursor-pointer">
+        <span>Type</span>
+      </th>
       <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
