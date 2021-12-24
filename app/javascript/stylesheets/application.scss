@@ -28,6 +28,26 @@ h1 {
     font-size: 2.1rem;
 }
 
+thead {
+    background-color: $light-gray;
+    text-transform: uppercase;
+}
+
+th {
+    font-weight: normal;
+    padding: 0.5rem 0.5rem;
+    white-space: nowrap;
+    color: $dark-gray;
+    font-size: 14px;
+
+    span {
+        white-space: nowrap;
+        color: $teal;
+        text-decoration: underline;
+        font-size: 14px;
+    }
+}
+
 #wrapper {
     overflow-x: hidden;
 }
@@ -158,11 +178,11 @@ h1 {
 }
 
 .sort-desc {
-    border-top: 8px solid #311B92;
+    border-top: 8px solid $teal;
 }
 
 .sort-asc {
-    border-bottom: 8px solid #311B92;
+    border-bottom: 8px solid $teal;
 }
 
 
