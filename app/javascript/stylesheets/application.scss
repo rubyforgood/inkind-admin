@@ -6,7 +6,7 @@ $medium-purple: #6C3CB2;
 $light-purple: #D1C4E9;
 $dark-gray: #66787F;
 $light-gray: #ECEFF1;
-$lighteset-gray: #FAFCFE;
+$lightest-gray: #FAFCFE;
 $white: #FFFFFF;
 
 ////////*   Global settings   *////////
@@ -102,8 +102,8 @@ table {
     color: $teal;
 }
 
-.bg-lighteset-gray {
-    background-color: $lighteset-gray;
+.bg-lightest-gray {
+    background-color: $lightest-gray;
 }
 
 .bg-dark-purple {
