@@ -1,12 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
 $teal: #00838F;
+
 $dark-purple: #311B92;
 $medium-purple: #6C3CB2;
 $light-purple: #D1C4E9;
+
 $dark-gray: #66787F;
+$gray: #CFD8DC;
 $light-gray: #ECEFF1;
 $lightest-gray: #FAFCFE;
+
 $white: #FFFFFF;
 
 
@@ -18,10 +22,6 @@ body {
 
 a {
     color: $teal;
-}
-
-table {
-    background-color: $white;
 }
 
 #wrapper {
@@ -65,10 +65,6 @@ table {
     fill: $light-purple;
 }
 
-.hamburger-menu svg path {
-    fill: $white;
-}
-
 #topbar .avatar {
     width: 20px;
 }
@@ -91,6 +87,62 @@ table {
     text-align: center;
     font-size: 100%;
     font-weight: bolder;
+}
+
+
+////////*   Tables   *////////
+
+table {
+    background-color: $white;
+    border-color: $gray;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table > * > * > * {
+    padding: 0.5rem;
+    border-bottom-width: 1px;
+}
+
+h1 {
+    font-size: 2.1rem;
+}
+
+thead {
+    background-color: $light-gray;
+    text-transform: uppercase;
+    border-top-width: 1px;
+}
+
+th {
+    font-weight: normal;
+    padding: 0.5rem 0.5rem;
+    white-space: nowrap;
+    color: $dark-gray;
+    font-size: 14px;
+
+    span {
+        white-space: nowrap;
+        color: $teal;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 14px;
+    }
+}
+
+.sort {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.sort-desc {
+    border-top: 8px solid $teal;
+}
+
+.sort-asc {
+    border-bottom: 8px solid $teal;
 }
 
 
@@ -148,24 +200,6 @@ table {
 }
 
 
-////////*   Sorting   *////////
-
-.sort {
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  display: inline-block;
-  margin-bottom: 2px;
-}
-
-.sort-desc {
-  border-top: 8px solid #311B92;
-}
-
-.sort-asc {
-  border-bottom: 8px solid #311B92;
-}
-
-
 ////////*   Modals   *////////
 
 .modal-dialog {
@@ -175,12 +209,8 @@ table {
 
 ////////*   Type ahead override   *////////
 
-.ss-main {
-  .ss-single-selected {
-    .placeholder {
-      cursor: pointer;
-      opacity: 1;
-      background-color: transparent;
-    }
-  }
+.ss-main .ss-single-selected .placeholder {
+    cursor: pointer;
+    opacity: 1;
+    background-color: transparent;
 }

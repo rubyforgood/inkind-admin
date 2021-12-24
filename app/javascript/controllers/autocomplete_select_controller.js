@@ -1,5 +1,5 @@
-import { Controller } from 'stimulus'
-import SlimSelect from 'slim-select'
+import { Controller } from "stimulus"
+import SlimSelect from "slim-select"
 import "slim-select/dist/slimselect.min.css"
 
 export default class extends Controller {

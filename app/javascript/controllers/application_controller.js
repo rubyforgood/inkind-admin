@@ -1,12 +1,12 @@
-import { Controller } from 'stimulus'
-import StimulusReflex from 'stimulus_reflex'
+import { Controller } from "stimulus"
+import StimulusReflex from "stimulus_reflex"
 
 /* This is your ApplicationController.
  * All StimulusReflex controllers should inherit from this class.
  *
  * Example:
  *
- *   import ApplicationController from './application_controller'
+ *   import ApplicationController from "./application_controller"
  *
  *   export default class extends ApplicationController { ... }
  *
