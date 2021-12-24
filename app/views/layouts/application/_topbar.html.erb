@@ -20,6 +20,7 @@
                 <div class="circle-text"><%= current_user.initials %></div>
               </div>
             </a>
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenu">
               <%= link_to(t(".user_menu.edit_profile"), edit_user_registration_path, class: "dropdown-item" ) %>
               <div class="dropdown-divider"></div>
@@ -28,6 +29,7 @@
               <%= link_to(t(".user_menu.logout"), destroy_user_session_path, class: "dropdown-item" ) %>
               </div>
             </div>
+
           </li>
         <% else %>
           <li class="nav-item dropdown">
