@@ -151,18 +151,18 @@ table {
 ////////*   Sorting   *////////
 
 .sort {
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  display: inline-block;
-  margin-bottom: 2px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    display: inline-block;
+    margin-bottom: 2px;
 }
 
 .sort-desc {
-  border-top: 8px solid #311B92;
+    border-top: 8px solid #311B92;
 }
 
 .sort-asc {
-  border-bottom: 8px solid #311B92;
+    border-bottom: 8px solid #311B92;
 }
 
 
@@ -175,12 +175,8 @@ table {
 
 ////////*   Type ahead override   *////////
 
-.ss-main {
-  .ss-single-selected {
-    .placeholder {
-      cursor: pointer;
-      opacity: 1;
-      background-color: transparent;
-    }
-  }
+.ss-main .ss-single-selected .placeholder {
+    cursor: pointer;
+    opacity: 1;
+    background-color: transparent;
 }
