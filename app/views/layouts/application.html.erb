@@ -20,7 +20,7 @@
     <%= render "layouts/application/topbar" %>
     <div class="d-flex" id="wrapper">
       <%= render "layouts/application/sidebar" %>
-      <div class="container-fluid p-4 pt-5 content-wrapper">
+      <div class="container-fluid bg-lighteset-gray p-4 pt-5">
         <%= flash_banner(:alert, flash[:alert]) %>
         <%= flash_banner(:notice, flash[:notice]) %>
         <%= yield %>

@@ -6,7 +6,10 @@ $medium-purple: #6C3CB2;
 $light-purple: #D1C4E9;
 $dark-gray: #66787F;
 $light-gray: #ECEFF1;
+$lighteset-gray: #FAFCFE;
 $white: #FFFFFF;
+
+////////*   Global settings   *////////
 
 body {
     font-family: "Nunito";
@@ -20,80 +23,99 @@ table {
     background-color: $white;
 }
 
-.teal-text {
-    color: $teal;
-}
-
-.gray-text {
-    color: $dark-gray;
-}
-
-.white {
-    background-color: $white;
-}
-
-.btn {
-    padding: 0.75rem 0.75rem;
-    font-size: 1.2rem;
-}
-
 #wrapper {
     overflow-x: hidden;
 }
 
-#sidebar-wrapper .list-group {
-    width: 15rem;
-}
-
-.list-group-item {
-    border: none;
-}
+////////*   Navigation   *////////
 
 .inkind-logo {
     font-family: "Tenor Sans";
     font-size: 200%;
 }
 
-.dark-purple {
-    background-color: $dark-purple;
+#sidebar-wrapper {
+    margin-left: 0;
+
+    .list-group {
+        width: 15rem;
+        svg path {
+            fill: $dark-purple;
+        }
+    }
+
+    .list-group-item {
+        border: none;
+    }
+
+    .list-group-item.active {
+        color: $dark-purple;
+        background-color: $light-purple;
+        font-weight: bold;
+    }
+
+    .stylized-link {
+        text-decoration: none;
+    }
 }
 
-#navbarDropdownMenu {
-    color: white;
+.nav-link svg path {
+    fill: $light-purple;
+}
+
+.hamburger-menu svg path {
+    fill: $white;
 }
 
 #topbar .avatar {
     width: 20px;
 }
 
-.content-wrapper {
-    background-color: #FAFCFE;
+#profile-circle {
+    display: block;
+    position: relative;
+    line-height: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background: $light-purple;
+    color: $dark-gray;
 }
 
-body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-    margin-left: 0;
+.circle-text {
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bolder;
 }
 
-.list-group-item.active {
-    color: $dark-purple;
-    background-color: $light-purple;
-    font-weight: bold;
+
+////////*   Text & Background Colors   *////////
+
+.text-dark-gray {
+    color: $dark-gray;
 }
 
-.list-group {
-    svg {
-        path {
-            fill: $dark-purple;
-        }
-    }
+.text-teal {
+    color: $teal;
 }
 
-.nav-link {
-    svg {
-        path {
-            fill: $light-purple;
-        }
-    }
+.bg-lighteset-gray {
+    background-color: $lighteset-gray;
+}
+
+.bg-dark-purple {
+    background-color: $dark-purple;
+}
+
+
+////////*   Buttons   *////////
+
+.btn {
+    padding: 0.75rem 0.75rem;
+    font-size: 1.2rem;
 }
 
 .btn-purple-primary {
@@ -123,49 +145,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     width: 100%;
 }
 
-.hamburger-menu {
-    svg {
-        path {
-            fill: $white;
-        }
-    }
-}
 
-.sidebar-options {
-    color: $dark-gray;
-}
-
-.stylized-link {
-    text-decoration: none;
-}
-
-#profile-circle {
-    display: block;
-    position: relative;
-    line-height: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 25px;
-    background: $light-purple;
-    color: $dark-gray;
-}
-
-#dark-gray {
-    color: $dark-gray;
-}
-
-.circle-text {
-    position: absolute;
-    bottom: 50%;
-    width: 100%;
-    text-align: center;
-    font-size: 100%;
-    font-weight: bolder;
-}
-
-.modal-dialog {
-    max-width: 600px;
-}
+////////*   Sorting   *////////
 
 .sort {
   border-left: 6px solid transparent;
@@ -182,6 +163,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   border-bottom: 8px solid #311B92;
 }
 
+
+////////*   Modals   *////////
+
+.modal-dialog {
+    max-width: 600px;
+}
+
+
+////////*   Type ahead override   *////////
+
 .ss-main {
   .ss-single-selected {
     .placeholder {
@@ -190,9 +181,4 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
       background-color: transparent;
     }
   }
-}
-
-.form-input-common {
-    padding-top: 10px;
-    padding-bottom: 10px;
 }

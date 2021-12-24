@@ -1,7 +1,7 @@
-<nav id="topbar" class="navbar navbar-expand-lg navbar-dark dark-purple border-bottom">
+<nav id="topbar" class="navbar navbar-expand-lg navbar-dark bg-dark-purple border-bottom">
   <div class="container-fluid">
 
-    <%= link_to root_path, class: "navbar-brand dark-purple inkind-logo" do %>
+    <%= link_to root_path, class: "navbar-brand bg-dark-purple inkind-logo" do %>
       <%= t(:title) %>
     <% end %>
 
@@ -25,7 +25,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link" id="navbarDropdownMenu" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <!-- <%= image_tag current_user_avatar_url, class: "avatar" %> -->
               <div id="profile-circle" class="text-center">
                 <div class="circle-text"><%= current_user.initials %></div>
