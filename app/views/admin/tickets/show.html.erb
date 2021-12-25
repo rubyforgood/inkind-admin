@@ -4,7 +4,7 @@
   <div class="pb-2">
     <h2>
       <%= @ticket.requestor.name %>
-      <p class="text-dark-gray fs-5"><%= @ticket.category_s %> Request</p>
+      <p class="text-dark-gray fs-5"><%= @ticket.display_category %> Request</p>
     </h2>
   </div>
 
@@ -22,11 +22,11 @@
           </div>
           <div class="col-3">
             <label class="text-dark-gray">STUDENT</label>
-            <p><%= @ticket.survey_response&.student&.name || "N/A" %></p>
+            <p><%= @ticket.student_name %></p>
           </div>
           <div class="col-3">
-            <label class="text-dark-gray">DATE CREATED</label>
-            <p><%= @ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %></p>
+            <label class="text-dark-gray">STAFF CONTACT</label>
+            <p><%= @ticket.staff_contact_name %></p>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-3">
               <label class="text-dark-gray">STATUS</label>
-              <p><%= @ticket.status_s %></p>
+              <p><%= @ticket.display_status %></p>
             </div>
           </div>
         </div>

@@ -58,16 +58,16 @@
           <%= ticket.survey_response_id %>
         </td>
         <td>
-          <%= ticket.survey_response&.student&.name || "N/A" %>
+          <%= ticket.student_name %>
         </td>
         <td>
-          <%= ticket.survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A" %>
+          <%= ticket.staff_contact_name %>
         </td>
         <td>
-          <%= ticket.category_s %>
+          <%= ticket.display_category %>
         </td>
         <td class="text-center text-teal">
-          <%= link_to ticket.status_s, admin_ticket_path(ticket) %>
+          <%= link_to(ticket.display_status, admin_ticket_path(ticket)) %>
         </td>
       </tr>
     <% end %>
