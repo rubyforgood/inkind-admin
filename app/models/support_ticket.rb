@@ -15,7 +15,9 @@ class SupportTicket < ApplicationRecord
   enum status: {active: 0, closed: 1}
   enum category: {survey_response: 0, admin: 1, contact_info: 2}
 
-  def close!(closer, closer_notes: nil)
+  delegate :student, to: :survey_response, allow_nil: true
+
+  def close!(closer, closer_notes)
     return false if closed?
 
     update!(status: :closed, closer: closer, closer_notes: closer_notes, closed_at: Time.current)
@@ -34,10 +36,10 @@ class SupportTicket < ApplicationRecord
   end
 
   def staff_contact_name
-    survey_response&.student&.active_student_staff_assignment&.staff&.name || "N/A"
+    student&.active_student_staff_assignment&.staff&.name || "N/A"
   end
 
   def student_name
-    survey_response&.student&.name || "N/A"
+    student&.name || "N/A"
   end
 end
