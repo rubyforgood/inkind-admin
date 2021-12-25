@@ -40,7 +40,7 @@ module Admin
     end
 
     def resolve
-      if ticket.close!(current_user, closer_notes: ticket_update_params[:closer_notes])
+      if ticket.close!(current_user, ticket_update_params[:closer_notes])
         redirect_to admin_tickets_path, notice: "The support ticket was successfully resolved."
       else
         flash[:alert] = "Could not resolve the support ticket. Please try again."

@@ -8,7 +8,7 @@
     </h2>
   </div>
 
-  <div class="pb-2">
+  <div>
     <div class="card shadow-sm">
       <div class="card-body">
         <div class="row">
@@ -34,7 +34,7 @@
   </div>
 
   <% if @ticket.closer.present? %>
-    <div class="pb-2">
+    <div class="pb-4">
       <div class="card shadow-sm">
         <div class="card-body">
           <div class="row">
@@ -56,7 +56,7 @@
     </div>
   <% end %>
 
-  <div class="pb-2">
+  <div class="pb-4">
     <div class="card shadow-sm">
       <div class="card-body">
         <label class="text-dark-gray">DESCRIPTION</label>
@@ -74,11 +74,10 @@
         </div>
       </div>
     </div>
-  <% end %>
+  <% else %>
 
-  <% if @ticket.closer.blank? %>
     <%= form_with(model: @ticket, url: resolve_admin_ticket_url, method: :post) do |f| %>
-      <label class="text-dark-gray mt-4 mb-1"></label>
+      <label class="text-dark-gray mt-4 mb-3">RESOLUTION DESCRIPTION</label>
       <div class="row pr-3 pb-2">
         <div>
           <%= f.text_area :closer_notes, class: "form-control", placeholder: "Describe how support request was resolved" %>

@@ -10,7 +10,7 @@ RSpec.describe "sessions#new", type: :system do
 
       fill_in "Email", with: volunteer.email
       fill_in "Password", with: volunteer.password
-      click_button "Log in"
+      click_button "LOG IN"
 
       expect(page).to have_text "Your password is expired. Please renew your password."
     end
@@ -24,7 +24,7 @@ RSpec.describe "sessions#new", type: :system do
 
       fill_in "Email", with: volunteer.email
       fill_in "Password", with: volunteer.password
-      click_button "Log in"
+      click_button "LOG IN"
 
       expect(page).to have_text "Signed in successfully."
       expect(page).to have_selector("h1", text: "Volunteer Home")
@@ -39,7 +39,7 @@ RSpec.describe "sessions#new", type: :system do
 
       fill_in "Email", with: admin.email
       fill_in "Password", with: admin.password
-      click_button "Log in"
+      click_button "LOG IN"
 
       expect(page).to have_text "Signed in successfully."
       expect(page).to have_selector("h1", text: "Home")

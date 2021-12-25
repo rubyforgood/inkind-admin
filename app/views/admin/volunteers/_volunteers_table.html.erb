@@ -47,10 +47,10 @@
         <td>
           <%= volunteer.last_name %>
         </td>
-        <td>
+        <td class="nowrap">
           <%= volunteer.email %>
         </td>
-        <td>
+        <td class="nowrap">
           <%= format_phone_number(volunteer.phone_number) %>
         </td>
         <td>
@@ -71,7 +71,6 @@
           <% else %>
             <%= link_to "Activate", activate_admin_volunteer_path(volunteer), method: :patch, data: { confirm: "Are you sure?" } %>
           <% end %>
-
         </td>
       </tr>
     <% end %>

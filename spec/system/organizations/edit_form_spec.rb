@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "the edit organization form", type: :feature do
   it "updates the name of an organization" do
-    stub_login
+    login
     organization = create(:organization, name: "Kurstyn's Dog and Baby Club")
 
     visit "/admin/organizations/#{organization.id}/edit"
@@ -17,13 +17,13 @@ describe "the edit organization form", type: :feature do
 
   private
 
-  def stub_login
+  def login
     admin = create(:admin)
 
     visit new_user_session_path
 
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
-    click_button "Log in"
+    click_button "LOG IN"
   end
 end
