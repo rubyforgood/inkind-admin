@@ -10,7 +10,7 @@ module Admin
         format.html
         format.csv do
           columns = %w[requestor.name created_at survey_response_id survey_response.student.name
-            survey_response.student.active_student_staff_assignment.staff.name category_s status_s ]
+            survey_response.student.active_student_staff_assignment.staff.name display_category display_status ]
           headers = ["Requested By", "Date Created", "Response ID", "Student", "Staff Contact", "Type", "Status"]
 
           send_data SupportTicket.export_to_csv(@tickets, columns: columns, headers: headers),
