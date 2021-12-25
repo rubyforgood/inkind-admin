@@ -1,0 +1,50 @@
+<div class="container">
+  <%= link_to "Back", :back %>
+
+  <h3>Edit Your Login</h3>
+  <br />
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-6">
+        <%= f.email_field :email, class: "form-control py-2", placeholder: "Email", autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-6">
+        <div class="mb-2">
+          <%= f.label :new_password %> <i>(leave blank if you don't want to change it)</i>
+        </div>
+        <%= f.password_field :password, class: "form-control py-2", placeholder: "New Password", autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-6">
+        <%= f.password_field :password_confirmation, class: "form-control py-2", placeholder: "New Password Confirmation", autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4">
+      <div class="col-6">
+        <div class="mb-2">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+        </div>
+        <%= f.password_field :current_password, class: "form-control py-2", placeholder: "Current Password", autocomplete: "current-password" %>
+      </div>
+    </div>
+
+    <div class="row pr-3 pb-4 mt-4">
+      <div class="col-2">
+        <%= link_to 'CANCEL', :back, class: 'btn btn-purple-secondary'%>
+      </div>
+
+      <div class="col-2">
+        <%= f.submit 'SAVE', class: 'btn btn-purple-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
