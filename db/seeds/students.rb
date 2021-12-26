@@ -16,6 +16,7 @@ User
           guardian_first_name: Faker::Name.gender_neutral_first_name,
           guardian_last_name: Faker::Name.last_name,
           guardian_phone_number: Faker::PhoneNumber.phone_number,
+          guardian_email: Faker::Internet.email,
           emergency_contact_first_name: Faker::Name.gender_neutral_first_name,
           emergency_contact_last_name: Faker::Name.last_name,
           emergency_contact_phone_number: Faker::PhoneNumber.phone_number

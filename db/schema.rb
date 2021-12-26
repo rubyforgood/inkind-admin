@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_155836) do
+ActiveRecord::Schema.define(version: 2021_12_26_160410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_155836) do
     t.string "emergency_contact_last_name"
     t.string "city"
     t.string "state", limit: 2
+    t.string "guardian_email"
     t.index ["deactivator_id"], name: "index_students_on_deactivator_id"
   end
 
