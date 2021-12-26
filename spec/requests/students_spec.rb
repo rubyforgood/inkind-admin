@@ -7,7 +7,7 @@ RSpec.describe "/admin/students", type: :request do
     context "with format csv" do
       it "generates the csv file" do
         travel_to(Date.new(2021, 10, 14)) do
-          student = create(:student, first_name: "Campbell", last_name: "McClure", guardian_first_name: "Mary", guardian_last_name: "Doe", email: "laila@koelpin.io", status: :active, date_of_birth: Date.new(2010, 8, 6), city: "Xyz", state: "CA")
+          student = create(:student, first_name: "Campbell", last_name: "McClure", guardian_first_name: "Mary", guardian_last_name: "Doe", guardian_email: "email2@example.com", email: "laila@koelpin.io", status: :active, date_of_birth: Date.new(2010, 8, 6), city: "Xyz", state: "CA")
           student2 = create(:student, first_name: "Indigo", last_name: "Torp", email: "denese.mcglynn@breitenberg.io", guardian_phone_number: "123-456-7891", guardian_email: "email1@example.com", emergency_contact_first_name: "Jane", emergency_contact_last_name: "Smith", emergency_contact_phone_number: "123-456-7892", status: :inactive, date_of_birth: Date.new(2012, 7, 7))
 
           volunteer = create(:volunteer, first_name: "Azariah", last_name: "Senger")
@@ -27,7 +27,7 @@ RSpec.describe "/admin/students", type: :request do
           expect(response.headers["Content-Disposition"]).to include "attachment; filename=\"students-2021-10-14.csv\""
           expect(response.body).to eq <<~CSV
             "First Name","Last Name","Volunteer Name(s)","Staff Contact","DOB","Guardian First Name","Guardian Last Name","Guardian Email","Guardian Phone","Emergency Contact First Name","Emergency Contact Last Name","Emergency Contact Phone","Hours logged","Number of sessions","City","State"
-            "Campbell","McClure","Azariah Senger/Sutton Mills","","2010-08-06","Mary","Doe","","","","","","1:29","2","Xyz","CA"
+            "Campbell","McClure","Azariah Senger/Sutton Mills","","2010-08-06","Mary","Doe","email2@example.com","","","","","1:29","2","Xyz","CA"
             "Indigo","Torp","","Finley Heathcote","2012-07-07","","","email1@example.com","123-456-7891","Jane","Smith","123-456-7892","0:0","0","",""
           CSV
         end
