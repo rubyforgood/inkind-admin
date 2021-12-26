@@ -16,7 +16,7 @@ RSpec.describe "/admin/students", type: :request do
           create(:student_volunteer_assignment, student: student, volunteer: volunteer2, end_date: Date.current + 1.week)
 
           staff = create(:staff, first_name: "Finley", last_name: "Heathcote")
-          create(:student_staff_assignment, student: student2, staff: staff,end_date: Date.current + 1.week)
+          create(:student_staff_assignment, student: student2, staff: staff, end_date: Date.current + 1.week)
 
           create(:survey_response, student: student, meeting_duration: build(:meeting_duration, minutes: 35))
           create(:survey_response, student: student, meeting_duration: build(:meeting_duration, minutes: 54))

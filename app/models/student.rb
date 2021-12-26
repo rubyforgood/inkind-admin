@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
   include ExportToCsv
+  include MeetingDurations
 
   EXPORT_HEADERS = ["First Name", "Last Name", "Volunteer Name(s)", "Staff Contact", "DOB", "Guardian First Name",
     "Guardian Last Name", "Guardian Email", "Guardian Phone", "Emergency Contact First Name",
@@ -7,19 +8,15 @@ class Student < ApplicationRecord
     "City", "State"].freeze
 
   EXPORT_COLUMNS = %w[first_name last_name volunteer_names_for_csv staff.name
-                      date_of_birth guardian_first_name guardian_last_name
-                      guardian_email guardian_phone_number emergency_contact_first_name emergency_contact_last_name
-                      emergency_contact_phone_number hours_logged completed_responses.count city state].freeze
+    date_of_birth guardian_first_name guardian_last_name
+    guardian_email guardian_phone_number emergency_contact_first_name emergency_contact_last_name
+    emergency_contact_phone_number hours_logged completed_responses.count city state].freeze
 
   has_many :student_volunteer_assignments
   has_many :active_student_volunteer_assignments, lambda {
                                                     where("student_volunteer_assignments.end_date > ?", Date.current)
                                                   }, class_name: "StudentVolunteerAssignment"
   has_many :volunteers, through: :active_student_volunteer_assignments
-
-  has_many :survey_responses
-  has_many :completed_responses, -> { where(status: "complete") }, class_name: "SurveyResponse"
-  has_many :meeting_durations, through: :completed_responses
 
   has_many :student_staff_assignments
   has_one :active_student_staff_assignment, lambda {
@@ -64,13 +61,6 @@ class Student < ApplicationRecord
   def activate!
     self.status = :active
     save!
-  end
-
-  def hours_logged
-    total_minutes = meeting_durations.sum(:minutes)
-    hours = total_minutes / 60
-    minutes = total_minutes % 60
-    "#{hours}:#{minutes}"
   end
 
   def volunteer_names_for_csv
