@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include AuthenticationToken
   include ExportToCsv
+  include MeetingDurations
 
   VOLUNTEER_EXPORT_HEADERS = [
     "Name", "Status", "Email", "Phone Number", "Student Name(s)", "Staff Contact(s)", "Last Seen",
@@ -16,9 +17,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable,
     :password_expirable, :recoverable, :rememberable
 
-  has_many :survey_responses
-  has_many :completed_responses, -> { where(status: "complete") }, class_name: "SurveyResponse"
-  has_many :meeting_durations, through: :completed_responses
   has_many :support_tickets, foreign_key: :requestor_id
 
   # relationships on an admin
@@ -79,9 +77,5 @@ class User < ApplicationRecord
 
   def last_seen
     survey_responses.maximum(:updated_at)&.strftime("%m/%d/%Y")
-  end
-
-  def minutes_logged
-    meeting_durations.sum(:minutes)
   end
 end

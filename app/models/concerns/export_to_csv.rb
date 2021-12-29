@@ -10,6 +10,7 @@ module ExportToCsv
           csv << if obj.respond_to?(:to_csv)
             obj.to_csv
           else
+            # INFO: does not handle blocks or arugments.
             columns.map { |column| column.split(".").inject(obj, :try) }
           end
         end

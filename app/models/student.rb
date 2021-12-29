@@ -1,12 +1,27 @@
 class Student < ApplicationRecord
   include ExportToCsv
+  include MeetingDurations
+
+  EXPORT_HEADERS = ["First Name", "Last Name", "Volunteer Name(s)", "Staff Contact", "DOB", "Guardian First Name",
+    "Guardian Last Name", "Guardian Email", "Guardian Phone", "Emergency Contact First Name",
+    "Emergency Contact Last Name", "Emergency Contact Phone", "Hours logged", "Number of sessions",
+    "City", "State"].freeze
+
+  EXPORT_COLUMNS = %w[first_name last_name volunteer_names_for_csv staff.name
+    date_of_birth guardian_first_name guardian_last_name
+    guardian_email guardian_phone_number emergency_contact_first_name emergency_contact_last_name
+    emergency_contact_phone_number hours_logged completed_responses.count city state].freeze
 
   has_many :student_volunteer_assignments
-  has_many :active_student_volunteer_assignments, -> { where("student_volunteer_assignments.end_date > ?", Date.current) }, class_name: "StudentVolunteerAssignment"
+  has_many :active_student_volunteer_assignments, lambda {
+                                                    where("student_volunteer_assignments.end_date > ?", Date.current)
+                                                  }, class_name: "StudentVolunteerAssignment"
   has_many :volunteers, through: :active_student_volunteer_assignments
 
   has_many :student_staff_assignments
-  has_one :active_student_staff_assignment, -> { where("student_staff_assignments.end_date > ?", Date.current) }, class_name: "StudentStaffAssignment"
+  has_one :active_student_staff_assignment, lambda {
+                                              where("student_staff_assignments.end_date > ?", Date.current)
+                                            }, class_name: "StudentStaffAssignment"
   has_one :staff, through: :active_student_staff_assignment
 
   belongs_to :deactivator, class_name: "User", optional: true
@@ -48,6 +63,10 @@ class Student < ApplicationRecord
     save!
   end
 
+  def volunteer_names_for_csv
+    volunteers.map(&:name).join("/")
+  end
+
   private
 
   def update_volunteer_assignments(volunteer_ids: [])
@@ -55,10 +74,13 @@ class Student < ApplicationRecord
     volunteer_ids ||= []
 
     return if active_volunteer_ids == volunteer_ids&.sort
+
     volunteer_ids.compact_blank!
 
     inactive_ids = active_volunteer_ids - volunteer_ids
-    active_student_volunteer_assignments.where(volunteer_id: inactive_ids).update(end_date: Date.current) if inactive_ids.present?
+    if inactive_ids.present?
+      active_student_volunteer_assignments.where(volunteer_id: inactive_ids).update(end_date: Date.current)
+    end
 
     new_volunteers = volunteer_ids - active_volunteer_ids
     new_volunteers.each do |volunteer_id|

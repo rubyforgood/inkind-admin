@@ -104,6 +104,7 @@ type Student {
   emergencyContactLastName: String
   emergencyContactName: String
   emergencyContactPhoneNumber: String
+  guardianEmail: String
   guardianFirstName: String
   guardianLastName: String
   guardianName: String

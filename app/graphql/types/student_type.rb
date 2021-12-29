@@ -12,6 +12,7 @@ module Types
     field :guardian_last_name, String, null: true
     field :guardian_name, String, null: true
     field :guardian_phone_number, String, null: true
+    field :guardian_email, String, null: true
     field :emergency_contact_first_name, String, null: true
     field :emergency_contact_last_name, String, null: true
     field :emergency_contact_name, String, null: true

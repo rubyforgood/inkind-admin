@@ -9,7 +9,10 @@ module Admin
       respond_to do |format|
         format.html
         format.csv do
-          send_data Student.export_to_csv(@students, columns: %w[name guardian_last_name date_of_birth status]), filename: "students-#{Date.today}.csv"
+          send_data Student.export_to_csv(@students,
+            columns: Student::EXPORT_COLUMNS,
+            headers: Student::EXPORT_HEADERS),
+            filename: "students-#{Date.today}.csv"
         end
       end
     end
@@ -66,7 +69,7 @@ module Admin
 
     def students_params
       params.require(:student).permit(:first_name, :last_name,
-        :email, :phone_number, :guardian_phone_number, :guardian_first_name,
+        :email, :phone_number, :guardian_phone_number, :guardian_email, :guardian_first_name,
         :guardian_last_name, :emergency_contact_first_name, :emergency_contact_last_name,
         :emergency_contact_phone_number, :date_of_birth, :city, :state, volunteer_ids: [])
     end
