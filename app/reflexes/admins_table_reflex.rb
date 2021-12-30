@@ -6,6 +6,6 @@ class AdminsTableReflex < ApplicationReflex
   def sort
     sort_records(records: User.where(role: :admin),
       partial: "admins_table",
-      sort_columns: %w[first_name last_name status])
+      columns: %w[first_name last_name status])
   end
 end

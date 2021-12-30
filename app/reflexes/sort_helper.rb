@@ -1,19 +1,36 @@
 # frozen_string_literal: true
 
 module SortHelper
-  def sort_records(records:, partial:, sort_columns:)
-    # Although risk of sql injection on `order` is pretty low with rails 6.1. IMO It is better to validate the input.
-    sort_column = sort_columns.include?(element.dataset.column) ? element.dataset.column : sort_columns.first
+  def sort_records(records:, partial:, columns:)
+    column = filter_columns(columns: columns)
 
-    records.order!(sort_column => sort_direction)
+    records.order!(column => sort_direction)
 
     set_sort_direction
     insert_indicator
 
-    morph "#sortable", render(partial: partial, locals: {records: records})
+    morph "#sortable", render(partial: partial, locals: { records: records })
+  end
+
+  def filter_records(records:, partial:, columns:)
+    column = filter_columns(columns: columns.keys)
+    search_type = columns[column]
+
+    if search_type == :fuzzy
+      table = records.arel_table
+      records = records.where(table[column].matches("%#{element.value}%"))
+    elsif search_type == :exact
+      records = records.where(column => element.value)
+    end
+
+    morph "#sortable", render(partial: partial, locals: { records: records})
   end
 
   private
+
+  def filter_columns(columns:)
+    columns.include?(element.dataset.column) ? element.dataset.column : columns.first
+  end
 
   # Although risk of sql injection on `order` is pretty low with rails 6.1. IMO It is better to validate the input.
   def sort_direction
