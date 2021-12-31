@@ -67,6 +67,17 @@
       <td>
       </td>
       <td>
+        <select
+          name="status"
+          class="form-select"
+          data-column="status"
+          data-reflex="change->VolunteersTable#filter">
+          <option value='' <%= 'selected' if !session.dig(:filters, :volunteers_table, 'status') %>></option>
+
+          <% User.statuses.each do |k, v| %>
+            <option value=<%= v %> <%= 'selected' if v.to_s == session.dig(:filters, :volunteers_table, 'status') %>><%= k %></option>
+          <% end %>
+        </select>
       </td>
       <td class="text-center text-teal">
       </td>

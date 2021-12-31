@@ -22,5 +22,7 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
     it_behaves_like "filterable table", "first_name", "e", {}, User.all, "admin/volunteers/_volunteers_table", "first_name ILIKE '%e%'"
 
     it_behaves_like "filterable table", "last_name", "g", {"first_name" => 'e'}, User.all, "admin/volunteers/_volunteers_table", "first_name ILIKE '%e%' and last_name ILIKE '%g%'"
+
+    it_behaves_like "filterable table", "status", "0", {"first_name" => 'e'}, User.all, "admin/volunteers/_volunteers_table", "first_name ILIKE '%e%' and status=0"
   end
 end

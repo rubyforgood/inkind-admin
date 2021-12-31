@@ -20,7 +20,7 @@ module TableHelper
     query_params = filters.map do |k, v|
       if columns[k] == :fuzzy
         table[k].matches("%#{v}%")
-      elsif search_type == :exact
+      elsif columns[k] == :exact
         table[k].eq(v)
       end
     end
