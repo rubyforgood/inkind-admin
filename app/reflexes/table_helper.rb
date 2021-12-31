@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TableHelper
-  def sort_records(records:, partial:, columns:)
+  def sort_records(records:, columns:)
     column = filter_columns(columns: columns)
 
     records.order!(column => sort_direction)
@@ -9,28 +9,42 @@ module TableHelper
     set_sort_direction
     insert_indicator
 
-    morph "#sortable", render(partial: partial, locals: { records: records })
+    morph "#sortable", render(partial: partial, locals: {records: records})
   end
 
-  def filter_records(records:, partial:, columns:)
-    column = filter_columns(columns: columns.keys)
-    filters = session[:filters][partial.to_sym].merge!(column => element.value)
+  def filter_records(records:, columns:)
+    column = filter_columns(columns: columns.keys.concat(special_filters))
+    filters = session_filters.merge!(column => element.value).except(*special_filters)
 
     table = records.arel_table
     query_params = filters.map do |k, v|
+      next if v.blank?
+
       if columns[k] == :fuzzy
         table[k].matches("%#{v}%")
       elsif columns[k] == :exact
         table[k].eq(v)
       end
-    end
+    end.compact_blank
 
     records = records.where(query_params.inject(&:and))
+    if session_filters.keys.intersection(special_filters).present?
+      records = run_special_filters(filters: session_filters,
+        records: records)
+    end
 
-    morph "#sortable", render(partial: partial, locals: { records: records })
+    morph "#sortable", render(partial: partial, locals: {records: records})
   end
 
   private
+
+  def session_filters
+    session[:filters][partial.to_sym]
+  end
+
+  def special_filters
+    []
+  end
 
   def filter_columns(columns:)
     columns.include?(element.dataset.column) ? element.dataset.column : columns.first

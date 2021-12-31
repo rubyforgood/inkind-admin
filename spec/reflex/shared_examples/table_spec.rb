@@ -37,7 +37,7 @@ RSpec.shared_examples "filterable table" do |column, value, filters, records, te
   let(:session) { double(dig: {}, load!: true) }
 
   before do
-    allow(session).to receive(:[]).with(:filters).and_return({ volunteers_table: filters })
+    allow(session).to receive(:[]).with(:filters).and_return({volunteers_table: filters})
     allow_any_instance_of(ActionDispatch::Request)
       .to(receive(:session).and_return(session))
   end

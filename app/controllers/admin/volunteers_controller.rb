@@ -4,7 +4,7 @@ module Admin
       @nav = "Volunteers"
       @volunteers = User.where(role: :volunteer).order(:last_name)
 
-      session[:filters] = { volunteers_table: {} } unless @stimulus_reflex
+      session[:filters] = {volunteers_table: {}} unless @stimulus_reflex
 
       respond_to do |format|
         format.html

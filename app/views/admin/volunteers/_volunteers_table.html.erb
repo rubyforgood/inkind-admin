@@ -63,6 +63,13 @@
       <td>
       </td>
       <td>
+        <input
+          type="text"
+          name="staff_names"
+          data-reflex="input->VolunteersTable#filter"
+          data-column="staff_names"
+          value="<%= session.dig(:filters, :volunteers_table, 'staff_names') %>"
+          class="form-control">
       </td>
       <td>
       </td>
