@@ -7,10 +7,10 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
 
   describe "#sort" do
     before do
-      2.times do
-        create(:volunteer, status: :active)
-        create(:volunteer, status: :inactive)
-      end
+      create(:volunteer, first_name: "Tyler", last_name: "Gottlieb", status: :active)
+      create(:volunteer, first_name: "Victor", last_name: "Volunteer", status: :active)
+      create(:volunteer, first_name: "Morgan", last_name: "Wiegand", status: :inactive)
+      create(:volunteer, first_name: "Spencer", last_name: "Morar", status: :inactive)
     end
 
     it_behaves_like "sortable table", "status", User.all, "admin/volunteers/_volunteers_table"
@@ -18,5 +18,9 @@ RSpec.describe VolunteersTableReflex, type: :reflex do
     it_behaves_like "sortable table", "first_name", User.all, "admin/volunteers/_volunteers_table"
 
     it_behaves_like "sortable table", "last_name", User.all, "admin/volunteers/_volunteers_table"
+
+    it_behaves_like "filterable table", "first_name", "e", {}, User.all, "admin/volunteers/_volunteers_table", "first_name ILIKE '%e%'"
+
+    it_behaves_like "filterable table", "last_name", "g", {"first_name" => 'e'}, User.all, "admin/volunteers/_volunteers_table", "first_name ILIKE '%e%' and last_name ILIKE '%g%'"
   end
 end

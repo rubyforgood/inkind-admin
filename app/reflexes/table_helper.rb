@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SortHelper
+module TableHelper
   def sort_records(records:, partial:, columns:)
     column = filter_columns(columns: columns)
 
@@ -14,16 +14,20 @@ module SortHelper
 
   def filter_records(records:, partial:, columns:)
     column = filter_columns(columns: columns.keys)
-    search_type = columns[column]
+    filters = session[:filters][partial.to_sym].merge!(column => element.value)
 
-    if search_type == :fuzzy
-      table = records.arel_table
-      records = records.where(table[column].matches("%#{element.value}%"))
-    elsif search_type == :exact
-      records = records.where(column => element.value)
+    table = records.arel_table
+    query_params = filters.map do |k, v|
+      if columns[k] == :fuzzy
+        table[k].matches("%#{v}%")
+      elsif search_type == :exact
+        table[k].eq(v)
+      end
     end
 
-    morph "#sortable", render(partial: partial, locals: { records: records})
+    records = records.where(query_params.inject(&:and))
+
+    morph "#sortable", render(partial: partial, locals: { records: records })
   end
 
   private

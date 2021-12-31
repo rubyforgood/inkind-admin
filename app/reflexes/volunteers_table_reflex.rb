@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class VolunteersTableReflex < ApplicationReflex
-  include SortHelper
+  include TableHelper
 
   def sort
     sort_records(records: records,
@@ -12,7 +12,9 @@ class VolunteersTableReflex < ApplicationReflex
   def filter
     filter_records(records: records,
                    partial: "volunteers_table",
-                   columns: { first_name: :fuzzy, last_name: :fuzzy, status: :exact })
+                   columns: { 'first_name' => :fuzzy,
+                              'last_name' => :fuzzy,
+                              'status' => :exact })
   end
 
   private

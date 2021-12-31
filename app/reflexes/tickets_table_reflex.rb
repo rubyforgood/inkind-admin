@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TicketsTableReflex < ApplicationReflex
-  include SortHelper
+  include TableHelper
 
   def sort
     sort_records(records: SupportTicket.left_outer_joins(:requestor, survey_response: {student: {active_student_staff_assignment: :staff}}),

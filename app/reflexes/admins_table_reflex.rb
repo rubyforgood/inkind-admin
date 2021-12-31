@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AdminsTableReflex < ApplicationReflex
-  include SortHelper
+  include TableHelper
 
   def sort
     sort_records(records: User.where(role: :admin),
