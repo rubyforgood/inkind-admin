@@ -39,6 +39,56 @@
     </tr>
   </thead>
   <tbody>
+    <tr scope="row">
+      <td>
+        <input
+          type="text"
+          name="first_name"
+          data-reflex="input->VolunteersTable#filter"
+          data-column="first_name"
+          value="<%= session.dig(:filters, :volunteers_table, 'first_name') %>"
+          class="form-control">
+      </td>
+      <td>
+        <input
+          type="text"
+          name="last_name"
+          data-reflex="input->VolunteersTable#filter"
+          data-column="last_name"
+          value="<%= session.dig(:filters, :volunteers_table, 'last_name') %>"
+          class="form-control">
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        <input
+          type="text"
+          name="staff_names"
+          data-reflex="input->VolunteersTable#filter"
+          data-column="staff_names"
+          value="<%= session.dig(:filters, :volunteers_table, 'staff_names') %>"
+          class="form-control">
+      </td>
+      <td>
+      </td>
+      <td>
+        <select
+          name="status"
+          class="form-select"
+          data-column="status"
+          data-reflex="change->VolunteersTable#filter">
+          <option value='' <%= 'selected' if !session.dig(:filters, :volunteers_table, 'status') %>></option>
+
+          <% User.statuses.each do |k, v| %>
+            <option value=<%= v %> <%= 'selected' if v.to_s == session.dig(:filters, :volunteers_table, 'status') %>><%= k %></option>
+          <% end %>
+        </select>
+      </td>
+      <td class="text-center text-teal">
+      </td>
+    </tr>
     <% records.each do |volunteer| %>
       <tr scope="row">
         <td>
