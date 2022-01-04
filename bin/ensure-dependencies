@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+# wait for redis to be available
+ensure()
+{
+  until ruby -r $1 -e "begin $2; rescue; exit 1; end"
+  do
+    >&2 echo "$1 ($2) is unavailable - sleeping"
+    sleep 5
+  done
+  echo "$1 ($2) is available - GOOD TO GO"
+}
+
+if [[ -n ${ENSURE_DEPENDENCIES+x} ]]; then
+  echo $DATABASE_URL
+  ensure pg "PG.connect(ENV['DATABASE_URL'])"
+  ensure redis "Redis.new(url: ENV['REDIS_URL']).info"
+fi

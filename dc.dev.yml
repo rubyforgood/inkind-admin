@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+  app: &app_base
+    build: ./
+    volumes:
+      - .:/app
+    environment:
+      ENSURE_DEPENDENCIES: 1
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://postgres:password@pg:5432/inkind_admin_dev
+    ports:
+      - "3001:3000"
+
+  pg:
+    volumes:
+      - ./data/pg:/var/lib/postgresql/data:delegated
+      - ./db/dbinit:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "54321:5432"
+
+  redis:
+    ports:
+      - "56379:6379"
+    volumes:
+      - ./data/redis:/data:delegated
