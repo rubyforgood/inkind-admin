@@ -75,5 +75,15 @@ jobs:
           az acr login --name inkindadmin
           export DOCKER_IMAGE=inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
           make ci_up
-          watch -n 5 docker ps
+          docker ps
+          sleep 5
+          docker ps
+          sleep 15
+          docker ps
+          sleep 25
+          docker ps
+          sleep 35
+          docker ps
+          sleep 55
+
 
