@@ -47,7 +47,7 @@ jobs:
         run: |
           az acr login --name inkindadmin
           docker pull inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
-          docker run --rm inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }} standardrb --format github
+          docker run --rm inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }} "standardrb --format github"
 
   test:
     runs-on: ubuntu-latest
