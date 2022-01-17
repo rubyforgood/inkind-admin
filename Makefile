@@ -28,8 +28,11 @@ run:
 ci_run:
 	$(MAKE) env_run env=ci cmd="$(cmd)"
 
-rspec:
+test:
 	$(MAKE) run cmd=bin/rspec
+
+lint:
+	$(MAKE) run cmd="standardrb --format github"
 
 ci_rspec:
 	$(MAKE) ci_run cmd=bin/rspec

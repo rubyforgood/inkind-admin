@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   pg:
-    image: postgres
+    image: postgres:12
 
   redis:
     image: redis
