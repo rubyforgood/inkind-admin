@@ -3,8 +3,6 @@ version: '3.6'
 services:
   app: &app_base
     image: ${DOCKER_IMAGE}
-    volumes:
-      - .:/app
     environment:
       ENSURE_DEPENDENCIES: 1
       REDIS_URL: redis://redis:6379

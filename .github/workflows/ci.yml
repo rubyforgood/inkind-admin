@@ -3,34 +3,34 @@ name: CI
 on: push
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     -
-  #       name: Checkout
-  #       uses: actions/checkout@v2
-  #     -
-  #       name: Set up QEMU
-  #       uses: docker/setup-qemu-action@v1
-  #     -
-  #       name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v1
-  #     -
-  #       name: Log in with Azure
-  #       uses: azure/login@v1
-  #       with:
-  #         creds: '${{ secrets.AZURE_GITHUB_CREDENTIALS }}'
-  #         enable-AzPSSession: true
-  #     -
-  #       name: Docker build and push
-  #       run: |
-  #         az acr login --name inkindadmin
-  #         docker build . -t inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
-  #         docker push inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_GITHUB_CREDENTIALS }}'
+          enable-AzPSSession: true
+      -
+        name: Docker build and push
+        run: |
+          az acr login --name inkindadmin
+          docker build . -t inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
+          docker push inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
 
   lint:
     runs-on: ubuntu-latest
-    # needs: build
+    needs: build
 
     steps:
       -
@@ -54,7 +54,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    # needs: build
+    needs: build
 
     steps:
       -
