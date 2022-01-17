@@ -8,7 +8,7 @@ build:
 	docker-compose -f dc.common.yml -f dc.dev.yml build app
 
 env:
-	docker-compose -f dc.common.yml -f dc.$(env).yml $(cmd)
+	docker-compose --verbose -f dc.common.yml -f dc.$(env).yml $(cmd)
 
 env_up:
 	$(MAKE) env cmd=up
