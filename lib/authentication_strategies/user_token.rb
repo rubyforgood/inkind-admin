@@ -5,7 +5,7 @@ module AuthenticationStrategies
     end
 
     def valid?
-     bearer_token.present?
+      bearer_token.present?
     end
 
     def authenticate!
