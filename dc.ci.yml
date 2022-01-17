@@ -11,5 +11,7 @@ services:
       DATABASE_URL: postgres://postgres:password@pg:5432/inkind_admin_dev
 
   pg:
+    volumes:
+      - ./db/dbinit:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_PASSWORD: password
