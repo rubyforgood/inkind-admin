@@ -34,7 +34,10 @@ test:
 lint:
 	$(MAKE) run cmd="standardrb --format github"
 
-ci_rspec:
+ci_lint:
+	$(MAKE) ci_run cmd="standardrb --format github"
+
+ci_test:
 	$(MAKE) ci_run cmd=bin/rspec
 
 console:
