@@ -7,6 +7,7 @@ ensure()
   until ruby -r $1 -e "begin $2; rescue; exit 1; end"
   do
     >&2 echo "$1 ($2) is unavailable - sleeping"
+    docker ps
     sleep 5
   done
   echo "$1 ($2) is available - GOOD TO GO"
