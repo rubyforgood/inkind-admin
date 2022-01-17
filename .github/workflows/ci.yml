@@ -25,8 +25,8 @@ jobs:
         name: Docker build and push
         run: |
           az acr login --name inkindadmin
-          docker build . -t inkindadmin.azurecr.io/inkindadmin:{{ github.ref }}
-          docker push inkindadmin.azurecr.io/inkindadmin:{{ github.ref }}
+          docker build . -t inkindadmin.azurecr.io/inkindadmin:${{ github.ref }}
+          docker push inkindadmin.azurecr.io/inkindadmin:${{ github.ref }}
 
   lint:
     runs-on: ubuntu-latest
@@ -46,6 +46,6 @@ jobs:
         name: Docker build and push
         run: |
           az acr login --name inkindadmin
-          docker pull inkindadmin.azurecr.io/inkindadmin:{{ github.ref }}
-          docker run --rm inkindadmin.azurecr.io/inkindadmin:{{ github.ref }} standardrb --format github
+          docker pull inkindadmin.azurecr.io/inkindadmin:${{ github.ref }}
+          docker run --rm inkindadmin.azurecr.io/inkindadmin:${{ github.ref }} standardrb --format github
 
