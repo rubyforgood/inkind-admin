@@ -36,14 +36,14 @@ jobs:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      # -
-      #   name: Log in with Azure
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: '${{ secrets.AZURE_GITHUB_CREDENTIALS }}'
-      #     enable-AzPSSession: true
       -
-        name: Docker build and push
+        name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_GITHUB_CREDENTIALS }}'
+          enable-AzPSSession: true
+      -
+        name: Lint
         run: |
           az acr login --name inkindadmin
           docker pull inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
