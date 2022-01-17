@@ -74,5 +74,6 @@ jobs:
         run: |
           az acr login --name inkindadmin
           export DOCKER_IMAGE=inkindadmin.azurecr.io/inkindadmin:${{ github.ref_name }}
-          make ci_test
+          make ci_up
+          watch -n 5 docker ps
 
