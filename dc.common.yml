@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+  pg:
+    image: postgres:12
+
+  redis:
+    image: redis
+
+  app: &app_base
+    image: app
+    depends_on:
+      - redis
+      - pg
+    command: bin/docker-rails

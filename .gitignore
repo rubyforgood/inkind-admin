@@ -41,3 +41,6 @@ yarn-debug.log*
 
 # Ignore package-lock.json
 package-lock.json
+
+# docker data local storage
+/data
