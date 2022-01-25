@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "http://inkind-volunteering.herokuapp.com"
+    origins "https://inkind-volunteering.herokuapp.com"
     resource "/graphql",
       headers: :any,
       methods: %i[get post options],
