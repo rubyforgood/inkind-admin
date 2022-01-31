@@ -47,7 +47,7 @@ const showConfirmationDialog = (element) => {
       text:              text || '',
       showCancelButton:  true,
       cancelButtonText:  'CANCEL',
-      confirmButtonText: confirmText || "Yes",
+      confirmButtonText: confirmText || "YES",
       reverseButtons: true,
       confirmButtonColor: "#6C3CB2",
   }).then(result => confirmed(element, result));
