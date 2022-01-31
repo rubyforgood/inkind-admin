@@ -46,7 +46,7 @@ const showConfirmationDialog = (element) => {
       title:             message || 'Are you sure?',
       text:              text || '',
       showCancelButton:  true,
-      cancelButtonText:  'Cancel',
+      cancelButtonText:  'CANCEL',
       confirmButtonText: confirmText || "Yes",
       reverseButtons: true,
       confirmButtonColor: "#6C3CB2",
