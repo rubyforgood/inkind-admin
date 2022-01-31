@@ -265,6 +265,8 @@ GEM
       redis
     stimulus_reflex_testing (0.3.0)
       stimulus_reflex (>= 3.3.0)
+    sweetalert2 (7.25.6)
+      railties (>= 3.1.0)
     thor (1.1.0)
     thread-local (1.1.0)
     tilt (2.0.10)
@@ -319,6 +321,7 @@ DEPENDENCIES
   standardrb
   stimulus_reflex (~> 3.4)
   stimulus_reflex_testing
+  sweetalert2
   turbolinks (~> 5.2.0)
   tzinfo-data
   webpacker (~> 5.4)
