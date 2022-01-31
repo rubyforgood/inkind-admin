@@ -45,7 +45,6 @@ const showConfirmationDialog = (element) => {
   Swal.fire({
       title:             message || 'Are you sure?',
       text:              text || '',
-      icon:              'warning',
       showCancelButton:  true,
       cancelButtonText:  'Cancel',
       confirmButtonText: confirmText || "Yes",

@@ -56,9 +56,23 @@
           <%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
 
           <% if admin_user.active? %>
-            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Deactivate", deactivate_admin_admin_user_path(admin_user),
+                method: :patch,
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "DEACTIVATE",
+                  text: "This action will deactivate this admin. Are you sure you want to proceed with deactivation?"
+                }
+             %>
           <% else %>
-            <%= link_to "Activate", activate_admin_admin_user_path(admin_user), method: :patch, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Activate", activate_admin_admin_user_path(admin_user),
+                method: :patch,
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "ACTIVATE",
+                  text: "This action will activate this admin. Are you sure you want to proceed with activation?"
+                }
+            %>
           <% end %>
         </td>
       </tr>

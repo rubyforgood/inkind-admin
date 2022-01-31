@@ -74,9 +74,21 @@
         <td class="text-center text-teal">
           <%= link_to "Edit", edit_admin_student_path(student) %> |
           <% if student.status == "active" %>
-            <%= link_to "Deactivate", deactivate_admin_student_path(student), data: { confirm: "Are you sure?" }  %>
+            <%= link_to "Deactivate", deactivate_admin_student_path(student),
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "DEACTIVATE",
+                  text: "This action will deactivate this student. Are you sure you want to proceed with deactivation?"
+                }
+             %>
           <% else %>
-            <%= link_to "Activate", activate_admin_student_path(student), data: { confirm: "Are you sure?" } %>
+            <%= link_to "Activate", activate_admin_student_path(student),
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "ACTIVATE",
+                  text: "This action will activate this student. Are you sure you want to proceed with activation?"
+                }
+            %>
           <% end %>
         </td>
       </tr>
