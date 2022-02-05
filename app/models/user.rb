@@ -34,6 +34,13 @@ class User < ApplicationRecord
   enum status: {active: 0, inactive: 1}
   enum role: {volunteer: 0, admin: 1}
 
+  def update_with_assignments!(volunteer_attributes:, student_ids: [])
+    transaction do
+      update_student_assignments(student_ids: student_ids)
+      update(volunteer_attributes)
+    end
+  end
+
   def active_for_authentication?
     super && active?
   end
@@ -77,5 +84,24 @@ class User < ApplicationRecord
 
   def last_seen
     survey_responses.maximum(:updated_at)&.strftime("%m/%d/%Y")
+  end
+
+  def update_student_assignments(student_ids: [])
+    active_student_ids = student_volunteer_assignments.pluck(:student_id).map(&:to_s).sort || []
+    student_ids ||= []
+
+    return if active_student_ids == student_ids&.sort
+
+    student_ids.compact_blank!
+
+    inactive_ids = active_student_ids - student_ids
+    if inactive_ids.present?
+      student_volunteer_assignments.where(student_id: inactive_ids).update(end_date: Date.current)
+    end
+
+    new_students = student_ids - active_student_ids
+    new_students.each do |student_id|
+      StudentVolunteerAssignment.create!(volunteer: self, student_id: student_id, start_date: Date.current)
+    end
   end
 end

@@ -25,18 +25,26 @@
     </div>
   </div>
 
+  <label class="text-dark-gray mt-4 mb-1">ASSIGN STUDENT</label>
   <div class="row pr-3 pb-4">
-    <div class="col-1">
-      <%= form.submit "Submit", class: "btn btn-secondary" %>
-    </div>
     <div class="col-4">
-      <% if @volunteer.persisted? %>
-        <% if @volunteer.active? %>
-          <%= link_to "Deactivate", deactivate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
-        <% else %>
-          <%= link_to "Activate", activate_admin_volunteer_path(@volunteer), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
-        <% end %>
-      <% end %>
+      <%= form.select(
+        :student_ids,
+        Student.where(status: :active).map { |student| [student.name, student.id] },
+        { include_hidden: false, selected: @volunteer&.student_volunteer_assignments&.map(&:student_id) },
+        { 'data-controller' => 'autocomplete-select',
+          'data-autocomplete-select-placeholder' => "Select Student",
+          multiple: true }
+      ) %>
+    </div>
+  </div>
+
+  <div class="row pr-3 pb-4 mt-4">
+    <div class="col-2">
+      <%= link_to "CANCEL", admin_volunteers_path, class: "btn btn-lg btn-purple-secondary" %>
+    </div>
+    <div class="col-2">
+      <%= form.submit "SAVE", class: "btn btn-lg btn-purple-primary" %>
     </div>
   </div>
 

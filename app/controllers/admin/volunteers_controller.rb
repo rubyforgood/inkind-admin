@@ -42,8 +42,12 @@ module Admin
 
     def update
       @volunteer = User.find(params[:id])
-      if @volunteer.update(volunteer_params)
-        redirect_to admin_volunteers_url, notice: "Volunteer was successfully updated."
+
+      if @volunteer.update_with_assignments!(
+        volunteer_attributes: volunteer_params.except(:student_ids),
+        student_ids: params[:user][:student_ids],
+      )
+      redirect_to admin_volunteers_url, notice: "Volunteer was successfully updated."
       else
         flash[:alert] = format_errors(@volunteer)
         render :edit
@@ -76,7 +80,7 @@ module Admin
     private
 
     def volunteer_params
-      params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
+      params.require(:user).permit(:first_name, :last_name, :email, :phone_number, student_ids: [])
     end
   end
 end
