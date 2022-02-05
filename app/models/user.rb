@@ -29,7 +29,8 @@ class User < ApplicationRecord
   has_many :students, through: :student_volunteer_assignments, source: :student
   has_many :staff, -> { distinct }, through: :students
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :phone_number, presence: true
+  validates :phone_number, format: { with: /\A\d{10}\z/ , message: "must be valid."}
 
   enum status: {active: 0, inactive: 1}
   enum role: {volunteer: 0, admin: 1}
