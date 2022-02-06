@@ -31,9 +31,9 @@
       <%= form.select(
         :student_ids,
         Student.where(status: :active).map { |student| [student.name, student.id] },
-        { include_hidden: false, selected: @volunteer&.student_volunteer_assignments&.map(&:student_id) },
+        { include_hidden: false, selected: @volunteer.student_volunteer_assignments.map(&:student_id) },
         { 'data-controller' => 'autocomplete-select',
-          'data-autocomplete-select-placeholder' => "Select Student",
+          'data-autocomplete-select-placeholder' => "Search student and click to add",
           multiple: true }
       ) %>
     </div>
