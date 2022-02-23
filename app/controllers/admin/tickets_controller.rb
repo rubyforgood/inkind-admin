@@ -4,7 +4,8 @@ module Admin
 
     def index
       @nav = "Tickets"
-      @tickets = SupportTicket.order(:created_at)
+      @total_tickets = SupportTicket.order(:created_at)
+      @pagy, @tickets = pagy(@total_tickets)
 
       respond_to do |format|
         format.html

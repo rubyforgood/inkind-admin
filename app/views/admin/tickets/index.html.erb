@@ -20,3 +20,9 @@
 </div>
 
 <%= render "tickets_table", records: @tickets %>
+<div>
+  Showing <%= @pagy.from %>-<%= @pagy.to %> of <%= @pagy.count %>
+</div>
+<div>
+  <%== pagy_nav(@pagy) %>
+</div>
