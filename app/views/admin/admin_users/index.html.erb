@@ -16,3 +16,9 @@
 </div>
 
 <%= render "admins_table", records: @admin_users %>
+<div>
+  Showing <%= @pagy.from %>-<%= @pagy.to %> of <%= @pagy.count %>
+</div>
+<div>
+  <%== pagy_nav(@pagy) %>
+</div>

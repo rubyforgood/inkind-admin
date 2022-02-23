@@ -2,7 +2,8 @@ module Admin
   class AdminUsersController < ApplicationController
     def index
       @nav = "Admins"
-      @admin_users = User.where(role: :admin).order(:last_name)
+      @total_admin_users = User.where(role: :admin).order(:last_name)
+      @pagy, @admin_users = pagy(@total_admin_users)
     end
 
     def new
