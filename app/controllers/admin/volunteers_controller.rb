@@ -2,7 +2,8 @@ module Admin
   class VolunteersController < ApplicationController
     def index
       @nav = "Volunteers"
-      @volunteers = User.where(role: :volunteer).order(:last_name)
+      @total_volunteers = User.where(role: :volunteer).order(:last_name)
+      @pagy, @volunteers = pagy(@total_volunteers)
 
       session[:filters] = {volunteers_table: {}} unless @stimulus_reflex
 
@@ -10,7 +11,7 @@ module Admin
         format.html
         format.csv do
           send_data(
-            User.export_to_csv(@volunteers,
+            User.export_to_csv(@total_volunteers,
               columns: User::VOLUNTEER_EXPORT_COLUMNS,
               headers: User::VOLUNTEER_EXPORT_HEADERS),
             filename: "volunteers-#{Date.current}.csv"
