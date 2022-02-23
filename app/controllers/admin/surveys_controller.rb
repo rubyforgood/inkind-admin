@@ -2,7 +2,8 @@ module Admin
   class SurveysController < ApplicationController
     def index
       @nav = "Surveys"
-      @surveys = Survey.all
+      @total_surveys = Survey.all
+      @pagy, @surveys = pagy(@total_surveys)
     end
   end
 end
