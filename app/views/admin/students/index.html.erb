@@ -38,4 +38,9 @@
       <li>Save the file as a CSV file.</li>
     </ul>
 <% end %>
-
+<div>
+  Showing <%= @pagy.from %>-<%= @pagy.to %> of <%= @pagy.count %>
+</div>
+<div>
+  <%== pagy_nav(@pagy) %>
+</div>

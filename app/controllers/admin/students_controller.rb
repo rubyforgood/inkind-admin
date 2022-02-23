@@ -4,12 +4,13 @@ module Admin
 
     def index
       @nav = "Students"
-      @students = Student.order(:last_name)
+      @total_students = Student.order(:last_name)
+      @pagy, @students = pagy(@total_students)
 
       respond_to do |format|
         format.html
         format.csv do
-          send_data Student.export_to_csv(@students,
+          send_data Student.export_to_csv(@total_students,
             columns: Student::EXPORT_COLUMNS,
             headers: Student::EXPORT_HEADERS),
             filename: "students-#{Date.today}.csv"
