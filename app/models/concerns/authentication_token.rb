@@ -16,7 +16,8 @@ module AuthenticationToken
 
     def _encryptor
       ActiveSupport::MessageEncryptor.new(
-        Rails.application.credentials.secret_key_base.byteslice(0..31)
+        # TODO: retest this in dev env
+        Rails.application.secret_key_base.byteslice(0..31)
       )
     end
   end

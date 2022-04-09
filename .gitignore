@@ -44,3 +44,5 @@ package-lock.json
 
 # docker data local storage
 /data
+
+.idea
