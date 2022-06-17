@@ -28,30 +28,32 @@ We're in #team-inkind
 #### Ruby
 
 1. Install a ruby version manager: [asdf](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies), [rvm](https://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
-1. Once you cd into the project directory, let your version manager install the ruby version. Right now that's Ruby 3.0.2
+1. Once you cd into the project directory, let your version manager install the ruby version.
 1. `gem install bundler`
 
 #### PostgreSQL ("postgres")
 
 1. Make sure that postgres is installed.
-  - If you're on MacOS, [we recommend using homebrew](https://wiki.postgresql.org/wiki/Homebrew), using `brew install postgresql` then starting up the service.
+  - If you're on MacOS, [we recommend using homebrew](https://wiki.postgresql.org/wiki/Homebrew), using `brew install postgresql`.
   - If you're on Ubuntu/WSL, use `sudo apt-get install libpq-dev` so the gem can install. [Use the Postgres repo for Ubuntu or WSL to get the server and client tools](https://www.postgresql.org/download/linux/ubuntu/).
   - If you're on Fedora/Cent Os use `sudo dnf install libpq-devel`. [If you prefer choose package of libpq-devel via rpm](https://pkgs.org/download/libpq-devel)
   - If you're on Windows, use the official [installer](https://www.postgresql.org/download/windows/) and accept all defaults.  Alternatively, a [Chocolatey](https://chocolatey.org/packages/postgresql) package is available with `choco install postgresql`.
-
-#### Redis
-
-1. Make sure that Redis is installed.
-  - If you're on MacOS, we recommend using homebrew, `brew install redis`
-  - If you're running another OS, use [installation docs on redis.io](https://redis.io/download)
 
 #### Downloading the Project
 
 1. Fork this repository and clone down a copy. See [our contributing guide](CONTRIBUTING.md) for detailed instructions.
 
+#### `cd inkind-admin/`
+
+#### Redis
+
+1. Make sure that Redis is installed.
+  - If you're using `asdf`, run `asdf install` and Redis, Node, Ruby & yarn will all install at their appropriate versions.
+  - If you're on MacOS, we recommend using homebrew, `brew install redis`
+  - If you're running another OS, use [installation docs on redis.io](https://redis.io/download)
+
 #### Installing Packages
 
-1. `cd inkind-admin/`
 1. Run `bundle install` to install ruby dependencies.
 
 #### Database Setup
