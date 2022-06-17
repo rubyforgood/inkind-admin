@@ -31,11 +31,27 @@
       <% if @admin_user.persisted? %>
         <% if @admin_user.active? %>
           <td>
-            <%= link_to "Deactivate", deactivate_admin_admin_user_path(@admin_user), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Deactivate", deactivate_admin_admin_user_path(@admin_user),
+                class: "btn btn-secondary",
+                method: :patch,
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "DEACTIVATE",
+                  text: "This action will deactivate this admin. Are you sure you want to proceed with deactivation?"
+                }
+             %>
           </td>
         <% else %>
           <td>
-            <%= link_to "Activate", activate_admin_admin_user_path(@admin_user), class: "btn btn-secondary", method: :patch, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Activate", deactivate_admin_admin_user_path(@admin_user),
+                class: "btn btn-secondary",
+                method: :patch,
+                data: {
+                  confirm_swal: "Are you sure?",
+                  confirm_text: "ACTIVATE",
+                  text: "This action will activate this admin. Are you sure you want to proceed with activation?"
+                }
+             %>
           </td>
         <% end %>
       <% end %>

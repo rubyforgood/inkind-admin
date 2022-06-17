@@ -20,6 +20,7 @@ gem "stimulus_reflex", "~> 3.4"
 gem "turbolinks", "~> 5.2.0"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "~> 5.4"
+gem "sweetalert2"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
