@@ -1,5 +1,5 @@
-[![rspec](https://github.com/rubyforgood/inkind-admin/workflows/rspec/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/rspec.yml)
-[![lint](https://github.com/rubyforgood/inkind-admin/actions/workflows/standardrb.yml/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/standardrb.yml)
+[![rspec](https://github.com/rubyforgood/inkind-admin/workflows/rspec/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/ci.yml)
+[![lint](https://github.com/rubyforgood/inkind-admin/workflows/lint/badge.svg)](https://github.com/rubyforgood/inkind-admin/actions/workflows/ci.yml)
 
 # InKind - Supporting Community Education Partnerships
 
