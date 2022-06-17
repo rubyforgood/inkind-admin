@@ -34,7 +34,7 @@ We're in #team-inkind
 #### PostgreSQL ("postgres")
 
 1. Make sure that postgres is installed.
-  - If you're on MacOS, we recommend using homebrew, `brew install postgresql`
+  - If you're on MacOS, [we recommend using homebrew](https://wiki.postgresql.org/wiki/Homebrew), using `brew install postgresql` then starting up the service.
   - If you're on Ubuntu/WSL, use `sudo apt-get install libpq-dev` so the gem can install. [Use the Postgres repo for Ubuntu or WSL to get the server and client tools](https://www.postgresql.org/download/linux/ubuntu/).
   - If you're on Fedora/Cent Os use `sudo dnf install libpq-devel`. [If you prefer choose package of libpq-devel via rpm](https://pkgs.org/download/libpq-devel)
   - If you're on Windows, use the official [installer](https://www.postgresql.org/download/windows/) and accept all defaults.  Alternatively, a [Chocolatey](https://chocolatey.org/packages/postgresql) package is available with `choco install postgresql`.
